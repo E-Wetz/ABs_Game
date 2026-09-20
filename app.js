@@ -36,7 +36,7 @@ const challenges = [
 ];
 
 const defaultState = () => ({
-  stars:0, gems:0, missions:0, ticTacToeWins:0, sound:true,
+  stars:0, gems:0, missions:0, ticTacToeWins:0, sound:true, voiceName:"",
   story:{ completedActivities:[], currentOutfit:"doctor", chapter:1 },
   mastery:Object.fromEntries(Object.keys(skillNames).map(key => [key,{ attempts:0, correct:0, streak:0, level:1, lastPlayed:null }]))
 });
@@ -76,11 +76,40 @@ function speak(text) {
   if (!state.sound || !("speechSynthesis" in window)) return;
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = .88;
-  utterance.pitch = 1.15;
-  const voices = speechSynthesis.getVoices();
-  utterance.voice = voices.find(v => /Samantha|Zira|Ava|female/i.test(v.name)) || voices.find(v => v.lang.startsWith("en")) || null;
+  utterance.rate = .94;
+  utterance.pitch = 1;
+  utterance.volume = .92;
+  utterance.voice = preferredVoice();
   speechSynthesis.speak(utterance);
+}
+
+function availableEnglishVoices() {
+  return speechSynthesis.getVoices().filter(voice=>/^en[-_]/i.test(voice.lang));
+}
+
+function voiceScore(voice) {
+  const name=voice.name.toLowerCase();
+  let score=voice.lang.toLowerCase()==="en-us"?20:10;
+  if(/natural|enhanced|premium/.test(name))score+=100;
+  if(/aria|jenny|ava|samantha|sonia|serena/.test(name))score+=60;
+  if(/zira|google us english/.test(name))score+=25;
+  if(/compact|novelty|whisper/.test(name))score-=80;
+  return score;
+}
+
+function preferredVoice() {
+  const voices=availableEnglishVoices();
+  return voices.find(voice=>voice.name===state.voiceName)||voices.sort((a,b)=>voiceScore(b)-voiceScore(a))[0]||null;
+}
+
+function populateVoicePicker() {
+  const select=$("#voiceSelect");
+  if(!select||!("speechSynthesis" in window))return;
+  const voices=availableEnglishVoices().sort((a,b)=>voiceScore(b)-voiceScore(a));
+  const chosen=state.voiceName;
+  select.replaceChildren(new Option("Best available voice",""));
+  voices.forEach(voice=>select.add(new Option(`${voice.name} (${voice.lang})`,voice.name)));
+  select.value=voices.some(voice=>voice.name===chosen)?chosen:"";
 }
 
 function renderStats() {
@@ -359,12 +388,15 @@ $("#speakButton").addEventListener("click",()=>speak($("#instructionText").textC
 $("#challengeSpeak").addEventListener("click",()=>speak(currentChallenge?.speech||""));
 $("#mouthGame").addEventListener("pointerdown",moveBrush);
 $("#mouthGame").addEventListener("pointermove",event=>{if(event.buttons||event.pointerType==="touch")moveBrush(event);});
-$("#parentButton").addEventListener("click",()=>{renderMastery();$("#parentDialog").showModal();});
+$("#parentButton").addEventListener("click",()=>{renderMastery();populateVoicePicker();$("#parentDialog").showModal();});
+$("#voiceSelect").addEventListener("change",event=>{state.voiceName=event.target.value;saveState();speak("Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure.")});
+$("#voicePreviewButton").addEventListener("click",()=>speak("Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure."));
 $("#exportButton").addEventListener("click",exportProgress);
 $("#importInput").addEventListener("change",event=>event.target.files[0]&&importProgress(event.target.files[0]));
 $("#resetButton").addEventListener("click",()=>{if(confirm("Reset all of Annabeth's saved progress on this device?")){state=defaultState();saveState();renderMastery();}});
 
 renderStats();
+if("speechSynthesis" in window){speechSynthesis.addEventListener?.("voiceschanged",populateVoicePicker);populateVoicePicker()}
 window.MagicalHospital={
   getState:()=>state,
   save:()=>saveState(),

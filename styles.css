@@ -118,6 +118,7 @@ dialog::backdrop { background:#31264a88; backdrop-filter:blur(5px); }
 .mastery-bar span { display:block; height:100%; border-radius:8px; background:linear-gradient(90deg,#80d6be,#8865da); }
 .privacy-note { padding:12px; border-radius:14px; background:#eaf8f3; }
 .parent-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.voice-settings{margin:18px 0;padding:15px;border:2px solid #dcccf0;border-radius:20px;background:#f7f0ff}.voice-settings h3,.voice-settings p{margin:0 0 9px}.voice-settings>div{display:flex;flex-wrap:wrap;gap:10px}.voice-settings select,.voice-settings button{min-height:48px;padding:9px 13px;border:2px solid #cab9e7;border-radius:16px;color:var(--purple-dark);background:#fff;font-weight:800}.voice-settings select{flex:1;min-width:220px}
 .import-label { cursor:pointer; }
 .import-label input { display:none; }
 .danger-button { color:#a13d5c !important; border-color:#e9b6c6 !important; }

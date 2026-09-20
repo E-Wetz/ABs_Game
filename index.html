@@ -9,6 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Dr. Annabeth">
   <meta name="description" content="A magical, offline-friendly learning adventure for Annabeth.">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-512.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="adventure.css">
@@ -185,6 +186,14 @@
         <p class="eyebrow">Grown-up view</p>
         <h2>Annabeth's learning garden</h2>
         <div id="masteryList" class="mastery-list"></div>
+        <section class="voice-settings" aria-labelledby="voiceSettingsTitle">
+          <h3 id="voiceSettingsTitle">Story voice</h3>
+          <p>Choose the warmest voice available on this device.</p>
+          <div>
+            <select id="voiceSelect" aria-label="Choose story voice"><option value="">Best available voice</option></select>
+            <button id="voicePreviewButton" type="button">▶ Preview voice</button>
+          </div>
+        </section>
         <p class="privacy-note">🔒 Progress stays on this device.</p>
         <div class="parent-actions">
           <button id="exportButton" type="button">Export progress</button>
