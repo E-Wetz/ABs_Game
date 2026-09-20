@@ -354,7 +354,7 @@ $("#tttNewButton").addEventListener("click",resetTicTacToe);
 $("#playAgainButton").addEventListener("click",startMission);
 $("#homeButton").addEventListener("click",()=>showScreen("homeScreen"));
 $("#rewardHomeButton").addEventListener("click",()=>showScreen("homeScreen"));
-$("#soundButton").addEventListener("click",()=>{state.sound=!state.sound;if(!state.sound)speechSynthesis?.cancel();saveState();});
+$("#soundButton").addEventListener("click",()=>{state.sound=!state.sound;if(!state.sound)speechSynthesis?.cancel();window.dispatchEvent(new Event("hospital-sound-change"));saveState();});
 $("#speakButton").addEventListener("click",()=>speak($("#instructionText").textContent));
 $("#challengeSpeak").addEventListener("click",()=>speak(currentChallenge?.speech||""));
 $("#mouthGame").addEventListener("pointerdown",moveBrush);
