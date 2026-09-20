@@ -1,0 +1,13 @@
+# Local browser profiles and generated QA captures
+.chrome-qa*/
+qa-*.png
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example

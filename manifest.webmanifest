@@ -1,0 +1,14 @@
+{
+  "name": "Annabeth's Magical Animal Hospital",
+  "short_name": "Dr. Annabeth",
+  "description": "A magical educational animal-care adventure.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#d8ccff",
+  "theme_color": "#6e53c7",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

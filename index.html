@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#6e53c7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Dr. Annabeth">
+  <meta name="description" content="A magical, offline-friendly learning adventure for Annabeth.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="adventure.css">
+  <title>Annabeth's Magical Animal Hospital</title>
+</head>
+<body>
+  <main id="app" aria-live="polite">
+    <section id="homeScreen" class="screen home-screen active" aria-label="Magical Animal Hospital">
+      <img class="title-key-art" src="assets/title-screen-poster.png" alt="Dr. Annabeth with her magical animal friends outside the hospital">
+      <div class="title-vignette" aria-hidden="true"></div>
+      <div class="home-card">
+        <p class="title-kicker">A magical adventure starring</p>
+        <h1><span>Annabeth's</span> Magical Animal Hospital</h1>
+        <p class="mission-copy">Every animal deserves a little magic.</p>
+        <button id="worldButton" class="primary-button pulse world-button" type="button"><span aria-hidden="true">✨</span> Get Started</button>
+        <div class="stats" aria-label="Your rewards">
+          <span>⭐ <b id="homeStars">0</b></span>
+          <span>💎 <b id="homeGems">0</b></span>
+          <span>🏅 <b id="homeMissions">0</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="worldScreen" class="screen world-screen" aria-label="Magical kingdom map">
+      <header class="game-header world-header">
+        <button id="worldHomeButton" class="round-button" type="button" aria-label="Return home">⌂</button>
+        <div class="mission-title"><small>Chapter <span id="chapterNumber">1</span></small><strong id="chapterTitle">The Hospital Opens</strong></div>
+        <button id="wardrobeButton" class="wardrobe-button" type="button">👗 Outfits</button>
+        <div class="reward-pill">⭐ <span id="worldStars">0</span></div>
+        <button id="soundButton" class="round-button" type="button" aria-label="Turn sound off">🔊</button>
+        <button id="parentButton" class="round-button parent-world-button" type="button" aria-label="Open grown-up area">⚙</button>
+      </header>
+      <div class="world-map">
+        <img src="assets/magical-kingdom-map.png" alt="Map of the magical animal hospital kingdom">
+        <div class="story-scroll">
+          <span id="storyPatient" aria-hidden="true">🦊</span>
+          <div class="story-picture" aria-hidden="true"><span id="storyProblem">💫</span><b>→</b><span id="storyGoal">🏥</span><b>→</b><span>🎉</span></div>
+          <div class="story-caption"><small>Today's adventure</small><strong id="storyText">Help three friends!</strong></div>
+          <button id="storySpeakButton" class="round-button" type="button" aria-label="Hear the story">🔊</button>
+        </div>
+      </div>
+      <div class="activity-drawer">
+        <div class="drawer-heading"><div><p class="eyebrow">Choose an adventure</p><h2>Every game helps the kingdom</h2></div><span id="collectionCount">0 of 18 discovered</span></div>
+        <div id="activityCarousel" class="activity-carousel"></div>
+      </div>
+    </section>
+
+    <section id="activityScreen" class="screen activity-screen" aria-label="Learning activity">
+      <header class="game-header">
+        <button id="activityBackButton" class="round-button" type="button" aria-label="Back to map">‹</button>
+        <div class="mission-title"><small id="activityLocation">Magical Kingdom</small><strong id="activityTitle">Activity</strong></div>
+        <div class="reward-pill">⭐ <span id="activityStars">0</span></div>
+      </header>
+      <div class="activity-stage">
+        <div class="patient-banner" aria-label="Patient needs help">
+          <span id="activityPatient">🐾</span><b class="visual-arrow">→</b><span id="activityAction">✨</span><b class="visual-arrow">→</b><span aria-hidden="true">😊</span>
+          <button id="activitySpeakButton" class="round-button" type="button" aria-label="Hear what to do">🔊</button>
+          <p id="activityStory" class="screen-reader-story"></p>
+        </div>
+        <div id="activityPlayArea" class="activity-play-area"></div>
+        <p id="activityInstruction" class="activity-instruction"></p>
+        <div id="activityFeedback" class="activity-feedback" aria-live="assertive"></div>
+      </div>
+    </section>
+
+    <section id="activityRewardScreen" class="screen activity-reward-screen" aria-label="Adventure complete">
+      <div id="activityConfetti" class="confetti" aria-hidden="true"></div>
+      <div class="reward-card">
+        <div id="rewardPatient" class="happy-unicorn">🦊</div>
+        <p class="eyebrow">Kingdom helper!</p>
+        <h2 id="activityRewardTitle">You helped a magical friend!</h2>
+        <p id="activityRewardStory"></p>
+        <div class="earned-rewards"><span>+<b id="activityEarnedStars">3</b> ⭐</span><span id="activityGemReward" hidden>+1 💎</span></div>
+        <p id="unlockProgress"></p>
+        <button id="nextAdventureButton" class="primary-button" type="button">🗺️ Choose another adventure</button>
+        <button id="replayActivityButton" class="secondary-button" type="button">🔁 Play this one again</button>
+      </div>
+    </section>
+
+    <section id="ticTacToeScreen" class="screen ttt-screen" aria-label="Magic tic-tac-toe">
+      <div id="tttConfetti" class="confetti" aria-hidden="true"></div>
+      <header class="game-header">
+        <button id="tttHomeButton" class="round-button" type="button" aria-label="Return to hospital">⌂</button>
+        <div class="mission-title">
+          <small>Puzzle Garden</small>
+          <strong>Magic Tic-Tac-Toe</strong>
+        </div>
+        <div class="reward-pill">Wins 👑 <span id="tttWins">0</span></div>
+      </header>
+      <div class="ttt-stage">
+        <div class="ttt-card">
+          <div class="ttt-players" aria-label="Players">
+            <span class="annabeth-player">Annabeth <b>⭐</b></span>
+            <span class="versus">vs.</span>
+            <span class="dragon-player"><b>🐉</b> Pip</span>
+          </div>
+          <h2 id="tttStatus">Your turn—place a star!</h2>
+          <div id="tttBoard" class="ttt-board" role="grid" aria-label="Tic-tac-toe board"></div>
+          <div class="ttt-actions">
+            <button id="tttAgainButton" class="primary-button" type="button">Play again</button>
+            <button id="tttNewButton" class="secondary-button" type="button">New game</button>
+          </div>
+          <p class="ttt-tip">Get three magic symbols in a row!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen" aria-label="Teeth cleaning game">
+      <header class="game-header">
+        <button id="homeButton" class="round-button" type="button" aria-label="Return to hospital">⌂</button>
+        <div class="mission-title">
+          <small>Patient: Twinkle</small>
+          <strong>Magic Smile Checkup</strong>
+        </div>
+        <div class="reward-pill">⭐ <span id="gameStars">0</span></div>
+      </header>
+
+      <div class="progress-track" aria-label="Mission progress">
+        <div id="progressFill" class="progress-fill"></div>
+        <div class="progress-step active">🔎</div>
+        <div class="progress-step">🪥</div>
+        <div class="progress-step">✨</div>
+        <div class="progress-step">🎉</div>
+      </div>
+
+      <div class="clinic" id="clinic">
+        <img class="clinic-art" src="assets/twinkle-dental-clinic.png" alt="Twinkle the purple unicorn smiling in the magical animal hospital">
+        <div id="mouthGame" class="mouth-game" aria-label="Twinkle's teeth">
+          <div id="toothGrid" class="tooth-grid"></div>
+          <div id="brush" class="brush" role="img" aria-label="Magic toothbrush">🪥</div>
+        </div>
+        <div id="characterBubble" class="character-bubble">My teeth feel a little tickly!</div>
+      </div>
+
+      <footer class="instruction-panel">
+        <button id="speakButton" class="round-button speak-button" type="button" aria-label="Hear the instructions">▶</button>
+        <div>
+          <p id="stageLabel" class="eyebrow">Step 1</p>
+          <h2 id="instructionText">Tap the sparkly tooth to check Twinkle's smile!</h2>
+        </div>
+      </footer>
+    </section>
+
+    <section id="challengeScreen" class="screen challenge-screen" aria-label="Learning challenge">
+      <div class="challenge-card">
+        <div class="challenge-mascot" aria-hidden="true">🦷✨</div>
+        <p id="skillBadge" class="skill-badge">Sound Detective</p>
+        <h2 id="challengePrompt">Which word ends with the /t/ sound?</h2>
+        <button id="challengeSpeak" class="listen-button" type="button">🔊 Hear it again</button>
+        <div id="answerChoices" class="answer-grid"></div>
+        <p id="encouragement" class="encouragement" aria-live="assertive"></p>
+      </div>
+    </section>
+
+    <section id="rewardScreen" class="screen reward-screen" aria-label="Mission complete">
+      <div id="confetti" class="confetti" aria-hidden="true"></div>
+      <div class="reward-card">
+        <div class="happy-unicorn" aria-hidden="true">🦄</div>
+        <p class="eyebrow">Mission complete!</p>
+        <h2>Twinkle's smile sparkles!</h2>
+        <p id="rewardMessage">Wonderful work, Dr. Annabeth!</p>
+        <div class="earned-rewards">
+          <span>+<b id="earnedStars">3</b> ⭐</span>
+          <span id="dentistGemReward">+1 💎</span>
+        </div>
+        <button id="playAgainButton" class="primary-button" type="button">Help another smile</button>
+        <button id="rewardHomeButton" class="secondary-button" type="button">Back to hospital</button>
+      </div>
+    </section>
+
+    <dialog id="parentDialog">
+      <form method="dialog" class="parent-panel">
+        <button class="dialog-close" value="close" aria-label="Close">×</button>
+        <p class="eyebrow">Grown-up view</p>
+        <h2>Annabeth's learning garden</h2>
+        <div id="masteryList" class="mastery-list"></div>
+        <p class="privacy-note">🔒 Progress stays on this device.</p>
+        <div class="parent-actions">
+          <button id="exportButton" type="button">Export progress</button>
+          <label class="import-label">Import progress<input id="importInput" type="file" accept="application/json"></label>
+          <button id="resetButton" class="danger-button" type="button">Reset progress</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="wardrobeDialog">
+      <form method="dialog" class="parent-panel wardrobe-panel">
+        <button class="dialog-close" value="close" aria-label="Close">×</button>
+        <p class="eyebrow">Annabeth's wardrobe</p>
+        <h2>Design your own magical look</h2>
+        <div class="dressup-layout">
+          <div id="dressupPreview" class="dressup-preview" aria-label="Annabeth wearing the selected outfit">
+            <img src="assets/annabeth-dressup-base.png" alt="Annabeth">
+            <svg id="dressupLayers" viewBox="0 0 1024 1536" aria-hidden="true"></svg>
+          </div>
+          <div class="dressup-closet">
+            <div id="dressupCategories" class="dressup-categories"></div>
+            <div id="dressupChoices" class="dressup-choices"></div>
+          </div>
+        </div>
+        <h3 class="ready-heading">Or choose a ready-made outfit</h3>
+        <div id="avatarPreview" class="avatar-preview">👩‍⚕️</div>
+        <div id="outfitGrid" class="outfit-grid"></div>
+        <p class="privacy-note">Earn stars by trying different adventures. Replay whenever you like—there are no streaks to protect.</p>
+      </form>
+    </dialog>
+  </main>
+  <script src="app.js" defer></script>
+  <script src="adventure.js" defer></script>
+</body>
+</html>
