@@ -1,5 +1,6 @@
-const CACHE = "annabeth-hospital-v22";
+const CACHE = "annabeth-hospital-v23";
 const ASSETS = ["./", "./index.html", "./styles.css", "./adventure.css", "./app.js", "./adventure.js", "./manifest.webmanifest", "./assets/icon.svg", "./assets/icon-512.png", "./assets/title-screen-poster.png", "./assets/twinkle-dental-clinic.png", "./assets/magical-kingdom-map.png", "./assets/fern-treatment-room.png", "./assets/bramble-potion-lab.png", "./assets/enchanted-forest-garden.png", "./assets/nova-castle-meadow.png", "./assets/art-recovery-studio.png", "./assets/pip-xray-room.png", "./assets/annabeth-outfits.png", "./assets/annabeth-outfits-2.png", "./assets/annabeth-outfits-3.png", "./assets/annabeth-dressup-base.png", "./assets/patient-emotions.png", "./assets/care-treatments-1.png", "./assets/care-treatments-2.png", "./assets/care-treatments-3.png"];
+ASSETS.push("./assets/annabeth-clothes.png");
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))));
 self.addEventListener("fetch", event => {
