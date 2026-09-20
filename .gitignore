@@ -1,5 +1,6 @@
 # Local browser profiles and generated QA captures
 .chrome-qa*/
+.qa-chrome*/
 qa-*.png
 
 # OS and editor files

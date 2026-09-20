@@ -28,7 +28,7 @@ Then open `http://localhost:8080`. For iPad layout testing, use a landscape tabl
 - A more challenging illustrated hidden-object activity with delayed, optional hints
 - Four persistent freehand coloring pages that support touch, stylus, any color, brush sizing, and erasing
 - A personalized blonde, fair-skinned, blue-eyed Annabeth avatar across all four outfits
-- Ten non-repeating veterinary cases per care cycle, each with four equipment stages, repeated hands-on treatment actions, spoken guidance, and worried-to-happy patient reactions
+- Ten non-repeating veterinary cases per care cycle, each with a visible ailment close-up, four equipment stages, tool-specific touch/mouse gestures, illustrated healing progress, spoken guidance, and worried-to-happy patient reactions
 - Search hints wait a full minute before appearing and can be requested again after another minute
 - Adventure unlock path with clear visual locks; discovered favorites remain permanently replayable
 - Exploration-friendly rewards: first discoveries earn more, favorite replays still earn a small reward, and three different activities award a Variety Bonus plus a gem

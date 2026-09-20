@@ -116,6 +116,24 @@
 @keyframes carePulse{50%{transform:translate(-50%,-50%) scale(1.12);box-shadow:0 0 0 12px #fff3,0 7px 20px #38245c66}}@keyframes happyBounce{50%{transform:scale(1.025)}}
 @media(max-height:700px) and (orientation:landscape){.care-game{min-height:300px}.care-patient{min-height:270px}.care-tool{min-height:88px}.care-tool span{font-size:2rem}.care-bubble{font-size:.85rem}}
 @media(max-width:720px){.care-game{grid-template-columns:1fr}.care-progress{grid-column:1}.care-patient{grid-row:auto;min-height:280px}.care-tools{grid-template-columns:repeat(3,1fr)}}
+
+/* Hands-on clinic: portrait, ailment close-up, and tool-specific treatment gestures. */
+.care-clinic{grid-template-columns:minmax(170px,.65fr) minmax(310px,1.35fr);grid-template-rows:auto minmax(260px,1fr) auto auto;min-height:520px}
+.care-clinic .care-progress{grid-column:1/3}
+.care-clinic .care-patient{grid-column:1;grid-row:2;min-height:260px}
+.care-treatment{--treatment-column:0%;--treatment-row:0%;position:relative;grid-column:2;grid-row:2;min-height:300px;overflow:hidden;border:7px solid #fff;border-radius:30px;background-size:400% 400%;background-position:var(--treatment-column) var(--treatment-row);background-repeat:no-repeat;box-shadow:0 12px 30px #37275255;touch-action:none;transition:background-position .65s ease;cursor:crosshair}
+.care-clinic .care-prompt{grid-column:1;grid-row:3/5;align-self:stretch;flex-direction:column;text-align:center}
+.care-clinic .care-tools{grid-column:2;grid-row:3;align-self:stretch}
+.care-clinic .care-tool{min-height:96px}
+.care-action-layer{position:absolute;inset:0;z-index:2;pointer-events:none}
+.care-detail{pointer-events:auto;position:absolute;display:grid;place-items:center;width:58px;height:58px;transform:translate(-50%,-50%);border:4px solid #fff;border-radius:50%;background:#7655cde6;color:#fff;font-size:1.8rem;box-shadow:0 0 0 8px #fff7,0 7px 18px #38245c66;animation:carePulse 1.35s ease-in-out infinite}
+.care-detail.done{opacity:0;transform:translate(-50%,-50%) scale(1.7);pointer-events:none;transition:.35s}
+.care-gesture-tool{position:absolute;z-index:4;display:grid;place-items:center;width:66px;height:66px;transform:translate(-50%,-50%) rotate(-10deg);border:4px solid #fff;border-radius:50%;background:#fffbe7e8;font-size:2.25rem;box-shadow:0 8px 18px #38245c66;opacity:0;pointer-events:none;transition:opacity .15s}
+.care-gesture-tool.visible{opacity:1}
+.care-meter{position:absolute;z-index:5;left:12%;right:12%;bottom:15px;height:18px;overflow:hidden;border:4px solid #fff;border-radius:20px;background:#604780aa;opacity:0;transition:opacity .2s}.care-meter.show{opacity:1}.care-meter i{display:block;width:0;height:100%;border-radius:12px;background:linear-gradient(90deg,#7ce2b7,#ffe06b,#ff9bd2);transition:width .12s}
+.care-gesture-hint{position:absolute;z-index:3;left:50%;top:14px;transform:translateX(-50%);width:max-content;max-width:82%;padding:8px 14px;border:3px solid #fff;border-radius:18px;background:#49336dcc;color:#fff;text-align:center;font-weight:900;box-shadow:0 5px 14px #30204655;pointer-events:none}
+@media(max-height:760px) and (orientation:landscape){.care-clinic{min-height:400px;grid-template-rows:auto minmax(220px,1fr) auto}.care-treatment{min-height:240px}.care-clinic .care-patient{min-height:220px}.care-clinic .care-tool{min-height:76px}.care-clinic .care-tool span{font-size:2rem}}
+@media(max-width:720px){.care-clinic{grid-template-columns:1fr;grid-template-rows:auto 190px minmax(280px,1fr) auto auto;min-height:760px}.care-clinic .care-progress{grid-column:1}.care-clinic .care-patient{grid-column:1;grid-row:2;min-height:190px;background-position:50% var(--row)}.care-treatment{grid-column:1;grid-row:3;min-height:280px}.care-clinic .care-prompt{grid-column:1;grid-row:4;min-height:72px;flex-direction:row}.care-clinic .care-tools{grid-column:1;grid-row:5}}
 @media(max-width:760px){.wardrobe-panel .outfit-grid{grid-template-columns:repeat(2,1fr)}.outfit-card span{width:94px;height:94px}.outfit-card{min-height:164px}}
 
 .dressup-layout{display:grid;grid-template-columns:minmax(230px,330px) 1fr;gap:20px;align-items:start;margin:14px 0 24px}.dressup-preview{position:relative;width:100%;aspect-ratio:2/3;overflow:hidden;border:6px solid #fff;border-radius:32px;background:radial-gradient(circle at 50% 35%,#fff9d7,#dfcaff 65%,#a7e3da);box-shadow:0 10px 28px #3a285d45}.dressup-preview img,.dressup-preview svg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.dressup-preview img{z-index:1}.dressup-preview svg{z-index:2}.dressup-svg .cloth,.dressup-svg .shoe{stroke:#5b3f7c;stroke-width:9;stroke-linejoin:round}.dressup-svg .detail{fill:none;stroke:#d3ad43;stroke-width:10;stroke-linecap:round}
