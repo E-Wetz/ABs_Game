@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 116" role="img" aria-label="Three healing crystals">
+  <path d="M12 80 30 29 55 77 47 109 25 110Z" fill="#7ad5de" stroke="#477f9b" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M30 29 35 80 47 109 55 77Z" fill="#c7f5f2"/>
+  <path d="M61 96 92 8 121 91 105 114 78 114Z" fill="#ad83e8" stroke="#6a56a6" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M92 8 93 93 105 114 121 91Z" fill="#e5d6ff"/>
+  <path d="M126 83 149 34 170 78 159 108 140 110Z" fill="#ffabbe" stroke="#bf668a" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M149 34 150 82 159 108 170 78Z" fill="#ffe0df"/>
+  <path d="m84 26 8-12 8 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</svg>

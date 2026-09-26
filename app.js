@@ -46,6 +46,8 @@ let stage = 0;
 let currentChallenge = null;
 let challengeMistakes = 0;
 let cleaned = new Set();
+let toothCareProgress = new Map();
+let lastBrushPoint = null;
 let cleaningEnabled = false;
 let tttBoard = Array(9).fill("");
 let tttActive = false;
@@ -70,16 +72,91 @@ function saveState() {
 
 function showScreen(id) {
   $$(".screen").forEach(screen => screen.classList.toggle("active", screen.id === id));
+  updateBgMusic(id);
 }
 
-function speak(text) {
-  if (!state.sound || !("speechSynthesis" in window)) return;
+// Gentle looping music bed for the title and map screens, so the child hears something pleasant
+// there instead of the same spoken lines repeating on every visit. Silently does nothing until a
+// real licensed loop is placed at MUSIC_SRC; never falls back to synthesized sound.
+const MUSIC_SRC = "assets/audio/title-loop.mp3";
+const MUSIC_PACKAGED = true; // assets/audio/title-loop.mp3 ("Caketown 1") is packaged and cached; see sw.js ASSETS
+const bgMusic = new Audio();
+bgMusic.loop = true; bgMusic.volume = 0.35; bgMusic.preload = "none";
+let bgMusicWanted = false, bgMusicAvailable = MUSIC_PACKAGED;
+if (MUSIC_PACKAGED) bgMusic.src = MUSIC_SRC;
+function updateBgMusic(screenId) {
+  bgMusicWanted = state.sound && (screenId === "homeScreen" || screenId === "worldScreen");
+  if (bgMusicWanted) attemptBgMusicPlay(); else bgMusic.pause();
+}
+function attemptBgMusicPlay() {
+  if (!bgMusicWanted || bgMusicAvailable !== true || !bgMusic.paused) return;
+  const started = bgMusic.play();
+  if (started && started.catch) started.catch(() => {});
+}
+// Autoplay policies block sound until a user gesture; retry once on the first interaction.
+["pointerdown", "keydown"].forEach(type => document.addEventListener(type, attemptBgMusicPlay, { once: true, passive: true }));
+window.addEventListener("hospital-sound-change", () => updateBgMusic($$(".screen.active")[0]?.id));
+
+// Recorded voice (assets/voice, generated with the af_heart voice). Any spoken line is matched against the
+// clip index; if every word is covered the clips play back to back, otherwise we fall back to device speech.
+const VOICE_ONES="zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
+const VOICE_TENS=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+function voiceNumberWords(n){return n<20?VOICE_ONES[n]:n<100?VOICE_TENS[Math.floor(n/10)]+(n%10?" "+VOICE_ONES[n%10]:""):n===100?"one hundred":String(n)}
+function voiceTokens(text){return String(text).toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/\d+/g,m=>" "+voiceNumberWords(+m)+" ").replace(/-/g," ").replace(/[^a-z' ]+/g," ").split(/\s+/).filter(Boolean)}
+const voicePlayer={clips:null,maxLen:1,audio:new Audio(),token:0,busy:false,pending:null};
+fetch("assets/voice/index.json").then(r=>r.ok?r.json():null).then(data=>{if(!data)return;voicePlayer.clips=data.clips;voicePlayer.maxLen=Math.max(...Object.keys(data.clips).map(k=>k.split(" ").length))}).catch(()=>{});
+function stopVoice(){voicePlayer.token++;voicePlayer.busy=false;voicePlayer.pending=null;try{voicePlayer.audio.pause()}catch{}}
+function finishVoice(token){
+  if(token!==voicePlayer.token)return;
+  voicePlayer.busy=false;
+  const pending=voicePlayer.pending;voicePlayer.pending=null;
+  if(pending)speak(pending.text,pending.options);
+}
+function voiceClipsFor(text){
+  const clips=voicePlayer.clips;if(!clips)return null;
+  const tokens=voiceTokens(text),files=[];if(!tokens.length)return null;
+  let i=0;
+  while(i<tokens.length){
+    let hit=null;
+    for(let len=Math.min(voicePlayer.maxLen,tokens.length-i);len>0;len--){const f=clips[tokens.slice(i,i+len).join(" ")];if(f){hit={f,len};break}}
+    if(!hit)return null;
+    files.push("assets/voice/"+hit.f);i+=hit.len;
+  }
+  return files;
+}
+function playVoiceClips(files,text){
+  const token=++voicePlayer.token,audio=voicePlayer.audio;let i=0;voicePlayer.busy=true;
+  const next=()=>{
+    if(token!==voicePlayer.token)return;
+    if(i>=files.length){finishVoice(token);return}
+    audio.src=files[i++];audio.volume=.95;
+    const started=audio.play();
+    if(started&&started.catch)started.catch(()=>{if(token===voicePlayer.token)finishVoice(token)});
+  };
+  audio.onended=next;audio.onerror=()=>finishVoice(token);
+  next();
+}
+function speak(text,options={}) {
+  if (!state.sound) return;
+  if(voicePlayer.busy&&!options.interrupt){voicePlayer.pending={text,options};return}
+  if(options.interrupt)stopVoice();
+  if("speechSynthesis" in window&&options.interrupt)speechSynthesis.cancel();
+  const files=voiceClipsFor(text);
+  if (files&&files.length) { playVoiceClips(files,text); return; }
+  if(options.recordedOnly)return;
+  speakSynth(text);
+}
+
+function speakSynth(text) {
+  if (!("speechSynthesis" in window)) return;
   speechSynthesis.cancel();
+  const token=++voicePlayer.token;voicePlayer.busy=true;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = .94;
   utterance.pitch = 1;
   utterance.volume = .92;
   utterance.voice = preferredVoice();
+  utterance.onend=()=>finishVoice(token);utterance.onerror=()=>finishVoice(token);
   speechSynthesis.speak(utterance);
 }
 
@@ -125,7 +202,7 @@ function renderStats() {
 function setupTeeth() {
   const grid = $("#toothGrid");
   grid.replaceChildren();
-  for (let i=0; i<12; i++) {
+  for (let i=0; i<16; i++) {
     const tooth = document.createElement("button");
     tooth.type = "button";
     tooth.className = "tooth";
@@ -133,10 +210,27 @@ function setupTeeth() {
     tooth.setAttribute("aria-label", `Tooth ${i+1}`);
     grid.append(tooth);
   }
+  positionDentalTargets();
 }
+
+// Coordinates follow the actual upper and lower teeth in the source portrait.
+// Convert through object-fit:cover so cropping on a laptop or iPad cannot move
+// the interactive spots onto Twinkle's cheeks.
+const dentalTeeth=[[803,468],[823,461],[842,456],[861,453],[880,453],[899,455],[918,459],[938,465],
+                   [828,517],[840,527],[858,534],[876,537],[894,537],[911,533],[928,526],[941,516]];
+function positionDentalTargets(){
+  const clinic=$("#clinic"),image=clinic?.querySelector(".clinic-art");if(!clinic||!image)return;
+  const width=clinic.clientWidth,height=clinic.clientHeight;if(!width||!height)return;
+  const naturalWidth=image.naturalWidth||1672,naturalHeight=image.naturalHeight||941;
+  const scale=Math.max(width/naturalWidth,height/naturalHeight),left=(width-naturalWidth*scale)/2,top=(height-naturalHeight*scale)*.48;
+  $$(".tooth").forEach((tooth,i)=>{const [x,y]=dentalTeeth[i];tooth.style.left=`${left+x*scale}px`;tooth.style.top=`${top+y*scale}px`;tooth.style.setProperty("--tooth-size",`${Math.max(23,Math.min(40,31*scale))}px`)});
+}
+window.addEventListener("resize",positionDentalTargets);
+window.addEventListener("orientationchange",()=>setTimeout(positionDentalTargets,150));
 
 function startMission() {
   stage = 0; cleaned.clear(); cleaningEnabled = false; challengeMistakes = 0;
+  toothCareProgress.clear(); lastBrushPoint = null;
   setupTeeth(); showScreen("gameScreen"); setStage(0);
 }
 
@@ -147,12 +241,14 @@ function setStage(next) {
   $("#progressFill").style.width = `${(next / 3) * 100}%`;
   $("#stageLabel").textContent = `Step ${Math.min(next + 1,4)} of 4`;
   const mouth = $("#mouthGame");
-  mouth.classList.remove("brushing");
+  mouth.classList.remove("brushing","brush-active");
 
   if (next === 0) {
     $("#instructionText").textContent = "Tap the sparkly tooth to check Twinkle's smile!";
     $("#characterBubble").textContent = "My teeth feel a little tickly!";
-    const target = $$(".tooth")[4]; target.classList.add("sparkle");
+    positionDentalTargets();
+    const target = $$(".tooth")[4]; target.classList.add("cue");
+    target.setAttribute("aria-label","Sparkling tooth — tap to begin");
     target.onclick = () => beginBrushing();
     speak("Dr. Annabeth, Twinkle's teeth feel tickly. Tap the sparkly tooth to take a look!");
   } else if (next === 1) {
@@ -168,15 +264,17 @@ function setStage(next) {
     $("#instructionText").textContent = "Polish the glowing teeth for a magical finish!";
     $("#characterBubble").textContent = "Ooh, the polish is sparkly!";
     cleaningEnabled = true; mouth.classList.add("brushing"); cleaned.clear();
-    $$(".tooth").forEach(t => t.classList.add("sparkle"));
+    toothCareProgress.clear(); lastBrushPoint = null;
+    $$(".tooth").forEach((t,i) => {if([0,2,4,6,8,10,12,14].includes(i))t.classList.add("sparkle")});
     speak("The polisher is powered up! Brush the glowing teeth for a magical finish.");
   }
 }
 
 function beginBrushing() {
+  toothCareProgress.clear(); lastBrushPoint = null;
   $$(".tooth").forEach((tooth,i) => {
-    tooth.classList.remove("sparkle");
-    if ([0,2,3,5,6,8,9,11].includes(i)) tooth.classList.add("dirty");
+    tooth.classList.remove("cue","sparkle");
+    if ([0,2,4,6,8,10,12,14].includes(i)) tooth.classList.add("dirty");
     tooth.onclick = null;
   });
   cleaningEnabled = true;
@@ -188,20 +286,34 @@ function moveBrush(event) {
   if (!cleaningEnabled) return;
   event.preventDefault();
   const mouth = $("#mouthGame");
+  mouth.classList.add("brush-active");
   const rect = mouth.getBoundingClientRect();
   const point = event.touches ? event.touches[0] : event;
   $("#brush").style.left = `${point.clientX - rect.left}px`;
   $("#brush").style.top = `${point.clientY - rect.top}px`;
-  const under = document.elementFromPoint(point.clientX, point.clientY)?.closest(".tooth");
-  if (!under) return;
-  under.classList.add("cleaning");
-  setTimeout(() => under.classList.remove("cleaning"),300);
-  if (stage === 1 && under.classList.contains("dirty")) {
-    under.classList.remove("dirty"); cleaned.add(under.dataset.index);
+  const currentPoint={x:point.clientX,y:point.clientY};
+  if(event.type==="pointerdown"){lastBrushPoint=currentPoint;return}
+  const travel=lastBrushPoint?Math.hypot(currentPoint.x-lastBrushPoint.x,currentPoint.y-lastBrushPoint.y):0;
+  lastBrushPoint=currentPoint;
+  if(travel<3)return;
+  const candidates=$$(stage===1?".tooth.dirty":".tooth.sparkle");
+  const under=candidates.map(tooth=>{const r=tooth.getBoundingClientRect();return{tooth,distance:Math.hypot(point.clientX-r.left-r.width/2,point.clientY-r.top-r.height/2),reach:Math.max(14,r.width*.58)}}).sort((a,b)=>a.distance-b.distance)[0];
+  if(!under||under.distance>under.reach)return;
+  const target=under.tooth;
+  target.classList.add("cleaning");
+  setTimeout(() => target.classList.remove("cleaning"),300);
+  if (stage === 1 && target.classList.contains("dirty")) {
+    const progress=Math.min(1,(toothCareProgress.get(target.dataset.index)||0)+Math.min(.24,travel/38));
+    toothCareProgress.set(target.dataset.index,progress);target.style.setProperty("--plaque",String(1-progress));
+    if(progress<1)return;
+    target.classList.remove("dirty"); cleaned.add(target.dataset.index);
     if (!$(".tooth.dirty")) { cleaningEnabled=false; setStage(2); }
   } else if (stage === 3) {
-    under.classList.remove("sparkle"); cleaned.add(under.dataset.index);
-    if (cleaned.size >= 9) finishMission();
+    const progress=Math.min(1,(toothCareProgress.get(target.dataset.index)||0)+Math.min(.34,travel/35));
+    toothCareProgress.set(target.dataset.index,progress);
+    if(progress<1)return;
+    target.classList.remove("sparkle");target.classList.add("polished");cleaned.add(target.dataset.index);
+    if (cleaned.size >= 8) finishMission();
   }
 }
 
@@ -383,20 +495,44 @@ $("#tttNewButton").addEventListener("click",resetTicTacToe);
 $("#playAgainButton").addEventListener("click",startMission);
 $("#homeButton").addEventListener("click",()=>showScreen("homeScreen"));
 $("#rewardHomeButton").addEventListener("click",()=>showScreen("homeScreen"));
-$("#soundButton").addEventListener("click",()=>{state.sound=!state.sound;if(!state.sound)speechSynthesis?.cancel();window.dispatchEvent(new Event("hospital-sound-change"));saveState();});
-$("#speakButton").addEventListener("click",()=>speak($("#instructionText").textContent));
-$("#challengeSpeak").addEventListener("click",()=>speak(currentChallenge?.speech||""));
-$("#mouthGame").addEventListener("pointerdown",moveBrush);
+$("#soundButton").addEventListener("click",()=>{state.sound=!state.sound;if(!state.sound){speechSynthesis?.cancel();stopVoice()}window.dispatchEvent(new Event("hospital-sound-change"));saveState();});
+$("#speakButton").addEventListener("click",()=>speak($("#instructionText").textContent,{interrupt:true}));
+$("#challengeSpeak").addEventListener("click",()=>speak(currentChallenge?.speech||"",{interrupt:true}));
+$("#mouthGame").addEventListener("pointerdown",event=>{if(cleaningEnabled){try{$("#mouthGame").setPointerCapture(event.pointerId)}catch{}}moveBrush(event)});
 $("#mouthGame").addEventListener("pointermove",event=>{if(event.buttons||event.pointerType==="touch")moveBrush(event);});
+$("#mouthGame").addEventListener("pointerup",()=>{lastBrushPoint=null;$("#mouthGame").classList.remove("brush-active")});
+$("#mouthGame").addEventListener("pointercancel",()=>{lastBrushPoint=null;$("#mouthGame").classList.remove("brush-active")});
 $("#parentButton").addEventListener("click",()=>{renderMastery();populateVoicePicker();$("#parentDialog").showModal();});
 $("#voiceSelect").addEventListener("change",event=>{state.voiceName=event.target.value;saveState();speak("Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure.")});
-$("#voicePreviewButton").addEventListener("click",()=>speak("Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure."));
+$("#voicePreviewButton").addEventListener("click",()=>speak("Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure.",{interrupt:true}));
 $("#exportButton").addEventListener("click",exportProgress);
 $("#importInput").addEventListener("change",event=>event.target.files[0]&&importProgress(event.target.files[0]));
 $("#resetButton").addEventListener("click",()=>{if(confirm("Reset all of Annabeth's saved progress on this device?")){state=defaultState();saveState();renderMastery();}});
 
 renderStats();
+updateBgMusic($$(".screen.active")[0]?.id);
 if("speechSynthesis" in window){speechSynthesis.addEventListener?.("voiceschanged",populateVoicePicker);populateVoicePicker()}
+
+// Hidden button on the title screen: plays a personal recorded message (assets/voice/my-voice.mp3) if the file exists.
+(function setupSecretVoice(){
+  const btn=$("#secretVoice"),img=$(".title-key-art"),screen=$("#homeScreen");if(!btn||!img||!screen)return;
+  const SPOT={x:1055,y:337}; // the glowing heart on the hospital's gable in the 1672x941 poster
+  const place=()=>{
+    const w=screen.clientWidth,h=screen.clientHeight,nw=img.naturalWidth||1672,nh=img.naturalHeight||941;if(!w||!h)return;
+    const scale=Math.max(w/nw,h/nh),ox=(w-nw*scale)/2,oy=(h-nh*scale)/2;
+    btn.style.left=`${ox+SPOT.x*scale}px`;btn.style.top=`${oy+SPOT.y*scale}px`;
+  };
+  if("ResizeObserver" in window)new ResizeObserver(place).observe(screen);else window.addEventListener("resize",place);
+  img.addEventListener("load",place);place();
+  const message=new Audio("assets/voice/my-voice.mp3?v=3");message.preload="none";
+  btn.addEventListener("click",()=>{
+    if(!state.sound)return;
+    stopVoice();if("speechSynthesis" in window)speechSynthesis.cancel();
+    try{message.currentTime=0}catch{}
+    const started=message.play();if(started&&started.catch)started.catch(()=>{});
+    btn.classList.remove("playing");void btn.offsetWidth;btn.classList.add("playing");
+  });
+})();
 window.MagicalHospital={
   getState:()=>state,
   save:()=>saveState(),

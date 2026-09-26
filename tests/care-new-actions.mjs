@@ -1,0 +1,78 @@
+// Isolated, muted Chrome check for the new ear, stitching, and letter gestures.
+import {createServer} from "node:http";
+import {readFile} from "node:fs/promises";
+import {resolve,extname,sep} from "node:path";
+import {createRequire} from "node:module";
+import assert from "node:assert/strict";
+
+const root=resolve("."),mime={".html":"text/html",".js":"text/javascript",".css":"text/css",".png":"image/png",".svg":"image/svg+xml",".json":"application/json",".mp3":"audio/mpeg"};
+const server=createServer(async(req,res)=>{try{const path=resolve(root,"."+decodeURIComponent(new URL(req.url,"http://localhost").pathname==="/"?"/index.html":new URL(req.url,"http://localhost").pathname));if(!path.startsWith(root+sep)){res.writeHead(403).end();return}res.setHeader("Content-Type",mime[extname(path)]||"application/octet-stream");res.end(await readFile(path))}catch{res.writeHead(404).end()}});
+await new Promise(done=>server.listen(0,"127.0.0.1",done));
+const origin=`http://127.0.0.1:${server.address().port}`;
+const require=createRequire(import.meta.url),{chromium}=require("C:/Users/emw0009/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright");
+const browser=await chromium.launch({headless:true,executablePath:"C:/Program Files/Google/Chrome/Application/chrome.exe",args:["--mute-audio","--no-first-run"]});
+const page=await browser.newPage({viewport:{width:1180,height:820}});
+const sleep=ms=>new Promise(done=>setTimeout(done,ms));
+const errors=[];page.on("pageerror",error=>errors.push(error.message));
+const evaluate=expression=>page.evaluate(expression);
+const until=async(expression,label)=>{for(let i=0;i<100;i++){if(await evaluate(expression))return;await sleep(80)}throw Error("Timed out: "+label)};
+const shot=name=>page.screenshot({path:resolve(root,`qa-care-${name}.png`)});
+try{
+  await page.goto(origin,{waitUntil:"domcontentloaded",timeout:90000});
+  await until("!!window.MagicalHospital","app");
+  await evaluate('localStorage.setItem("annabeth-magical-hospital-v1",JSON.stringify({stars:99,gems:12,missions:0,sound:false,story:{completedActivities:[],careHistory:[]},mastery:{}}))');
+  await page.reload({waitUntil:"domcontentloaded",timeout:90000});
+  await until("!!window.MagicalHospital","muted app");
+  await evaluate(`window.qaMove=(type,x,y)=>{const v=document.querySelector(".care-treatment"),r=v.getBoundingClientRect();v.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:1,pointerType:"touch",buttons:type==="pointerup"?0:1,clientX:r.left+v.clientWidth*x/100,clientY:r.top+v.clientHeight*y/100}))};window.qaStep=()=>Number(document.querySelector(".care-clinic").dataset.step)`);
+  const open=async index=>{await evaluate(`MagicalHospital.getState().story.careHistory=Array.from({length:10},(_,i)=>i).filter(i=>i!==${index});document.querySelector("#worldButton").click();document.querySelector('.activity-card[data-game="paw"]').click()`);await until("!!document.querySelector('.care-tool-glow')","case start")};
+  const choose=async key=>{await evaluate(`document.querySelector('.care-tool[data-tool="${key}"]').click()`);await until(`document.querySelector('.care-treatment').dataset.tool==="${key}"`,`tool ${key}`)};
+  await open(1);await choose("otoscope");
+  await evaluate('(()=>{const v=document.querySelector(".care-treatment");qaMove("pointerdown",Number(v.dataset.targetX),Number(v.dataset.targetY))})()');
+  await sleep(300);assert.equal(await evaluate('document.querySelector(".care-ear-view").classList.contains("visible")'),true,"otoscope must reveal ear close-up");await shot("1-otoscope-new");
+  await until("qaStep()===1","otoscope exam complete");await evaluate('qaMove("pointerup",77,29)');await choose("swab");
+  await evaluate('(()=>{for(const el of document.querySelectorAll(".care-debris")){const x=parseFloat(el.style.left),y=parseFloat(el.style.top);qaMove("pointerdown",x-4,y);for(let i=0;i<70;i++)qaMove("pointermove",x+(i%2?4:-4),y);qaMove("pointerup",x,y)}})()');
+  await until("qaStep()===2","cotton cleaning complete");await choose("drops");
+  await evaluate('qaMove("pointerdown",63,29);qaMove("pointerup",63,29)');assert.equal(await evaluate('document.querySelector(".care-meter i").style.width'),"0%","one tap must not administer ear drops");
+  await evaluate('qaMove("pointerdown",63,29);for(let i=0;i<12;i++)qaMove("pointermove",77+(i%2?8:-8),29);');
+  assert((await evaluate('parseFloat(document.querySelector(".care-meter i").style.width)'))>0,"dragging dropper over ear must work");await shot("1-ear-drops-new");
+  await evaluate('for(let i=0;i<28;i++)qaMove("pointermove",77+(i%2?8:-8),29);qaMove("pointerup",77,29)');await until("qaStep()===3","ear drops complete");
+  await open(0);await choose("magnifier");
+  await evaluate('(()=>{const v=document.querySelector(".care-treatment");qaMove("pointerdown",Number(v.dataset.targetX),Number(v.dataset.targetY))})()');await sleep(1400);await evaluate('qaMove("pointerup",52,61)');await until("qaStep()===1","prickle inspected");
+  await choose("tweezers");
+  await evaluate('(()=>{const b=document.querySelector(".care-debris"),x=parseFloat(b.style.left),y=parseFloat(b.style.top);qaMove("pointerdown",x,y);qaMove("pointerup",x,y)})()');
+  assert.equal(await evaluate('document.querySelectorAll(".care-debris.dropped").length'),0,"tapping a prickle must not remove it");
+  await evaluate('(()=>{const tray=document.querySelector(".care-drop-tray"),tx=parseFloat(tray.style.left),ty=parseFloat(tray.style.top);for(const b of document.querySelectorAll(".care-debris")){const x=parseFloat(b.style.left),y=parseFloat(b.style.top);qaMove("pointerdown",x-12,y);qaMove("pointermove",x,y);qaMove("pointermove",tx,ty);qaMove("pointerup",tx,ty)}})()');
+  await until("qaStep()===2","tweezers drag complete");
+  await open(5);await choose("magnifier");
+  await evaluate('(()=>{const v=document.querySelector(".care-treatment");qaMove("pointerdown",Number(v.dataset.targetX),Number(v.dataset.targetY))})()');await sleep(1400);await evaluate('qaMove("pointerup",49,53)');await until("qaStep()===1","scale inspected");
+  await choose("wash");await evaluate('qaMove("pointerdown",39,53);for(let i=0;i<100;i++)qaMove("pointermove",49+(i%2?10:-10),53+(i%3-1)*4);qaMove("pointerup",49,53)');await until("qaStep()===2","scale washed");
+  await choose("stitches");assert.equal(await evaluate('document.querySelectorAll(".care-stitch-line").length'),3,"three visible stitch guides required");
+  await evaluate('(()=>{for(const line of document.querySelectorAll(".care-stitch-line")){const x=parseFloat(line.style.left),y=parseFloat(line.style.top);qaMove("pointerdown",x,y);for(let i=1;i<=12;i++)qaMove("pointermove",x,y+8*i/12);qaMove("pointerup",x,y+8)}})()');
+  await until("qaStep()===3","three stitches complete");
+  assert.equal(await evaluate('document.querySelectorAll(".care-applied-layer .care-stitch-line.done").length'),3,"completed stitches should remain visible");
+  assert.equal(await evaluate('document.querySelector(\'.care-condition[data-resolves-with="stitches"]\').style.opacity'),"0.25","the scrape must fade to a small healing mark as stitches are placed");
+  await shot("5-stitches-new");
+  await open(7);await choose("magnifier");
+  await evaluate('qaMove("pointerdown",50,67)');await sleep(1400);await evaluate('qaMove("pointerup",50,67)');await until("qaStep()===1","hoof inspected");
+  await choose("hoofbrush");
+  await evaluate('qaMove("pointerdown",40,67);for(let i=0;i<110;i++)qaMove("pointermove",50+(i%2?10:-10),67+(i%3-1)*4);qaMove("pointerup",50,67)');
+  await until("qaStep()===2","hoof brushed");await choose("coolpack");
+  assert.equal(await evaluate('document.querySelectorAll(".care-readout").length'),0,"cool pack must not display a pulse or temperature gauge");
+  await evaluate('qaMove("pointerdown",50,67)');await sleep(1700);await evaluate('qaMove("pointerup",50,67)');
+  await until("qaStep()===3","cool pack held");await shot("7-coolpack-new");
+  await page.reload({waitUntil:"domcontentloaded",timeout:90000});await until("!!window.MagicalHospital","trace reload");
+  await evaluate('document.querySelector("#worldButton").click();document.querySelector(\'.activity-card[data-game="letter"]\').click()');
+  await until('!!document.querySelector(".guided-trace-game")',"letter tracing");
+  let tracedA=false;
+  for(let round=0;round<3;round++){
+    await until('!!document.querySelector(".guided-trace-game .trace-dot.active")',`trace round ${round}`);
+    const glyph=await evaluate('document.querySelector(".guided-trace-game").getAttribute("aria-label")');
+    if(glyph.includes(" A "))tracedA=true;
+    await evaluate(`(()=>{const game=document.querySelector(".guided-trace-game"),groups=Object.groupBy([...game.querySelectorAll(".trace-dot")],dot=>dot.dataset.stroke),r=game.getBoundingClientRect();const point=(dot,type)=>{const x=parseFloat(dot.style.left),y=parseFloat(dot.style.top);game.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:31,pointerType:"touch",buttons:type==="pointerup"?0:1,clientX:r.left+r.width*x/100,clientY:r.top+r.height*y/100}))};for(const dots of Object.values(groups)){point(dots[0],"pointerdown");for(let i=1;i<dots.length;i++){if(i===Math.floor(dots.length/2)){point(dots[i-1],"pointerup");point(dots[i-1],"pointerdown")}point(dots[i],"pointermove")}point(dots.at(-1),"pointerup")}})()`);
+    if(round<2)await sleep(1150);
+  }
+  assert(tracedA,"three letter rounds must include A");
+  await until('!!document.querySelector(".reward-screen") || !!document.querySelector(".activity-complete") || !document.querySelector(".guided-trace-game")',"trace completion");
+  assert.equal(errors.length,0,"browser errors: "+errors.join("; "));
+  console.log(JSON.stringify({otoscope:true,earDrops:true,tweezers:true,stitches:true,coolpack:true,letterA:true,consoleErrors:errors},null,2));
+}finally{await browser.close();server.close()}

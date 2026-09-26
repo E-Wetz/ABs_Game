@@ -16,18 +16,18 @@ Then open `http://localhost:8080`. For iPad layout testing, use a landscape tabl
 
 - Touch/pointer teeth inspection, brushing, and polishing
 - Replayable tic-tac-toe against a friendly dragon opponent, with saved wins
-- Twenty-three integrated world-map adventures plus teeth cleaning and tic-tac-toe, spanning treatment, potions, searching, rhythm, phonics, rhyming, sight words, counting and comparing, numbers 11–19, double-digit enrichment, shapes, measurement, sorting, sound blending and segmenting, guided tracing, visual math, patterns, memory, and coloring
+- Twenty integrated world-map adventures plus teeth cleaning and tic-tac-toe, spanning treatment, potions, searching, rhythm, sound recognition, sight words, counting and comparing, numbers 11–19, double-digit enrichment, shapes, measurement, sorting, guided tracing, visual math, patterns, memory, and coloring
 - Four lightweight story chapters with recurring magical patients
-- A world map and free-choice activity carousel
-- Twelve locally saved illustrated outfits unlocked from 0–100 stars, with original unlocks preserved
-- Persistent mix-and-match dress-up with independent headwear, clothing, jewelry, shoes, ribbons, and veterinary-equipment layers
+- Six tappable map destinations, a visible six-stop route that advances with discovered games, and a free-choice activity carousel for replay
+- Fourteen locally saved complete illustrated looks unlocked from 0–100 stars, with the original outfit unlocks preserved
+- A curated wardrobe of finished full-character illustrations; selecting a look changes the whole avatar and persists into activities. Older layered-wardrobe saves are retained and shown as a matching complete look until a new one is chosen.
 - Original storybook-park accessories, including classic mouse ears, without licensed character artwork or branding
 - Pre-reader design: visual story sequences, picture-led activity selection, automatic spoken setup, repeated audio buttons, and short optional captions
 - Cohesive illustrated scenes for the hospital, treatment room, potion lab, X-ray room, enchanted forest, castle meadow, art studio, recovery room, and outfit wardrobe
 - Gentle interaction tones, celebration sounds, animated feedback, and replay-varied learning prompts
 - A more challenging illustrated hidden-object activity with delayed, optional hints
-- Four persistent freehand coloring pages that support touch, stylus, any color, brush sizing, and erasing
-- A personalized blonde, fair-skinned, blue-eyed Annabeth avatar across all four outfits
+- Twelve persistent freehand coloring pages that support touch, stylus, any color, brush sizing, and erasing
+- A personalized blonde, fair-skinned, blue-eyed Annabeth avatar across all fourteen looks
 - Ten non-repeating veterinary cases per care cycle, each with a visible ailment close-up, four equipment stages, tool-specific touch/mouse gestures, illustrated healing progress, spoken guidance, and worried-to-happy patient reactions
 - Search hints wait a full minute before appearing and can be requested again after another minute
 - Adventure unlock path with clear visual locks; discovered favorites remain permanently replayable

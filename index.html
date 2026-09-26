@@ -20,10 +20,13 @@
     <section id="homeScreen" class="screen home-screen active" aria-label="Magical Animal Hospital">
       <img class="title-key-art" src="assets/title-screen-poster.png" alt="Dr. Annabeth with her magical animal friends outside the hospital">
       <div class="title-vignette" aria-hidden="true"></div>
+      <button id="secretVoice" class="secret-voice" type="button" aria-label="A special message from home"></button>
       <div class="home-card">
-        <p class="title-kicker">A magical adventure starring</p>
-        <h1><span>Annabeth's</span> Magical Animal Hospital</h1>
-        <p class="mission-copy">Every animal deserves a little magic.</p>
+        <div class="title-copy">
+          <p class="title-kicker">A magical adventure starring</p>
+          <h1><span>Annabeth's</span> Magical Animal Hospital</h1>
+          <p class="mission-copy">Every animal deserves a little magic.</p>
+        </div>
         <button id="worldButton" class="primary-button pulse world-button" type="button"><span aria-hidden="true">✨</span> Get Started</button>
         <div class="stats" aria-label="Your rewards">
           <span>⭐ <b id="homeStars">0</b></span>
@@ -42,14 +45,27 @@
         <button id="soundButton" class="round-button" type="button" aria-label="Turn sound off">🔊</button>
         <button id="parentButton" class="round-button parent-world-button" type="button" aria-label="Open grown-up area">⚙</button>
       </header>
-      <div class="world-map">
-        <img src="assets/magical-kingdom-map.png" alt="Map of the magical animal hospital kingdom">
+      <div class="world-map" id="worldMap">
+        <div class="map-scene" id="mapScene">
+          <img src="assets/magical-kingdom-map.png" alt="The hospital, forest, art studio, dragon cave, unicorn stable, and castle">
+          <svg class="map-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="map-route-base" d="M 51 47 C 42 53, 32 50, 20 35 C 13 46, 10 59, 18 76 C 36 86, 52 66, 67 69 S 82 71, 89 60 C 83 54, 77 42, 84 29 C 71 18, 53 19, 31 15"/>
+            <path class="map-route-leg" data-leg="0" d="M 51 47 C 42 53, 32 50, 20 35"/>
+            <path class="map-route-leg" data-leg="1" d="M 20 35 C 13 46, 10 59, 18 76"/>
+            <path class="map-route-leg" data-leg="2" d="M 18 76 C 36 86, 52 66, 67 69 S 82 71, 89 60"/>
+            <path class="map-route-leg" data-leg="3" d="M 89 60 C 83 54, 77 42, 84 29"/>
+            <path class="map-route-leg" data-leg="4" d="M 84 29 C 71 18, 53 19, 31 15"/>
+          </svg>
+          <div id="mapStops" class="map-stops" aria-label="Places to visit"></div>
+        </div>
+        <div class="map-progress" id="mapProgress" aria-live="polite"></div>
         <div class="story-scroll">
           <span id="storyPatient" aria-hidden="true">🦊</span>
           <div class="story-picture" aria-hidden="true"><span id="storyProblem">💫</span><b>→</b><span id="storyGoal">🏥</span><b>→</b><span>🎉</span></div>
           <div class="story-caption"><small>Today's adventure</small><strong id="storyText">Help three friends!</strong></div>
           <button id="storySpeakButton" class="round-button" type="button" aria-label="Hear the story">🔊</button>
         </div>
+        <section id="mapStopPanel" class="map-stop-panel" aria-label="Games at this place" hidden></section>
       </div>
       <div class="activity-drawer">
         <div class="drawer-heading"><div><p class="eyebrow">Choose an adventure</p><h2>Every game helps the kingdom</h2></div><span id="collectionCount">0 of 18 discovered</span></div>
@@ -61,6 +77,9 @@
       <header class="game-header">
         <button id="activityBackButton" class="round-button" type="button" aria-label="Back to map">‹</button>
         <div class="mission-title"><small id="activityLocation">Magical Kingdom</small><strong id="activityTitle">Activity</strong></div>
+        <div id="activityAvatar" class="activity-avatar" role="img" aria-label="Doctor Annabeth in her saved outfit">
+          <div id="activityAvatarReady" class="avatar-preview" data-outfit="doctor"></div>
+        </div>
         <div class="reward-pill">⭐ <span id="activityStars">0</span></div>
       </header>
       <div class="activity-stage">
@@ -86,6 +105,7 @@
         <p id="unlockProgress"></p>
         <button id="nextAdventureButton" class="primary-button" type="button">🗺️ Choose another adventure</button>
         <button id="replayActivityButton" class="secondary-button" type="button">🔁 Play this one again</button>
+        <button id="samePatientButton" class="secondary-button" type="button" hidden>🔁 Help this friend again</button>
       </div>
     </section>
 
@@ -206,25 +226,14 @@
       <form method="dialog" class="parent-panel wardrobe-panel">
         <button class="dialog-close" value="close" aria-label="Close">×</button>
         <p class="eyebrow">Annabeth's wardrobe</p>
-        <h2>Design your own magical look</h2>
-        <div class="dressup-layout">
-          <div id="dressupPreview" class="dressup-preview" aria-label="Annabeth wearing the selected outfit">
-            <div id="dressupCharacter" class="dressup-character" role="img" aria-label="Annabeth wearing her selected clothes"></div>
-            <div id="dressupShoes" class="dressup-art-layer shoes-layer" aria-hidden="true"></div>
-            <div id="dressupJewelry" class="dressup-art-layer jewelry-layer" aria-hidden="true"></div>
-            <div id="dressupMedical" class="dressup-art-layer medical-layer" aria-hidden="true"></div>
-            <div id="dressupHead" class="dressup-art-layer head-layer" aria-hidden="true"></div>
-            <div id="dressupRibbon" class="dressup-art-layer ribbon-layer" aria-hidden="true"></div>
-            <svg id="dressupLayers" viewBox="0 0 1024 1536" aria-hidden="true"></svg>
+        <h2>Choose a complete magical look</h2>
+        <div class="complete-wardrobe-layout">
+          <div class="complete-wardrobe-stage">
+            <div id="avatarPreview" class="avatar-preview" data-outfit="doctor" role="img" aria-label="Annabeth wearing Magic Doctor"></div>
+            <p class="wardrobe-stage-caption">Your look follows you into every adventure ✨</p>
           </div>
-          <div class="dressup-closet">
-            <div id="dressupCategories" class="dressup-categories"></div>
-            <div id="dressupChoices" class="dressup-choices"></div>
-          </div>
+          <div id="outfitGrid" class="outfit-grid" aria-label="Complete outfits"></div>
         </div>
-        <h3 class="ready-heading">Or choose a ready-made outfit</h3>
-        <div id="avatarPreview" class="avatar-preview">👩‍⚕️</div>
-        <div id="outfitGrid" class="outfit-grid"></div>
         <p class="privacy-note">Earn stars by trying different adventures. Replay whenever you like—there are no streaks to protect.</p>
       </form>
     </dialog>

@@ -1,10 +1,56 @@
 .world-button{display:block;width:min(390px,100%);min-height:54px;margin:16px auto 0;border:0;border-radius:20px;color:#fff;background:linear-gradient(135deg,#27ad91,#397fc9);font-weight:900;font-size:1.05rem;box-shadow:0 6px 0 #24756f}
 .world-screen,.activity-screen{flex-direction:column;height:100dvh;overflow:hidden;background:#e9ddff}.world-header{flex:none}.wardrobe-button{min-height:46px;padding:8px 15px;border:2px solid #e4bf52;border-radius:18px;background:#fff5ba;color:#61458d;font-weight:900}
 .world-map{position:relative;flex:1;min-height:220px;overflow:hidden}.world-map>img{width:100%;height:100%;object-fit:cover}.story-scroll{position:absolute;left:3%;bottom:5%;display:flex;align-items:center;gap:12px;width:min(620px,88%);padding:12px 18px;border:3px solid #ffe7a0;border-radius:22px;background:#fffcebea;box-shadow:0 8px 25px #3d315566;backdrop-filter:blur(5px)}.story-scroll>span{font-size:2.4rem}.story-scroll div{display:flex;flex-direction:column}.story-scroll small{color:#7656b1;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.story-scroll strong{font-size:clamp(.9rem,1.8vw,1.1rem)}
+.world-map{display:grid;place-items:center;isolation:isolate;background:#93bcae}
+.world-map::before{content:"";position:absolute;inset:-20px;background:url("assets/magical-kingdom-map.png") center/cover;filter:blur(15px) brightness(.72);opacity:.72;z-index:-1}
+.map-scene{position:relative;flex:none;overflow:visible;border:4px solid #fff7d5;border-radius:12px;box-shadow:0 12px 35px #172d3970}
+.map-scene>img{display:block;width:100%;height:100%;object-fit:fill;border-radius:8px;user-select:none;pointer-events:none}
+.map-route,.map-stops{position:absolute;inset:0;width:100%;height:100%}
+.map-route{pointer-events:none;overflow:visible}
+.map-route path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.map-route-base{stroke:#fff8dd;stroke-width:7;stroke-dasharray:3 11;filter:drop-shadow(0 2px 2px #304b59bb)}
+.map-route-leg{stroke:#ffe06b;stroke-width:7;stroke-dasharray:3 11;opacity:0;filter:drop-shadow(0 2px 3px #5b3818)}
+.map-route-leg.traveled{opacity:1}
+.map-stop{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:66px;min-height:66px;padding:0;border:0;background:none;transform:translate(-50%,-50%);cursor:pointer;touch-action:manipulation;z-index:2}
+.map-stop-badge{display:grid;place-items:center;width:62px;height:62px;border:4px solid #fff;border-radius:50%;background:linear-gradient(145deg,#fff9ca,#f5a9d3);font-size:2rem;box-shadow:0 5px 0 #a66291,0 6px 18px #172536ae;transition:transform .2s,box-shadow .2s}
+.map-stop-name{padding:3px 9px;border:2px solid #fff;border-radius:999px;background:#fffdf3f0;color:#3a305e;font-size:.76rem;font-weight:900;white-space:nowrap;box-shadow:0 2px 8px #17253677}
+.map-stop.current .map-stop-badge{background:linear-gradient(145deg,#fffbc7,#ffd263);box-shadow:0 0 0 7px #ffe986a3,0 5px 0 #c88d38,0 8px 24px #443714a6;animation:mapBeacon 1.9s ease-in-out infinite}
+.map-stop.current .map-stop-name{background:#fff2a4}
+.map-stop.future .map-stop-badge{filter:saturate(.7);opacity:.88}
+.map-stop.visited .map-stop-badge{background:linear-gradient(145deg,#d7fff0,#71d8ad)}
+.map-stop.selected .map-stop-badge,.map-stop:focus-visible .map-stop-badge{transform:scale(1.13);outline:3px solid #43377d;outline-offset:3px}
+.map-stop-check{position:absolute;top:-4px;right:1px;display:grid;place-items:center;width:27px;height:27px;border:2px solid #fff;border-radius:50%;background:#36a77b;color:#fff;font-size:1rem;font-weight:900}
+.map-stop-sparkle{position:absolute;top:-19px;left:50%;color:#fff579;font-size:1.9rem;text-shadow:0 2px 3px #614279,0 0 9px #fff;animation:mapBeacon 1.9s ease-in-out infinite}
+@keyframes mapBeacon{50%{transform:translateY(-5px) scale(1.07)}}
+.map-progress{position:absolute;z-index:3;top:10px;left:50%;display:flex;align-items:center;gap:9px;padding:7px 14px;border:2px solid #fff;border-radius:20px;background:#fffcf1ee;color:#403461;font-weight:900;font-size:.88rem;white-space:nowrap;box-shadow:0 4px 15px #26394b66;transform:translateX(-50%)}
+.map-progress-dots{display:flex;gap:5px}.map-progress-dots i{width:12px;height:12px;border:2px solid #b5a5cd;border-radius:50%;background:#fff}.map-progress-dots i.current{background:#ffdb62;border-color:#e0a93b}.map-progress-dots i.traveled{background:#65d3a6;border-color:#34a97b}
+.world-map .story-scroll{z-index:3;left:auto;right:12px;bottom:10px;width:min(430px,36%);padding:8px 12px}
+.map-stop-panel{position:absolute;z-index:5;top:50%;right:18px;width:min(440px,calc(100% - 36px));max-height:calc(100% - 28px);padding:14px;border:4px solid #fff8d2;border-radius:28px;background:#fffaf0f7;box-shadow:0 15px 45px #1c253c9c;overflow:auto;transform:translateY(-50%)}
+.map-stop-panel[hidden]{display:none}
+.map-panel-head{display:flex;align-items:center;gap:11px;margin-bottom:12px;color:#493567}.map-panel-icon{font-size:2.6rem}.map-panel-head div{display:flex;flex-direction:column}.map-panel-head small{color:#8466a6;font-weight:900;text-transform:uppercase;letter-spacing:.07em}.map-panel-head strong{font-size:1.25rem}.map-panel-close{display:grid;place-items:center;width:44px;height:44px;margin-left:auto;border:2px solid #d9c4ec;border-radius:50%;background:#fff;color:#65448e;font-size:2rem;line-height:1}
+.map-panel-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.map-panel-game{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:105px;padding:9px;border:3px solid #d8c5eb;border-radius:19px;background:#fff;color:#43365a;text-align:center;box-shadow:0 4px 0 #bea6d4}.map-panel-game:nth-child(3n+2){background:#f0fff8;border-color:#a4dbca}.map-panel-game:nth-child(3n){background:#fff9e3;border-color:#ecd189}.map-panel-game .map-game-icon{font-size:2rem}.map-panel-game strong{font-size:.88rem;line-height:1.15}.map-panel-game small{font-size:.76rem;color:#74528d;font-weight:900}.map-panel-game.completed{border-color:#65c99f}.map-panel-game.locked{filter:grayscale(.65);opacity:.72}.map-panel-game:active{transform:translateY(3px);box-shadow:0 1px 0 #bea6d4}
+@media(orientation:portrait){.world-map{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px;padding-top:64px;box-sizing:border-box}.world-map .story-scroll{position:relative;left:auto;right:auto;bottom:auto;width:min(600px,calc(100% - 24px));min-width:0;transform:none}.world-map .story-scroll .story-picture{display:none}.world-map .story-scroll .story-caption{min-width:0}}
+@media(max-width:800px){.world-map .story-scroll{width:min(350px,48%)}.map-stop-badge{width:54px;height:54px;font-size:1.7rem}.map-stop-name{font-size:.67rem}.map-stop-panel{right:8px;width:min(380px,calc(100% - 16px))}}
+@media(max-width:520px){.map-stop-badge{width:44px;height:44px;border-width:3px;font-size:1.35rem}.map-stop-name{display:none}.map-stop-check{width:22px;height:22px;font-size:.8rem}.map-progress{top:4px;font-size:.7rem;padding:4px 7px}.map-progress-dots i{width:8px;height:8px}.world-map .story-scroll{left:5px;right:5px;bottom:5px;width:auto;padding:5px 8px;gap:5px}.world-map .story-scroll>span{font-size:1.5rem}.world-map .story-scroll .story-picture{font-size:1.1rem}.world-map .story-scroll .story-caption small{display:none}.world-map .story-scroll .story-caption strong{font-size:.72rem}.world-map .story-scroll .round-button{width:37px;height:37px}.map-stop-panel{top:51%;max-height:95%;padding:8px}.map-panel-game{min-height:76px}.map-panel-game .map-game-icon{font-size:1.5rem}}
+@media(prefers-reduced-motion:reduce){.map-stop.current .map-stop-badge,.map-stop-sparkle{animation:none}}
 .activity-drawer{flex:none;padding:15px 18px max(17px,env(safe-area-inset-bottom));background:#fffaf1;box-shadow:0 -8px 25px #41326035}.drawer-heading{display:flex;justify-content:space-between;align-items:end;max-width:1400px;margin:auto}.drawer-heading h2{margin:2px 0 8px;font-size:clamp(1.05rem,2vw,1.35rem)}.drawer-heading>span{padding:7px 11px;border-radius:14px;background:#eee3ff;font-weight:800;font-size:.85rem}.activity-carousel{display:flex;gap:12px;max-width:1400px;margin:auto;overflow-x:auto;padding:4px 4px 12px;scroll-snap-type:x mandatory}.activity-card{position:relative;flex:0 0 170px;min-height:126px;padding:15px;border:0;border-radius:23px;text-align:left;color:#48355f;background:linear-gradient(145deg,#fff,#f0e7ff);box-shadow:0 5px 0 #cdbbe7;scroll-snap-align:start}.activity-card:nth-child(3n+2){background:linear-gradient(145deg,#fff,#ddf7ec);box-shadow:0 5px 0 #a9d9c5}.activity-card:nth-child(3n){background:linear-gradient(145deg,#fff,#fff0bd);box-shadow:0 5px 0 #e7cc70}.activity-card .game-icon{display:block;font-size:2.1rem}.activity-card strong{display:block;margin-top:7px;font-size:.95rem}.activity-card small{color:#7b6f88}.activity-card.completed::after{content:'✓';position:absolute;right:9px;top:9px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;color:#fff;background:#54bd90;font-weight:900}
 .activity-stage{display:flex;flex-direction:column;align-items:center;flex:1;min-height:0;padding:12px 20px max(16px,env(safe-area-inset-bottom));overflow:auto;background:radial-gradient(circle at 15% 10%,#fff4ad,transparent 22%),linear-gradient(145deg,#a8e5dd,#dccbff 58%,#ffcddd)}.patient-banner{display:flex;align-items:center;gap:12px;width:min(760px,96%);padding:8px 17px;border-radius:20px;background:#fffbe8d9;box-shadow:0 5px 16px #4a386b30}.patient-banner span{font-size:2.2rem}.patient-banner p{margin:0;font-weight:800}.activity-play-area{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;width:min(860px,96%);min-height:250px;flex:1;margin:12px;padding:clamp(18px,3vw,34px);border:4px solid #ffffffa3;border-radius:36px;background:#fffdf0d9;box-shadow:0 16px 45px #4c38753b}.activity-instruction{margin:4px;text-align:center;color:#513b79;font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:900}.activity-feedback{min-height:28px;text-align:center;color:#7353bd;font-weight:900}
 .play-target,.choice-tile,.sequence-tile{display:grid;place-items:center;min-width:100px;min-height:90px;padding:15px;border:3px solid #d4c2eb;border-radius:24px;background:#fff;font-size:clamp(1.5rem,5vw,3rem);font-weight:900;box-shadow:0 6px 0 #c4b0dd}.play-target:active,.choice-tile:active,.sequence-tile:active{transform:translateY(4px);box-shadow:0 2px 0 #c4b0dd}.play-target.found,.choice-tile.correct{background:#cdf5df;border-color:#63c99d;animation:pop .4s}.play-target.wiggle,.choice-tile.wiggle{animation:shake .35s}.target-scene{position:relative;width:100%;height:min(330px,42vh);border-radius:25px;overflow:hidden;background:linear-gradient(#bcecff 0 52%,#8dd09b 53%)}.scene-object{position:absolute;width:70px;height:70px;border:0;background:transparent;font-size:3.2rem;filter:drop-shadow(0 5px 5px #315b5960)}.scene-object.found{opacity:.28;transform:scale(.6);transition:.3s}.mix-bowl{width:160px;height:110px;border-radius:15px 15px 80px 80px;background:linear-gradient(#b692e4,#7453b6);box-shadow:inset 0 12px #d8c5f0,0 7px 0 #573c94;font-size:3.5rem}.meter{width:min(440px,80%);height:24px;border:3px solid #fff;border-radius:20px;background:#ddcfec;overflow:hidden}.meter>span{display:block;width:0;height:100%;background:linear-gradient(90deg,#69cfaa,#ffe16f);transition:.3s}.rhythm-pad{width:170px;height:170px;border:6px solid #fff;border-radius:50%;background:#ff9fbd;font-size:5rem;box-shadow:0 10px 0 #cc668d}.rhythm-pad.flash{background:#ffe66e;transform:scale(1.08)}
 .trace-board{position:relative;width:min(500px,82vw);height:min(310px,44vh);border:5px dashed #ccb8e5;border-radius:30px;background:#fff;touch-action:none;overflow:hidden}.trace-glyph{position:absolute;inset:0;display:grid;place-items:center;color:#e0d3ef;font-size:min(29vh,230px);font-weight:900;line-height:1;user-select:none}.trace-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.coloring-picture{font-size:min(24vh,160px);filter:grayscale(.7);transition:.3s}.palette{display:flex;gap:10px}.paint-dot{width:58px;height:58px;border:5px solid #fff;border-radius:50%;box-shadow:0 4px 9px #4e3b6b35}.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;width:min(510px,86vw)}.memory-card{aspect-ratio:1;border:0;border-radius:18px;background:#7959c4;color:transparent;font-size:2.3rem;box-shadow:0 5px 0 #53379b}.memory-card.open,.memory-card.matched{color:inherit;background:#fff3be}.memory-card.matched{opacity:.48}
+.potion-game{position:relative;width:100%;height:100%;min-height:260px;touch-action:none}
+.potion-recipe{position:absolute;z-index:2;left:50%;top:1%;transform:translateX(-50%);display:flex;gap:10px;justify-content:center;align-items:center;padding:8px 14px;border:3px solid #fff;border-radius:20px;background:#fffbe5dc}
+.potion-recipe span{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#e6dcef;color:transparent;filter:grayscale(1);opacity:.55;font-size:1.8rem;transition:filter .3s,opacity .3s,transform .3s}
+.potion-recipe span.filled{filter:none;opacity:1;transform:scale(1.12);background:#d8f6e9;color:#493562}
+.potion-game .mix-bowl{--ingredients:0;--turn:0rad;position:absolute;left:50%;top:62%;width:min(340px,45vw);height:170px;transform:translate(-50%,-50%);display:grid;place-items:center;border:0;border-radius:50%;background:transparent;box-shadow:none;touch-action:none;cursor:default}
+.potion-liquid{position:absolute;left:10%;right:10%;bottom:20%;height:calc(var(--ingredients)*65px);border-radius:50%;background:conic-gradient(from var(--turn),#f9a9d0,#a993ed,#8ae2cf,#f9a9d0);opacity:calc(var(--ingredients)*.55);transition:height .25s,opacity .25s;filter:blur(3px)}
+.potion-spoon{position:absolute;z-index:2;top:3%;right:18%;font-size:63px;opacity:0;transform:rotate(35deg);transition:opacity .3s,transform .3s;pointer-events:none;filter:drop-shadow(0 4px 4px #49335c88)}
+.potion-stir-arrow{position:absolute;z-index:2;top:35%;left:38%;transform:translateX(-50%);color:#fff;font-size:3.2rem;font-weight:900;text-shadow:0 3px 6px #35234c;opacity:0;pointer-events:none}
+.ready-to-stir .mix-bowl{cursor:grab}.ready-to-stir .potion-spoon,.ready-to-stir .potion-stir-arrow{opacity:1}.ready-to-stir .potion-spoon{animation:stirHint 1.5s ease-in-out infinite}.potion-complete .potion-liquid{animation:potionCelebrate .7s ease-in-out infinite alternate}
+.potion-splash{position:absolute;z-index:3;top:-30px;font-size:2rem;pointer-events:none;animation:ingredientDrop .65s ease-in forwards}
+.potion-tray{position:absolute;z-index:2;left:50%;bottom:1%;transform:translateX(-50%);display:flex;flex-wrap:wrap;justify-content:center;gap:12px;min-height:66px;min-width:390px}
+.mix-ingredient{position:relative;z-index:4;width:68px;height:64px;border:4px solid #fff;border-radius:19px;background:#fff7dc;font-size:2.3rem;box-shadow:0 5px 0 #beaad5;touch-action:none;cursor:grab}
+.mix-ingredient.dragging{z-index:10;cursor:grabbing;filter:drop-shadow(0 7px 8px #3d2c5366)}.mix-ingredient.added{visibility:hidden}.ready-to-stir .potion-tray{opacity:0;pointer-events:none}
+@keyframes ingredientDrop{to{top:55%;opacity:0;transform:scale(.5)}}@keyframes stirHint{50%{transform:rotate(65deg) translateY(10px)}}@keyframes potionCelebrate{to{filter:hue-rotate(60deg) brightness(1.2)}}
 .activity-reward-screen{align-items:center;justify-content:center;padding:24px;text-align:center;background:radial-gradient(circle at 50% 8%,#fff4a7,transparent 28%),linear-gradient(145deg,#9fe4d5,#d9c5ff 55%,#ffc9dc)}.wardrobe-panel{min-height:420px}.avatar-preview{display:grid;place-items:center;width:130px;height:130px;margin:10px auto 20px;border:6px solid #fff;border-radius:50%;background:linear-gradient(#c7ecff,#e8d3ff);font-size:5rem;box-shadow:0 8px 22px #48356738}.outfit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.outfit-card{padding:14px;border:3px solid #dac9ed;border-radius:20px;background:#fff;font-weight:900}.outfit-card span{display:block;font-size:2.6rem}.outfit-card.selected{border-color:#6bc7aa;background:#dcf8ea}.outfit-card.locked{filter:grayscale(.8);opacity:.65}.outfit-card small{display:block;color:#7b6b8e}
 @media(max-height:700px) and (orientation:landscape){.world-map{min-height:180px}.activity-drawer{padding-top:8px}.activity-card{min-height:100px;flex-basis:155px;padding:10px}.activity-card .game-icon{font-size:1.7rem}.drawer-heading h2{margin-bottom:3px}.activity-play-area{min-height:200px;margin:7px}.patient-banner{padding:5px 12px}.trace-board{height:230px}}
 @media(max-width:650px){.story-scroll{bottom:3%}.drawer-heading>span{display:none}.activity-card{flex-basis:150px}.outfit-grid{grid-template-columns:1fr 1fr}}
@@ -27,9 +73,11 @@
 /* Cohesive illustrated environments shared by related story activities. */
 .activity-card[data-game="paw"],.activity-play-area[data-game="paw"]{--scene:url("assets/fern-treatment-room.png")}
 .activity-card[data-game="potion"],.activity-play-area[data-game="potion"]{--scene:url("assets/bramble-potion-lab.png")}
-.activity-card[data-game="xray"],.activity-card[data-game="heart"],.activity-play-area[data-game="xray"],.activity-play-area[data-game="heart"]{--scene:url("assets/pip-xray-room.png")}
-.activity-card[data-game="forest"],.activity-card[data-game="rhyme"],.activity-card[data-game="words"],.activity-play-area[data-game="forest"],.activity-play-area[data-game="rhyme"],.activity-play-area[data-game="words"]{--scene:url("assets/enchanted-forest-garden.png")}
-.activity-card[data-game="horn"],.activity-card[data-game="stable"],.activity-card[data-game="letter"],.activity-card[data-game="number"],.activity-card[data-game="math"],.activity-card[data-game="pattern"],.activity-play-area[data-game="horn"],.activity-play-area[data-game="stable"],.activity-play-area[data-game="letter"],.activity-play-area[data-game="number"],.activity-play-area[data-game="math"],.activity-play-area[data-game="pattern"]{--scene:url("assets/nova-castle-meadow.png")}
+.activity-card[data-game="xray"],.activity-play-area[data-game="xray"]{--scene:url("assets/pip-xray-room.png")}
+.activity-card[data-game="heart"],.activity-play-area[data-game="heart"]{--scene:url("assets/maple-heartbeat-room.png")}
+.activity-card[data-game="forest"],.activity-card[data-game="words"],.activity-play-area[data-game="forest"],.activity-play-area[data-game="words"]{--scene:url("assets/enchanted-forest-garden.png")}
+.activity-card[data-game="horn"],.activity-card[data-game="stable"],.activity-card[data-game="letter"],.activity-card[data-game="math"],.activity-card[data-game="pattern"],.activity-play-area[data-game="horn"],.activity-play-area[data-game="stable"],.activity-play-area[data-game="letter"],.activity-play-area[data-game="math"],.activity-play-area[data-game="pattern"]{--scene:url("assets/nova-castle-meadow.png")}
+.activity-card[data-game="number"],.activity-play-area[data-game="number"]{--scene:url("assets/panda-treasure-cave.png")}
 .activity-card[data-game="memory"],.activity-card[data-game="color"],.activity-play-area[data-game="memory"],.activity-play-area[data-game="color"]{--scene:url("assets/art-recovery-studio.png")}
 .activity-card[data-game="search"],.activity-play-area[data-game="search"]{--scene:url("assets/enchanted-forest-garden.png")}
 .activity-card[data-game="nursery"],.activity-card[data-game="nests"],.activity-play-area[data-game="nursery"],.activity-play-area[data-game="nests"]{--scene:url("assets/pip-xray-room.png")}
@@ -41,10 +89,11 @@
 .activity-card[data-game] .game-icon{display:grid;place-items:center;width:54px;height:54px;margin:auto;border:3px solid #ffffffc7;border-radius:50%;background:#fffdf0e8;filter:drop-shadow(0 4px 5px #2c214b55)}
 .activity-card[data-game] strong{position:absolute;left:8px;right:8px;bottom:12px;color:#fff;text-shadow:0 2px 5px #211436}
 .activity-card[data-game]:active{transform:translateY(4px);box-shadow:0 2px 0 #8872aa}
-.activity-card.locked{filter:saturate(.35) brightness(.7)}.activity-card.locked .game-icon{opacity:.45}.activity-lock{position:absolute;inset:0;display:grid;place-items:center;padding-top:12px;color:#fff;background:#2f244a8f;font-size:1.05rem;font-weight:900;text-shadow:0 2px 4px #241936;backdrop-filter:blur(2px)}
+.activity-card.locked{filter:saturate(.35) brightness(.7)}.activity-card.locked .game-icon{opacity:.45}.activity-lock{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;background:#2f244ac7;font-size:1rem;box-shadow:0 3px 8px #24193644}
 .activity-card.recommended:not(.locked){outline:5px solid #ffd85d;animation:recommendedGlow 2s ease-in-out infinite}.activity-card.recommended:not(.locked)::before{content:'✨';position:absolute;left:8px;top:8px;z-index:2;font-size:1.25rem}
 @keyframes recommendedGlow{50%{box-shadow:0 6px 0 #d4a932,0 0 24px #ffe682}}
 .activity-play-area[data-game]{position:relative;isolation:isolate;overflow:hidden;background-image:linear-gradient(#fff9,#fff9),var(--scene);background-size:cover;background-position:center;transition:background-image .35s ease}
+.activity-play-area[data-game="heart"]{background-image:linear-gradient(#fff3,#fff3),var(--scene)}
 .activity-play-area[data-game]::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,#ffffff26,transparent 35%,#ffffff30 55%,transparent 75%);transform:translateX(-100%);animation:sceneShimmer 4.5s ease-in-out infinite}
 .activity-play-area[data-game] .play-target,.activity-play-area[data-game] .choice-tile,.activity-play-area[data-game] .sequence-tile{background:#fffdf2f2;backdrop-filter:blur(7px);box-shadow:0 7px 0 #b9a1d3,0 9px 20px #30204738}
 .needs-listening{border-color:#ffe477;background:#fff4b8;box-shadow:0 0 0 5px #ffe47755,0 5px 16px #4334712b;animation:listenPulse 1.8s ease-in-out infinite}
@@ -52,19 +101,36 @@
 
 /* Integrated kindergarten learning adventures */
 .mini-learning-game{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px;width:100%}
+.session-rounds{display:flex;justify-content:center;gap:15px;width:100%;margin:0 auto 4px;order:-1}
+.session-rounds span{display:grid;place-items:center;width:44px;height:44px;border:3px solid #b9a8d4;border-radius:50%;background:#fff;color:#ad9cc2;font-size:1.6rem;transition:transform .25s,background .25s,color .25s}
+.session-rounds span.current{transform:scale(1.12);border-color:#e5b93b;background:#fff4b8;color:#ae7d20}
+.session-rounds span.done{border-color:#5ebf99;background:#d7f5df;color:#278b68}
 .egg-nest{width:min(310px,42%);min-height:170px;padding:20px;border:4px solid #c99d69;border-radius:50% 50% 34% 34%;background:linear-gradient(#fff8cf,#e9bb7d);box-shadow:0 9px 0 #ad7b48;font-size:1.65rem}.egg-nest span{display:block;line-height:1.25}.egg-nest b{display:block;margin-top:8px;color:#5a397d;font-size:1.4rem}.egg-nest.correct,.shape-piece.correct,.measure-choice.correct{outline:7px solid #76d6a7;background:#d8f8e7}
 .double-ten-frame{display:grid;grid-template-columns:repeat(5,68px);gap:7px;padding:12px;border:5px solid #7652bc;border-radius:22px;background:#efe6ff}.ten-cell{display:grid;place-items:center;width:68px;height:60px;border:2px solid #b8a0dc;border-radius:13px;background:#fff;font-size:2rem}.ten-cell:nth-child(10){margin-bottom:14px}.ten-cell.filled{background:#fff3b4;animation:pop .25s}.build-count{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;color:#fff;background:#7555cf;font-size:2rem;box-shadow:0 6px 0 #50389c}
 .broken-window{display:grid;place-items:center;width:190px;height:190px;border:14px solid #7652bc;border-radius:50% 50% 18px 18px;background:linear-gradient(145deg,#dff7ff,#f4dcff);color:#8669bd;font-size:5rem;box-shadow:inset 0 0 0 5px #fff,0 10px 0 #51358e}.shape-choices{display:flex;gap:16px}.shape-piece{width:125px;height:125px;border:4px solid #c8b4e7;border-radius:25px;background:#fff;font-size:4.5rem;box-shadow:0 7px 0 #ad94d0}
+.shape-piece{touch-action:none;cursor:grab}.shape-piece.dragging{z-index:5;cursor:grabbing;filter:drop-shadow(0 7px 8px #39245588)}.broken-window.repaired{background:linear-gradient(145deg,#d8f8ef,#fff1bd);box-shadow:inset 0 0 0 5px #fff,0 10px 0 #51358e,0 0 25px #ffe492;animation:happyBounce .5s ease-out}
 .measure-choice{display:grid;place-items:center;width:min(330px,42%);height:190px;border:4px solid #cab5e6;border-radius:28px;background:#fff;box-shadow:0 7px 0 #ad94d0}.length-measure{display:block;width:var(--measure);height:42px;border-radius:20px;background:repeating-linear-gradient(90deg,#ff82b5 0 18px,#ffe179 18px 36px)}.bottle-measure{position:relative;display:block;width:105px;height:135px;border:6px solid #7652bc;border-radius:18px 18px 35px 35px;background:linear-gradient(to top,#69d1b0 0 var(--measure),#fff 0)}
 .sort-game{display:grid;place-items:center;gap:22px;width:100%}.sort-item{display:grid;place-items:center;width:135px;height:125px;border:5px solid #fff;border-radius:30px;background:#fff5bc;font-size:5rem;box-shadow:0 8px 0 #e0b94e}.sort-baskets{display:flex;justify-content:center;gap:14px;width:100%}.sort-basket{min-width:180px;min-height:90px;border:4px solid #c6b2e4;border-radius:24px;background:#fff;font-size:1.3rem;font-weight:900;box-shadow:0 7px 0 #a990cf}
+.sort-item{touch-action:none;cursor:grab}.sort-item.dragging{z-index:5;cursor:grabbing;filter:drop-shadow(0 8px 8px #46336266)}.sort-item.sorted{opacity:0}.sort-basket{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:8px 12px;text-align:left}.sort-basket span{font-size:2rem}.sort-basket small{font-size:.9rem}.sort-basket b{display:grid;place-items:center;min-width:30px;height:30px;border-radius:50%;background:#d9f4e6;color:#386e5e}.sort-basket.received{animation:happyBounce .4s ease-out;background:#e2faed}
+.sort-stored{grid-column:1/4;min-height:21px;text-align:center;font-size:1.2rem;font-style:normal;letter-spacing:4px;line-height:1}
+.horn-repair-game{display:grid;grid-template-rows:auto minmax(0,1fr) auto;justify-items:center;align-items:center;gap:9px;width:100%;height:100%;min-height:320px}
+.horn-sequence{display:flex;gap:7px;justify-content:center;padding:6px 9px;border:3px solid #fff;border-radius:18px;background:#fff9e2e8}
+.horn-sequence span{display:grid;place-items:center;width:33px;height:33px;border-radius:50%;background:#e7dcf4;color:#957cba;font-size:1.4rem}.horn-sequence span.restored{background:#def7e9;animation:detailPop .35s ease-out}
+.horn-repair-portrait{position:relative;aspect-ratio:3/4;height:min(49vh,410px);max-height:100%;overflow:hidden;border:6px solid #fff;border-radius:27px;background:url("assets/base-dim-horn.png") center/cover no-repeat;box-shadow:0 12px 28px #38275b55}
+.horn-rainbow-layer{--reveal:0%;position:absolute;inset:0;clip-path:polygon(52.5% 3.5%,51.5% 4%,50.5% 7%,49% 11%,47.7% 15%,46.5% 19%,45% 23%,43.8% 27%,43.3% 29.4%,43.6% 30.8%,45% 31.7%,48% 32.1%,51.5% 32.2%,54% 31.5%,55% 30.4%,54.7% 26%,54.5% 21%,54.2% 15%,53.8% 10%,53.3% 6%);background:linear-gradient(to bottom,transparent 2.8%,#ff7770 4%,#ff7770 8%,#ffb762 8.2%,#ffb762 13%,#ffe776 13.2%,#ffe776 18%,#8de1a6 18.2%,#8de1a6 23%,#8fcff4 23.2%,#8fcff4 28%,#c59cf0 28.2%,#c59cf0 33%,transparent 33.2%);opacity:.88;mix-blend-mode:color;mask-image:linear-gradient(to bottom,#000 0 var(--reveal),transparent var(--reveal));transition:mask-image .35s ease;pointer-events:none}
+.horn-repair-target{position:absolute;left:50%;top:17%;transform:translate(-50%,-50%);color:#fff3a3;font-size:1.6rem;text-shadow:0 0 13px #f7d457;pointer-events:none;animation:listenPulse 1.3s ease-in-out infinite}.horn-repair-target.finished{opacity:0}
+.horn-palette{display:flex;flex-wrap:wrap;justify-content:center;gap:7px}
+.horn-ring-token{width:54px;height:54px;border:3px solid #fff;border-radius:50%;background:#fff8e8;font-size:1.7rem;box-shadow:0 4px 0 #b29acc;touch-action:none;cursor:grab}.horn-ring-token.dragging{z-index:5;cursor:grabbing;filter:drop-shadow(0 7px 7px #39285877)}.horn-ring-token.placed{visibility:hidden}
 .big-listen{width:92px;height:92px;border:5px solid #fff0a7;border-radius:50%;background:#7555cf;color:#fff;font-size:2.8rem;box-shadow:0 7px 0 #4f359a;animation:listenPulse 1.8s infinite}.segment-picture{width:150px;font-size:6rem}.sound-eggs{display:flex;gap:20px}.sound-egg{width:120px;height:145px;border:4px solid #dab178;border-radius:52% 52% 45% 45%;background:#fff5c9;font-size:4rem;box-shadow:0 8px 0 #bb874e}.sound-egg.active,.sound-egg:active{transform:translateY(5px)}
 .guided-trace-game{position:relative;width:min(500px,85vw);height:min(390px,48vh);border:5px solid #fff;border-radius:32px;background:linear-gradient(#43328a,#7a58c7 62%,#bd8ee8);box-shadow:0 12px 30px #3b28634a}.guide-glyph{position:absolute;inset:0;display:grid;place-items:center;color:#ffffff16;font:900 min(42vh,330px)/1 Arial,sans-serif}.trace-dot{position:absolute;display:grid;place-items:center;width:48px;height:48px;transform:translate(-50%,-50%);border:3px solid #ffffff88;border-radius:50%;background:#ffffff2c;color:#fff;font-size:1.6rem;box-shadow:none}.trace-dot.active{background:#ffe36f;color:#6844a8;box-shadow:0 0 0 9px #ffe36f44,0 0 25px #fff09d;animation:listenPulse 1.4s infinite}.trace-dot.done{background:#83e3bd;color:#fff;box-shadow:0 0 15px #abffe0}.trace-dot.done::after{content:"";position:absolute;width:7px;height:56px;background:#9ff0d2;opacity:.7;transform:translateY(47px)}
+.guided-trace-game{touch-action:none;cursor:crosshair}.guided-trace-ink{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.guided-trace-game .trace-dot{pointer-events:none}.guided-trace-game .trace-dot.done::after{display:none}
+.trace-stage{display:flex;justify-content:center;width:100%}.guided-trace-game{width:min(420px,75vw,45vh);height:auto;aspect-ratio:1;overflow:hidden}.trace-letter{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.trace-guide-path{fill:none;stroke:#f7e6ff77;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}.trace-ink-path{fill:none;stroke:#ffe375;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px #ffe89b)}.guided-trace-game .trace-dot{width:24px;height:24px;font-size:1rem;border-width:2px}.guided-trace-game .trace-dot.active{width:34px;height:34px;font-size:1.15rem}.guided-trace-game .trace-dot.done{opacity:.35}
 .math-story-model{display:flex;align-items:center;justify-content:center;gap:16px;flex-basis:100%;min-height:92px;padding:14px;border-radius:24px;background:#fff7c9;font-size:2.25rem}.math-story-model b{display:grid;place-items:center;width:50px;height:50px;border-radius:50%;color:#fff;background:#7555cf}.math-story-model.take span:last-child{opacity:.38;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:#d55a7b}
 @media(max-width:720px){.double-ten-frame{grid-template-columns:repeat(5,50px)}.ten-cell{width:50px;height:48px}.sort-basket{min-width:120px}.egg-nest,.measure-choice{width:46%}}
 @keyframes sceneShimmer{50%,100%{transform:translateX(100%)}}
 
 /* Illustrated wardrobe sprite: each crop is one quadrant of the same character sheet. */
-.outfit-card span,.avatar-preview{background-image:var(--outfit-sheet,url("assets/annabeth-outfits.png"));background-repeat:no-repeat;background-size:200% 200%}
+.outfit-card span,.avatar-preview{background-image:var(--outfit-sheet,url("assets/annabeth-outfits.png"));background-repeat:no-repeat;background-size:var(--outfit-size,200% 200%)}
 #wardrobeDialog{width:min(940px,96vw);max-height:92dvh}.wardrobe-panel .outfit-grid{grid-template-columns:repeat(4,1fr)}
 .outfit-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:184px}
 .outfit-card span{width:112px;height:112px;margin-bottom:7px;border-radius:18px;background-color:#eadff6;background-position:var(--outfit-position)}
@@ -81,28 +147,77 @@
 .outfit-card[data-outfit="ocean"],.avatar-preview[data-outfit="ocean"]{--outfit-sheet:url("assets/annabeth-outfits-3.png");--outfit-position:100% 0%}
 .outfit-card[data-outfit="artist"],.avatar-preview[data-outfit="artist"]{--outfit-sheet:url("assets/annabeth-outfits-3.png");--outfit-position:0% 100%}
 .outfit-card[data-outfit="constellation"],.avatar-preview[data-outfit="constellation"]{--outfit-sheet:url("assets/annabeth-outfits-3.png");--outfit-position:100% 100%}
+.outfit-card[data-outfit="clinicbag"],.avatar-preview[data-outfit="clinicbag"]{--outfit-sheet:url("assets/annabeth-complete-clinic-bag-v1.png");--outfit-position:center;--outfit-size:contain}
+.outfit-card[data-outfit="mousevet"],.avatar-preview[data-outfit="mousevet"]{--outfit-sheet:url("assets/annabeth-complete-mouse-vet-v1.png");--outfit-position:center;--outfit-size:contain}
 .avatar-preview{width:180px;height:180px;background-position:var(--outfit-position);font-size:0}
 .outfit-card.locked span{filter:grayscale(.85) brightness(.62)}
+.complete-wardrobe-layout{display:grid;grid-template-columns:minmax(250px,340px) minmax(0,1fr);align-items:start;gap:22px;margin-top:18px}
+.complete-wardrobe-stage{position:sticky;top:0;padding:10px;border-radius:30px;background:linear-gradient(150deg,#f2e1ff,#d9f5f0);text-align:center;box-shadow:0 10px 28px #4b346329}
+#wardrobeDialog #avatarPreview{width:100%;height:auto;aspect-ratio:1;margin:0;border:6px solid #fff;border-radius:24px;background-color:#e9daf9;background-position:var(--outfit-position);background-size:var(--outfit-size,200% 200%)}
+#wardrobeDialog #avatarPreview:is([data-outfit="clinicbag"],[data-outfit="mousevet"]){aspect-ratio:2/3}
+.wardrobe-stage-caption{margin:10px 6px 4px;color:#594276;font-size:.93rem;font-weight:800}
+.wardrobe-panel .outfit-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wardrobe-panel .outfit-card{min-width:0;min-height:0;padding:8px 5px 10px;border-radius:18px}
+.wardrobe-panel .outfit-card span{width:100%;height:auto;aspect-ratio:1;margin:0 0 5px;background-size:var(--outfit-size,200% 200%)}
+.wardrobe-panel .outfit-card b{font-size:.84rem;line-height:1.1}
+.wardrobe-panel .outfit-card small{font-size:.74rem}
+.wardrobe-panel .outfit-card.selected{border-color:#e9b536;background:#fff5c4;box-shadow:0 0 0 3px #fff,0 6px 18px #d9a43c55}
+@media(max-width:700px){.complete-wardrobe-layout{grid-template-columns:1fr}.complete-wardrobe-stage{position:static;width:min(310px,100%);margin:auto}.wardrobe-panel .outfit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:450px){.wardrobe-panel .outfit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .search-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
 .search-tray{display:flex;gap:12px;padding:8px 16px;border:3px solid #fff9;border-radius:20px;background:#3d2c67d9;box-shadow:0 6px 18px #291d4c55}
 .search-tray span{position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#fff;color:#33264a;font-size:1.8rem;transition:.3s}
 .search-tray span.found{opacity:.45;transform:scale(.85)}.search-tray span.found::after{content:'✓';position:absolute;color:#29936e;font-weight:900;font-size:2rem}
 .target-scene.xray-search,.target-scene.forest-search{position:relative;width:min(820px,100%);height:auto;aspect-ratio:16/9;border:5px solid #fff;border-radius:26px;background-position:center;background-size:cover;box-shadow:0 12px 30px #34245155}
-.target-scene.xray-search{background-image:url("assets/pip-xray-room.png")}.target-scene.forest-search{background-image:url("assets/enchanted-forest-garden.png")}
-.search-hotspot{position:absolute;width:9%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent}
+.target-scene.xray-search{background-image:url("assets/pip-xray-room-clean-v1.png")}.target-scene.forest-search{background-image:url("assets/enchanted-forest-garden.png")}
+.xray-detective{width:min(1120px,100%)}.xray-detective .target-scene.xray-search{width:min(1100px,100%)}.search-wrap .target-scene.forest-search{width:min(1100px,100%)}
+.activity-play-area[data-game="xray"],.activity-play-area[data-game="search"]{width:min(1120px,98%);max-width:none}
+.activity-play-area[data-game="xray"],.activity-play-area[data-game="search"]{background-image:linear-gradient(145deg,#fffdf0ee,#eee3ffed)}.activity-stage{overflow-x:hidden}
+.xray-detective .xray-search{--scan-x:24%;--scan-y:42%;touch-action:none;cursor:none}
+.xray-veil{position:absolute;z-index:1;left:17%;top:8%;width:37%;height:59%;border-radius:18% 13% 18% 16%;background:#061b35ef;box-shadow:inset 0 0 30px #081a36;pointer-events:none}
+.xray-reveal{position:absolute;z-index:2;inset:0;background:url("assets/pip-xray-room-clean-v1.png") center/cover no-repeat;clip-path:circle(3.7% at var(--scan-x) var(--scan-y));pointer-events:none;filter:brightness(1.15) saturate(1.15)}
+.xray-scan-lens{position:absolute;z-index:4;left:24%;top:42%;width:54px;height:54px;display:grid;place-items:center;transform:translate(-50%,-50%);border:3px solid #bff7ff;border-radius:50%;background:#83d8ef33;font-size:1.9rem;box-shadow:0 0 18px #76e9ffbb;pointer-events:none;opacity:.65}
+.xray-search.scanning .xray-scan-lens{opacity:1;box-shadow:0 0 0 6px #c8f8ff44,0 0 24px #76e9ff}
+.xray-search .xray-hotspot{z-index:3;width:5%;aspect-ratio:1;display:grid;place-items:center;pointer-events:none;color:#fff;font-size:1.35rem;opacity:0}
+.xray-search .xray-hotspot.glimpsed{opacity:.86;background:#8de5ff55;border:2px solid #c8f5ff;box-shadow:0 0 13px #8feeff}
+.xray-search .xray-hotspot.found{opacity:1;border:2px solid #fff178;background:#fff17877;box-shadow:0 0 0 4px #fff8,0 0 16px #fff178}
+.xray-search .xray-hotspot.hinting{opacity:1;border:3px solid #fff;background:#fff4;box-shadow:0 0 16px #fff;animation:hintPulse .75s ease-in-out infinite}
+.search-hotspot{position:absolute;width:13%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent}
+.forest-search .search-hotspot{width:5%;min-width:44px}
+.forest-search.art-loading{background:linear-gradient(135deg,#e0f8eb,#f6e8ff)}
+.forest-search.art-loading::after{content:"✨";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:4rem;animation:pop 1s ease-in-out infinite alternate}
 .search-hotspot.found{border:5px solid #fff178;background:#fff17855;box-shadow:0 0 0 8px #fff8,0 0 24px #fff178;animation:pop .45s}
 .search-hotspot.hinting{animation:hintPulse .75s ease-in-out infinite;border:5px solid #fff;background:#fff4}
 .hint-button{min-height:50px;padding:8px 20px;border:3px solid #ffe07d;border-radius:20px;background:#59419c;color:#fff;font-weight:900;box-shadow:0 5px 0 #392873}
 @keyframes hintPulse{50%{transform:translate(-50%,-50%) scale(1.35);box-shadow:0 0 0 13px #fff26b88}}
 
-.coloring-studio{display:grid;grid-template-columns:76px minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:12px;width:100%;height:100%;min-height:330px}
-.coloring-tabs{display:flex;flex-direction:column;gap:9px}.template-button{width:64px;height:64px;border:3px solid #fff;border-radius:18px;background:#ede1ff;font-size:2rem;box-shadow:0 4px 0 #ad97ca}.template-button.selected{outline:5px solid #ffd85f;background:#fff7cf}
+.coloring-studio{position:relative;display:grid;grid-template-columns:76px minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:12px;width:100%;height:100%;min-height:330px}
+.coloring-tabs{display:flex;flex-direction:column;gap:9px;min-height:0;overflow-y:auto;padding:5px}.template-button{flex:none;width:64px;height:64px;border:3px solid #fff;border-radius:18px;background:#ede1ff;font-size:2rem;box-shadow:0 4px 0 #ad97ca}.template-button.selected{outline:5px solid #ffd85f;background:#fff7cf}
+.coloring-more-pages{position:absolute;z-index:4;left:12px;bottom:84px;width:52px;height:44px;border:3px solid #fff;border-radius:15px;background:#7656ba;color:#fff;font-size:1.4rem;font-weight:900;box-shadow:0 4px 12px #45326666;touch-action:manipulation}
 .coloring-canvas-wrap{position:relative;min-height:280px;border:6px solid #fff;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 8px 25px #3b2d5b45}
-.paint-canvas,.outline-canvas{position:absolute;inset:0;width:100%;height:100%}.paint-canvas{z-index:1;touch-action:none;background:#fff}.outline-canvas{z-index:2;pointer-events:none}
+.paint-canvas,.outline-canvas{position:absolute;inset:0;width:100%;height:100%}.paint-canvas{z-index:2;touch-action:none;background:transparent;mix-blend-mode:multiply}.outline-canvas{z-index:1;pointer-events:none;background:#fff}
 .coloring-toolbar{grid-column:1/3;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;padding:8px;border-radius:20px;background:#fffdebd9}
 .paint-dot{width:46px;height:46px;padding:0}.paint-dot.selected{outline:5px solid #fff;box-shadow:0 0 0 4px #604491}.custom-color{width:50px;height:48px;padding:2px;border:3px solid #fff;border-radius:14px;background:#e7d9f3}.brush-size{width:110px;accent-color:#7655c7}.tool-button,.done-coloring-button{min-height:46px;padding:7px 14px;border:2px solid #cdbbe2;border-radius:15px;background:#fff;color:#543b82;font-weight:900}.done-coloring-button{background:#6dc9a7;color:#fff;border-color:#4cab88}
 @media(max-height:700px) and (orientation:landscape){.coloring-studio{min-height:260px}.coloring-canvas-wrap{min-height:220px}.template-button{width:52px;height:52px}.paint-dot{width:38px;height:38px}}
+#activityScreen.coloring-mode .activity-stage{padding:0;overflow:hidden;background:#fff}
+#activityScreen.coloring-mode .patient-banner,#activityScreen.coloring-mode .activity-instruction,#activityScreen.coloring-mode .activity-feedback{display:none}
+#activityScreen.coloring-mode .activity-avatar,#activityScreen.coloring-mode .reward-pill{display:none}
+#activityScreen.coloring-mode #activityPlayArea{width:100%;height:100%;min-height:0;max-width:none;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;overflow:hidden;background:#fff}
+#activityScreen.coloring-mode #activityPlayArea::before{display:none}
+#activityScreen.coloring-mode .coloring-studio{grid-template-columns:78px minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:0;min-height:0;height:100%}
+#activityScreen.coloring-mode .coloring-tabs{grid-column:1;grid-row:1;padding:10px 6px 58px;background:#f2e8ff;overscroll-behavior:contain}
+#activityScreen.coloring-mode .coloring-canvas-wrap{grid-column:2;grid-row:1;min-height:0;border:0;border-radius:0;box-shadow:none;background:#fff}
+#activityScreen.coloring-mode .coloring-canvas-wrap{touch-action:none}
+#activityScreen.coloring-mode .coloring-view-tools{position:absolute;z-index:5;top:12px;right:12px;display:flex;gap:8px}
+#activityScreen.coloring-mode .coloring-view-button{width:52px;height:52px;border:3px solid #fff;border-radius:16px;background:#fffbe9ec;box-shadow:0 4px 13px #44325a44;font-size:1.7rem;touch-action:manipulation}
+#activityScreen.coloring-mode .coloring-view-button.selected{background:#fff1a8;outline:3px solid #f0bd42}
+#activityScreen.coloring-mode .coloring-view-button svg{display:block;width:34px;height:34px;margin:auto;color:#654a90}
+#activityScreen.coloring-mode .coloring-toolbar{grid-column:1/3;grid-row:2;justify-content:center;flex-wrap:nowrap;gap:10px;min-height:76px;padding:9px max(12px,env(safe-area-inset-right)) max(9px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));border-radius:0;background:#fff9e8;overflow-x:auto;box-shadow:0 -5px 15px #46375a22}
+#activityScreen.coloring-mode .coloring-toolbar>*{flex:none}
+#activityScreen.coloring-mode .coloring-canvas-wrap canvas{width:100%;height:100%}
+@media(max-width:800px){#activityScreen.coloring-mode .coloring-studio{grid-template-columns:68px minmax(0,1fr)}#activityScreen.coloring-mode .template-button{width:55px;height:55px}#activityScreen.coloring-mode .coloring-toolbar{justify-content:flex-start}}
+@media(orientation:portrait){#activityScreen.coloring-mode .coloring-canvas-wrap canvas{inset:auto;left:50%;top:50%;width:auto;height:100%;aspect-ratio:700/430;transform:translate(calc(-50% + var(--pan-x,0px)),-50%)}#activityScreen.coloring-mode .coloring-canvas-wrap.fit-page canvas{width:100%;height:auto;transform:translate(-50%,-50%)}}
 
 .care-game{display:grid;grid-template-columns:minmax(260px,1fr) minmax(260px,1fr);grid-template-rows:auto 1fr auto;gap:12px;width:100%;height:100%;min-height:390px}
 .care-progress{grid-column:1/3;display:flex;justify-content:center;gap:12px}.care-progress span{display:grid;place-items:center;width:38px;height:38px;border:4px solid #d4c3e8;border-radius:50%;background:#fff;color:#77658b;font-weight:900}.care-progress span.active{border-color:#ffd65d;transform:scale(1.12)}.care-progress span.done{border-color:#62c59e;color:transparent;background:#c9f3df}.care-progress span.done::after{content:'✓';color:#278764}
@@ -111,37 +226,244 @@
 .care-patient[data-emotion="worried"]{background-position:0% var(--row);filter:saturate(.85)}.care-patient[data-emotion="hopeful"]{background-position:50% var(--row);filter:saturate(1)}.care-patient[data-emotion="happy"]{background-position:100% var(--row);filter:saturate(1.12);animation:happyBounce .7s ease-out}
 .care-bubble{position:absolute;left:14px;bottom:14px;max-width:72%;padding:10px 14px;border:3px solid #fff;border-radius:18px 18px 18px 5px;background:#fffbe6e8;color:#4b3868;font-weight:900;box-shadow:0 5px 15px #39285544}
 .care-action-layer{position:absolute;inset:0}.care-spot{position:absolute;display:grid;place-items:center;width:64px;height:64px;transform:translate(-50%,-50%);border:4px solid #fff;border-radius:50%;background:#7555cddd;font-size:2rem;box-shadow:0 0 0 8px #fff6,0 6px 17px #38245c66;animation:carePulse 1.5s ease-in-out infinite}.care-spot.done{opacity:0;transform:translate(-50%,-50%) scale(1.7);pointer-events:none;transition:.35s}
-.care-prompt{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;border-radius:20px;background:#fffbe6e8;color:#503776}.care-prompt span{font-size:2.4rem}.care-prompt strong{font-size:1.15rem}
-.care-tools{display:grid;grid-template-columns:repeat(3,1fr);align-self:center;gap:12px}.care-tool{min-height:112px;padding:10px;border:4px solid #fff;border-radius:23px;background:#fffdf0e8;color:#493562;box-shadow:0 6px 0 #baa3d2}.care-tool span{display:block;font-size:2.8rem}.care-tool small{display:block;margin-top:5px;font-weight:900}.care-tool.selected{border-color:#62c69e;background:#d4f7e6;transform:translateY(4px);box-shadow:0 2px 0 #67aa90}
+.care-prompt{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;border-radius:20px;background:#fffbe6e8;color:#503776}.care-prompt span{font-size:3.2rem}
+.care-tools{display:grid;grid-template-columns:repeat(3,1fr);align-self:center;gap:12px}.care-tool{min-height:112px;padding:10px;border:4px solid #fff;border-radius:23px;background:#fffdf0e8;color:#493562;box-shadow:0 6px 0 #baa3d2;display:grid;place-items:center}.care-tool span{display:block;font-size:3.4rem}.care-tool.selected{border-color:#62c69e;background:#d4f7e6;transform:translateY(4px);box-shadow:0 2px 0 #67aa90}
 @keyframes carePulse{50%{transform:translate(-50%,-50%) scale(1.12);box-shadow:0 0 0 12px #fff3,0 7px 20px #38245c66}}@keyframes happyBounce{50%{transform:scale(1.025)}}
 @media(max-height:700px) and (orientation:landscape){.care-game{min-height:300px}.care-patient{min-height:270px}.care-tool{min-height:88px}.care-tool span{font-size:2rem}.care-bubble{font-size:.85rem}}
 @media(max-width:720px){.care-game{grid-template-columns:1fr}.care-progress{grid-column:1}.care-patient{grid-row:auto;min-height:280px}.care-tools{grid-template-columns:repeat(3,1fr)}}
 
 /* Hands-on clinic: portrait, ailment close-up, and tool-specific treatment gestures. */
-.care-clinic{grid-template-columns:minmax(170px,.65fr) minmax(310px,1.35fr);grid-template-rows:auto minmax(260px,1fr) auto auto;min-height:520px}
+.activity-play-area[data-game="paw"]{width:min(1180px,98%);max-width:none;margin:8px;padding:clamp(10px,1.4vw,18px)}
+#activityScreen.care-mode .activity-stage{position:relative;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));overflow:hidden}
+#activityScreen.care-mode .patient-banner{position:absolute;z-index:5;top:18px;right:20px;display:flex;width:auto;padding:0;gap:0;background:none;box-shadow:none}
+#activityScreen.care-mode .patient-banner>span,#activityScreen.care-mode .patient-banner>b{display:none}
+#activityScreen.care-mode .activity-instruction,#activityScreen.care-mode .activity-feedback{display:none}
+#activityScreen.care-mode #activityPlayArea{min-height:0}
+.care-clinic{grid-template-columns:minmax(175px,26%) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;align-items:stretch;row-gap:10px;min-height:0;overflow:hidden}
 .care-clinic .care-progress{grid-column:1/3}
-.care-clinic .care-patient{grid-column:1;grid-row:2;min-height:260px}
-.care-treatment{--treatment-column:0%;--treatment-row:0%;position:relative;grid-column:2;grid-row:2;min-height:300px;overflow:hidden;border:7px solid #fff;border-radius:30px;background-size:400% 400%;background-position:var(--treatment-column) var(--treatment-row);background-repeat:no-repeat;box-shadow:0 12px 30px #37275255;touch-action:none;transition:background-position .65s ease;cursor:crosshair}
-.care-clinic .care-prompt{grid-column:1;grid-row:3/5;align-self:stretch;flex-direction:column;text-align:center}
-.care-clinic .care-tools{grid-column:2;grid-row:3;align-self:stretch}
+.care-clinic .care-patient{grid-column:1;grid-row:2;aspect-ratio:3/4;width:100%;height:auto;max-width:100%;min-height:0;justify-self:center;align-self:center}
+.care-patient-reaction{position:absolute;top:7%;right:4%;z-index:2;color:#ffcc69;font-family:Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);line-height:1;text-shadow:0 2px 0 #fff,0 4px 12px #6f478b88;opacity:0;pointer-events:none}
+.care-patient-reaction.visible{animation:careReaction .95s ease-out forwards}
+.care-patient.care-patient-lift:not([data-emotion="happy"]){animation:carePatientLift .5s ease-out}
+@keyframes careReaction{0%{opacity:0;transform:translateY(12px) scale(.7)}28%{opacity:1;transform:translateY(0) scale(1.12)}75%{opacity:1}100%{opacity:0;transform:translateY(-18px) scale(1)}}
+@keyframes carePatientLift{50%{transform:translateY(-5px) scale(1.015)}}
+.care-reward-photo{width:min(36vw,205px);aspect-ratio:3/4;margin:auto;border:6px solid #fff;border-radius:27px;background-image:url("assets/patient-emotions.png");background-size:300% 400%;background-position:100% var(--row);background-repeat:no-repeat;box-shadow:0 10px 24px #3727524d;font-size:0;animation:happyBounce .8s ease-out}
+.care-reward-photo[data-animal="fox"]{--row:0%}.care-reward-photo[data-animal="bunny"]{--row:33.333%}.care-reward-photo[data-animal="dragon"]{--row:66.667%}.care-reward-photo[data-animal="unicorn"]{--row:100%}
+.activity-play-area[data-game="paw"]{background-image:radial-gradient(ellipse at 15% 15%,#fff5cf,transparent 55%),linear-gradient(145deg,#e3f5f0,#e8ddfa)}
+.activity-play-area[data-game="paw"]::before{display:none}
+.care-clinic .care-bubble{left:6px;bottom:6px;max-width:84%;padding:5px 8px;font-size:.68rem;border-radius:12px 12px 12px 4px}
+.care-treatment{position:relative;grid-column:2;grid-row:2;aspect-ratio:3/4;width:auto;height:100%;max-width:100%;min-height:0;justify-self:center;align-self:center;overflow:hidden;border:7px solid #fff;border-radius:30px;background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 12px 30px #37275255;touch-action:none;cursor:crosshair}
+.care-treatment[data-ailment="Sugar-Bug Tooth"]{background-size:185% auto;background-position:50% 60%}
+.care-clinic .care-prompt{display:none}
+.care-clinic .care-tools{grid-column:1/3;grid-row:3;align-self:stretch}
 .care-clinic .care-tool{min-height:96px}
 .care-action-layer{position:absolute;inset:0;z-index:2;pointer-events:none}
-.care-detail{pointer-events:auto;position:absolute;display:grid;place-items:center;width:58px;height:58px;transform:translate(-50%,-50%);border:4px solid #fff;border-radius:50%;background:#7655cde6;color:#fff;font-size:1.8rem;box-shadow:0 0 0 8px #fff7,0 7px 18px #38245c66;animation:carePulse 1.35s ease-in-out infinite}
+.care-ailment-layer,.care-applied-layer{position:absolute;inset:0;z-index:1;pointer-events:none}
+.care-applied-layer{z-index:2}
+.care-condition{position:absolute;object-fit:contain;transform:translate(-50%,-50%);pointer-events:none;user-select:none;transition:opacity .2s ease}
+.care-horn-restoration{clip-path:polygon(52.5% 3.5%,51.5% 4%,50.5% 7%,49% 11%,47.7% 15%,46.5% 19%,45% 23%,43.8% 27%,43.3% 29.4%,43.6% 30.8%,45% 31.7%,48% 32.1%,51.5% 32.2%,54% 31.5%,55% 30.4%,54.7% 26%,54.5% 21%,54.2% 15%,53.8% 10%,53.3% 6%);filter:sepia(.82) saturate(2.5) hue-rotate(350deg) brightness(1.12)}
+.care-condition[data-resolves-with="brush"]{transform:translate(-50%,-50%) rotate(calc(var(--soften,0)*-12deg));filter:drop-shadow(0 3px 3px #301f4455) saturate(calc(1 - var(--soften,0)*.25));transition:transform .2s,filter .2s,opacity .2s}
+.dental-mirror-svg{display:block;width:min(90%,90px);height:min(90%,90px);margin:auto;overflow:visible;filter:drop-shadow(0 4px 5px #30204645)}
+.care-gesture-tool.dental-mirror-tool{width:105px;height:105px}
+.care-gesture-tool.dental-mirror-tool svg{width:100%;height:100%}
+.care-gesture-tool.dental-mirror-tool{transform:translate(-32%,-33%)}
+.mirror-reflection{position:absolute;left:21px;top:19px;width:19px;height:18px;object-fit:contain;opacity:0;transform:rotate(-20deg) scale(.7);transition:opacity .18s,transform .18s;pointer-events:none}
+.dental-mirror-tool.has-evidence .mirror-reflection{opacity:.9;transform:rotate(-20deg) scale(1)}
+.care-ailment-layer [hidden]{display:none!important}
+.care-ailment-layer .care-debris{width:18%;height:15%;animation:none}
+.care-ailment-layer .care-debris.held{transform:translate(-50%,-50%) scale(1.15)}
+.care-ailment-layer .care-debris.dropped{transform:translate(-50%,-50%) scale(.25)}
+.care-action-layer .care-drag-token,.care-action-layer .care-sip-cup{pointer-events:auto}
+.care-tool-art{display:block;width:112px;height:76px;object-fit:contain;margin:auto;pointer-events:none}
+.care-mouth-germ{animation:germWiggle 1.5s ease-in-out var(--germ-delay,0s) infinite}
+.care-mouth-germ[data-resolved="true"]{animation:none}
+@keyframes germWiggle{0%,100%{transform:translate(-50%,-50%) rotate(-7deg)}50%{transform:translate(-50%,-50%) rotate(7deg)}}
+.care-syringe{--dose:0;position:absolute;z-index:6;width:62%;aspect-ratio:3/1;transform:translate(-50%,-50%);pointer-events:auto;touch-action:none;cursor:grab;filter:drop-shadow(0 4px 4px #30204640)}
+.care-syringe img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none}
+.syringe-body{clip-path:inset(0 33% 0 0)}
+.syringe-plunger{clip-path:inset(0 0 0 67%);transform:translateX(calc(var(--dose)*-28%));transition:transform .1s linear}
+.care-syringe.docked{transform:translate(-3.3%,-50%);cursor:default}
+.syringe-press{display:none;position:absolute;left:calc(91% - var(--dose)*28%);top:50%;transform:translate(-50%,-50%);width:48px;height:52px;border:3px solid #ffffffc0;border-radius:50%;background:#ff9dc333;box-shadow:0 0 0 5px #ffd56577;touch-action:none;cursor:pointer}
+.care-syringe.docked .syringe-press{display:block}
+.syringe-press span{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);font-size:25px;animation:pressHint 1s ease-in-out infinite;pointer-events:none}
+.syringe-press.pressing{background:#ffd56544;box-shadow:0 0 0 5px #76e3b999}
+.syringe-press,.syringe-press.pressing{border:0;border-radius:0;background:transparent;box-shadow:none}
+.syringe-press.pressing span{visibility:hidden}
+.care-syringe.withdrawn{opacity:0;translate:14px 0;transition:opacity .28s,translate .28s;pointer-events:none}
+.care-shot-target.ready{border-color:#78d5b4;background:#b5f2d744;animation:none}
+.care-target.care-shot-target,.care-target.care-shot-target.ready{display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:0;background:transparent;box-shadow:none}
+.care-shot-target::after{content:"✦";color:#ffdc74;font-size:32px;text-shadow:0 0 5px #fff,0 0 12px #9d7acb}
+.care-shot-target.ready::after{color:#83dfb6}
+@keyframes pressHint{50%{transform:translate(-50%,5px)}}
+.care-gesture-tool.toothbrush-tool{width:82px;height:32px;transform:translate(-15%,-50%) rotate(12deg)}
+.toothbrush-handle{position:absolute;left:16px;top:14px;width:65px;height:11px;border:2px solid #ffffffd9;border-radius:8px;background:linear-gradient(#fe8cb7,#d9528a);box-shadow:0 2px 4px #38245c40}
+.toothbrush-head{position:absolute;left:0;top:7px;width:28px;height:16px;border:2px solid #ec74ab;border-radius:6px;background:#fff}
+.toothbrush-head i{position:absolute;inset:0 2px;background:repeating-linear-gradient(90deg,#b4e7f0 0 2px,#fff 2px 4px);border-radius:3px}
+.brushing .toothbrush-head{animation:brushBristles .16s linear infinite alternate}
+@keyframes brushBristles{to{translate:2px -1px}}
+@media(prefers-reduced-motion:reduce){.care-mouth-germ,.syringe-press span,.brushing .toothbrush-head{animation:none}}
+.care-applied-layer .care-drag-token{pointer-events:none;width:40%;height:25%;transition:width .3s,height .3s}
+.care-applied-layer .care-drag-token[data-tool="crystal"]{width:20%;height:12%}
+.care-applied-layer .care-drag-token[data-tool="ribbon"]{width:25%;height:18%}
+.care-applied-layer .care-drag-token[data-tool="blanket"]{width:60%;height:32%}
+.care-detail{pointer-events:auto;position:absolute;display:grid;place-items:center;width:72px;height:72px;transform:translate(-50%,-50%);border:4px solid #fff;border-radius:50%;background:#7655cde6;color:#fff;font-size:2.1rem;box-shadow:0 0 0 8px #fff7,0 7px 18px #38245c66;animation:carePulse 1.35s ease-in-out infinite}
 .care-detail.done{opacity:0;transform:translate(-50%,-50%) scale(1.7);pointer-events:none;transition:.35s}
-.care-gesture-tool{position:absolute;z-index:4;display:grid;place-items:center;width:66px;height:66px;transform:translate(-50%,-50%) rotate(-10deg);border:4px solid #fff;border-radius:50%;background:#fffbe7e8;font-size:2.25rem;box-shadow:0 8px 18px #38245c66;opacity:0;pointer-events:none;transition:opacity .15s}
+.care-bubble-particle{position:absolute;transform:translate(-50%,-50%) scale(.4);border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffffffdd,#dff3ff99 60%,#dff3ff00 90%);border:1px solid #ffffffaa;pointer-events:none;opacity:0;animation:bubbleRise .75s ease-out forwards}
+.care-cream-stroke{position:absolute;width:20px;height:17px;transform:translate(-50%,-50%) rotate(-15deg);background:url("assets/cream-dab.png") center/contain no-repeat;filter:drop-shadow(0 2px 2px #35284544);pointer-events:none;animation:detailPop .35s ease-out}
+@keyframes bubbleRise{15%{opacity:.95;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-170%) scale(1.2)}}
+.care-dab-blob{--fill:0;position:absolute;width:64px;height:56px;transform:translate(-50%,-62%) scale(var(--fill));background-size:contain;background-repeat:no-repeat;background-position:center;pointer-events:none;opacity:.95;filter:drop-shadow(0 3px 5px #00000030);transition:transform .15s ease-out,opacity .4s ease}
+.care-dab-blob.done{opacity:0}
+.care-dirt-smear{position:absolute;width:120px;height:60px;transform:translate(-50%,-50%);background-image:url("assets/dirt-smear.png");background-size:contain;background-repeat:no-repeat;background-position:center;pointer-events:none;filter:drop-shadow(0 3px 5px #00000030);transition:opacity .2s ease}
+.care-detail-dab{background:#ffffffd9;color:#5a4570;box-shadow:0 0 0 6px #ffffff55,0 5px 14px #38245c40;transition:box-shadow .2s ease}
+.care-treatment[data-tool="drops"] .care-detail-dab{width:33px;height:33px;border:2px solid #fff;background:#a6ddf2a8;color:#20658d;font-size:1.25rem;box-shadow:0 0 0 4px #c4ebf88c}
+.care-detail-dab.active{box-shadow:0 0 0 10px #ffe47788,0 5px 14px #38245c40;animation:none}
+.care-detail-dab.done{opacity:0;transform:translate(-50%,-50%) scale(.5);transition:opacity .3s ease,transform .3s ease}
+.care-treatment[data-ailment="Sugar-Bug Tooth"] .care-detail-dab{width:8%;height:6%;min-width:18px;min-height:18px;border-width:1px;font-size:.65rem;box-shadow:0 0 0 2px #ffffff77}
+.care-treatment[data-ailment="Sugar-Bug Tooth"] .care-dab-blob{width:10%;height:7%}
+.care-treatment[data-ailment="Sugar-Bug Tooth"] .care-target-wide{width:26%;height:16%;border-width:2px;box-shadow:0 0 0 3px #ffffff22}
+.care-rinse-sprayer{position:absolute;z-index:4;left:75%;top:51%;width:74px;height:102px;transform:translate(-30%,-45%);border:0;background:transparent;cursor:pointer;pointer-events:auto;touch-action:none;filter:drop-shadow(0 5px 5px #30204655)}
+.rinse-bottle{position:absolute;right:4px;bottom:5px;width:57px;height:65px;border:4px solid #fff;border-radius:13px 13px 19px 19px;background:linear-gradient(120deg,#dcfaff,#8adbf2 60%,#59b6df);box-shadow:inset 0 -11px #3d9bc855}
+.rinse-bottle i{position:absolute;top:24px;left:10px;width:30px;height:13px;border-radius:8px;background:#fff9}
+.rinse-nozzle{position:absolute;left:0;top:11px;width:52px;height:23px;border:4px solid #fff;border-radius:12px 9px 4px 4px;background:linear-gradient(#80d2e5,#4a9dc7);transform:rotate(-15deg)}
+.rinse-nozzle::before{content:"";position:absolute;left:-8px;top:3px;width:8px;height:12px;border-radius:4px;background:#3886aa}
+.rinse-trigger{position:absolute;z-index:2;left:38px;top:26px;width:20px;height:14px;border:3px solid #fff;border-radius:4px;background:#ff9cbf;transform:rotate(-19deg)}
+.care-rinse-sprayer.spraying .rinse-trigger{transform:rotate(-25deg) translateY(4px)}
+.care-rinse-sprayer.spraying::before{content:"";position:absolute;z-index:1;left:-49px;top:13px;width:69px;height:37px;clip-path:polygon(100% 8%,100% 92%,0 50%);background:linear-gradient(90deg,#45c9ebaa,#8ce5f9dc 62%,#d8fbfff0);pointer-events:none;animation:mistGlow .35s ease-in-out infinite alternate}
+@keyframes mistGlow{to{opacity:.7;transform:scaleY(.85)}}
+.rinse-hand-hint{position:absolute;right:-9px;top:-19px;font-size:24px;animation:pressHint 1s ease-in-out infinite}
+.care-rinse-sprayer.spraying .rinse-hand-hint{display:none}
+.care-surface-sprayer{position:absolute;z-index:4;width:76px;height:95px;transform:translate(-50%,-50%);border:0;background:transparent;cursor:pointer;pointer-events:auto;touch-action:none;filter:drop-shadow(0 5px 5px #30204655)}
+.surface-bottle{position:absolute;right:3px;bottom:3px;width:55px;height:61px;border:4px solid #fff;border-radius:13px 13px 18px 18px;background:linear-gradient(130deg,#fff4db,#b6dbf4 52%,#8aa5dd);box-shadow:inset 0 -9px #748fc566}
+.surface-bottle i{position:absolute;left:11px;top:21px;width:25px;height:15px;border-radius:6px;background:#fff9}
+.surface-nozzle{position:absolute;left:1px;top:12px;width:55px;height:19px;border:3px solid #fff;border-radius:10px 8px 4px 4px;background:linear-gradient(#d9e8fa,#83b0dc);transform:rotate(-12deg)}
+.surface-nozzle::before{content:"";position:absolute;left:-8px;top:4px;width:8px;height:8px;border-radius:3px;background:#6088b9}
+.surface-trigger{position:absolute;left:39px;top:27px;width:15px;height:16px;border:3px solid #fff;border-radius:3px;background:#ee95b7;transform:rotate(-15deg)}
+.care-surface-sprayer.spraying .surface-trigger{transform:rotate(-20deg) translateY(4px)}
+.care-surface-sprayer.spraying .rinse-hand-hint{display:none}
+.care-surface-sprayer.spraying::before{content:"";position:absolute;left:-89px;top:-11px;width:104px;height:78px;border-radius:50%;background:radial-gradient(ellipse at 76% 50%,#e7fbffe8,#86def4c7 42%,#b9edfa77 65%,transparent 78%);animation:mistGlow .35s ease-in-out infinite alternate;pointer-events:none}
+.care-surface-drop{position:absolute;z-index:3;width:7px;height:7px;border-radius:50%;background:#ddf9ff;border:1px solid #fff;pointer-events:none;animation:surfaceMist .8s ease-out forwards}
+@keyframes surfaceMist{0%{opacity:0;transform:translate(0,var(--drift)) scale(.5)}20%{opacity:1}100%{opacity:0;transform:translate(calc(var(--travel)*-1),var(--drift)) scale(1.15)}}
+.care-rinse-drop{position:absolute;z-index:5;left:68%;top:46%;width:8px;height:8px;border-radius:50%;background:#b9f3ff;border:1px solid #fff;pointer-events:none;animation:rinseMist .65s ease-out forwards}
+@keyframes rinseMist{0%{opacity:0;left:68%;top:46%;transform:translateY(var(--drift)) scale(.45)}18%{opacity:1}100%{opacity:0;left:50%;top:49%;transform:translateY(var(--drift)) scale(1.15)}}
+.activity-reward-screen .reward-card{padding:clamp(18px,2.5vw,30px)}
+.activity-reward-screen .reward-card .primary-button,.activity-reward-screen .reward-card .secondary-button{margin:9px auto}
+#samePatientButton[hidden]{display:none!important}
+.care-sparkle-pop{position:absolute;width:6px;height:6px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;pointer-events:none;animation:sparklePop .55s ease-out forwards}
+@keyframes sparklePop{0%{box-shadow:0 -3px 0 0 #ffe9a8,0 3px 0 0 #ffe9a8,-3px 0 0 0 #b8f0d6,3px 0 0 0 #b8f0d6,-2px -2px 0 0 #ffd6ec,2px 2px 0 0 #ffd6ec,-2px 2px 0 0 #b8d9f0,2px -2px 0 0 #b8d9f0;opacity:1}100%{box-shadow:0 -26px 0 -2px #ffe9a800,0 26px 0 -2px #ffe9a800,-26px 0 0 -2px #b8f0d600,26px 0 0 -2px #b8f0d600,-19px -19px 0 -2px #ffd6ec00,19px 19px 0 -2px #ffd6ec00,-19px 19px 0 -2px #b8d9f000,19px -19px 0 -2px #b8d9f000;opacity:0}}
+
+.care-debris{position:absolute;width:44px;height:44px;background-size:contain;background-repeat:no-repeat;background-position:center;pointer-events:none;z-index:3;filter:drop-shadow(0 3px 4px #00000045);transform:translate(-50%,-50%) rotate(var(--tilt,0deg));animation:detailPop .5s ease-out,debrisPulse 1.3s ease-in-out .5s infinite}
+.care-debris.held{animation:none;filter:drop-shadow(0 5px 8px #00000060) brightness(1.08);z-index:5;transform:translate(-50%,-50%) rotate(var(--tilt,0deg)) scale(1.15)}
+.care-debris.settling{transition:left .35s ease,top .35s ease}
+.care-debris.dropped{opacity:0;transform:translate(-50%,-50%) rotate(calc(var(--tilt,0deg) + 30deg)) scale(.25);transition:opacity .3s ease,transform .3s ease}
+.care-ear-drop{position:absolute;width:18px;height:24px;border-radius:55% 55% 58% 58%;background:linear-gradient(135deg,#edffff,#65cbe6);border:2px solid #48a8c6;box-shadow:0 2px 7px #3e8fac70;transform:translate(-50%,-100%) rotate(20deg);pointer-events:none;animation:earDropLand .7s ease-in forwards}
+@keyframes earDropLand{0%{opacity:1;transform:translate(-50%,-130%) rotate(20deg) scale(.8)}70%{opacity:.9;transform:translate(-50%,-25%) rotate(20deg) scale(1)}100%{opacity:0;transform:translate(-50%,15%) rotate(20deg) scale(.5)}}
+@keyframes debrisPulse{50%{transform:translate(-50%,-50%) scale(1.14)}}
+@keyframes detailPop{0%{transform:translate(-50%,-50%) scale(0)}70%{transform:translate(-50%,-50%) scale(1.25)}100%{transform:translate(-50%,-50%) scale(1)}}
+.care-drop-tray{position:absolute;width:58px;height:58px;transform:translate(-50%,-50%);display:grid;place-items:center;font-size:1.9rem;border:3px dashed #ffffffc0;border-radius:18px;background:#ffffff30;pointer-events:none;box-shadow:0 4px 10px #38245c30}
+
+.care-gesture-tool.tweezers-tool{width:70px;height:118px;background:transparent;border:0;box-shadow:none}
+.tweezers-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 6px #38245c50);transition:opacity .12s ease}
+.tweezers-img.tweezers-closed{opacity:0}
+.care-gesture-tool.grabbing .tweezers-img.tweezers-open{opacity:0}
+.care-gesture-tool.grabbing .tweezers-img.tweezers-closed{opacity:1}
+.care-gesture-tool.magnifier-tool{width:104px;height:104px}
+.magnifier-tool .lens{position:absolute;left:6px;top:6px;width:72px;height:72px;overflow:hidden;border-radius:50%;background-color:#d7ebf5;background-repeat:no-repeat;border:7px solid #f4d76b;box-shadow:inset 0 0 12px #ffffffaa,inset 0 -6px 10px #5b8ba030,0 6px 14px #38245c55}
+.care-lens-evidence{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);object-fit:contain;opacity:0;transform:scale(.45);transition:opacity .2s,transform .35s;filter:drop-shadow(0 2px 3px #41285788)}
+.magnifier-tool.has-evidence .care-lens-evidence{opacity:1;transform:scale(1)}
+.magnifier-tool.evidence-found .lens{border-color:#79d8b5;box-shadow:0 0 0 5px #a5f3d588,0 6px 14px #38245c55}
+.magnifier-tool .lens-shine{position:absolute;left:14px;top:12px;width:22px;height:14px;border-radius:50%;background:#ffffffb0;transform:rotate(-25deg)}
+.magnifier-tool .handle{position:absolute;right:2px;bottom:0;width:14px;height:40px;background:linear-gradient(100deg,#e7c463,#c99a2f 60%,#a67a1c);border-radius:7px;transform:rotate(42deg);transform-origin:top center;box-shadow:0 3px 6px #38245c55}
+.care-gesture-tool.flashlight-tool{width:95px;height:95px}
+.care-gesture-tool.otoscope-tool{width:92px;height:92px;transform:translate(-80%,-55%)}
+.care-gesture-tool.otoscope-tool.has-evidence .clinic-tool-svg{filter:drop-shadow(0 0 9px #ffe499) drop-shadow(0 4px 5px #30204666)}
+.care-ear-view{position:absolute;z-index:3;width:112px;height:104px;display:grid;place-items:center;border:6px solid #d8edeb;border-radius:28px;background:radial-gradient(circle at 60% 50%,#fff4d8,#d89bab);box-shadow:0 7px 15px #39295055;opacity:0;transform:translate(-50%,-50%) scale(.65);transition:opacity .18s,transform .18s;pointer-events:none}
+.care-ear-view.visible{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.care-ear-view img{max-width:70%;max-height:70%;object-fit:contain;filter:drop-shadow(0 3px 4px #734b5c88)}
+.care-stitch-line{position:absolute;z-index:4;height:14px;border-top:3px dashed #fbe6f0;transform:translateY(-50%) rotate(90deg);transform-origin:left center;pointer-events:none}
+.care-stitch-line::before{content:"✦";position:absolute;left:-5px;top:-16px;color:#ffe27b;text-shadow:0 0 5px #704a9d;font-size:24px}
+.care-stitch-line::after{content:"";position:absolute;left:0;top:-4px;width:calc(var(--stitch-fill,0)*100%);height:4px;border-radius:8px;background:#775583;box-shadow:0 1px 3px #365f80;transition:width .07s}
+.care-stitch-line.active::before{color:#fff}
+.care-stitch-line.done{border-top-color:transparent}
+.care-stitch-line.done::before{opacity:0}
+.flashlight-beam{position:absolute;left:-19px;top:-20px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#fff8c899 0%,#fff8c83b 45%,transparent 72%);mix-blend-mode:screen}
+.flashlight-tool.has-evidence .flashlight-beam{background:radial-gradient(circle,#fff9caee 0%,#ffe49788 42%,transparent 75%)}
+.care-gesture-tool.scanner-tool{transform:translate(-78%,-25%)}
+.scanner-tool.on-horn .clinic-tool-svg{filter:drop-shadow(0 0 9px #8ff4ea) drop-shadow(0 3px 4px #30204666)}
+.care-inspection-clue{--discovery:0;position:absolute;z-index:3;width:31px;height:31px;display:grid;place-items:center;transform:translate(-50%,-50%);border:2px solid #fff;border-radius:50%;background:#6d55bb99;color:#fff;font-size:17px;font-weight:900;box-shadow:0 0 0 5px #fff6,0 0 14px #ffe18c;opacity:.8;transition:background .2s,transform .2s,opacity .2s;pointer-events:none}
+.care-inspection-clue.focused{background:conic-gradient(#83dcb5 calc(var(--discovery)*1turn),#6d55bb calc(var(--discovery)*1turn));transform:translate(-50%,-50%) scale(1.2);opacity:1}
+.care-inspection-clue.found{background:#60c499;box-shadow:0 0 0 5px #a9f0ce80;opacity:1;animation:detailPop .35s ease-out}
+.care-readout{--reading:0;position:absolute;z-index:3;width:72px;height:60px;display:flex;align-items:center;justify-content:center;gap:4px;transform:translate(-50%,-50%);border:3px solid #fff;border-radius:17px;background:#f7fbffe8;color:#de6287;box-shadow:0 4px 10px #38245c44;pointer-events:none}
+.readout-heart{font-size:34px;animation:carePulse 1s ease-in-out infinite}
+.readout-pulse{width:22px;height:21px;border-bottom:3px solid #e96f9b;transform:skewY(-20deg)}
+.care-readout[data-kind="thermometer"]{width:99px;gap:7px}
+.readout-temperature{min-width:48px;color:#5a4779;font-size:18px;font-weight:900;font-variant-numeric:tabular-nums}
+.readout-thermometer{position:relative;width:17px;height:43px;border:3px solid #7898ba;border-radius:10px;background:#fff}
+.readout-thermometer i{position:absolute;left:3px;right:3px;bottom:3px;height:calc(var(--reading)*31px);border-radius:5px;background:#f598ae;transition:height .15s}
+.care-gesture-tool.near,.care-gesture-tool.locked{box-shadow:none}
+.care-gesture-tool.locked .clinic-tool-svg{filter:drop-shadow(0 0 7px #75dfb3) drop-shadow(0 5px 4px #30204666)}
+@keyframes lockedPulse{50%{transform:translate(-50%,-50%) rotate(-8deg) scale(1.08)}}
+
+.care-tool.care-tool-glow.hint-visible{border-color:#ffd65d;box-shadow:0 6px 0 #baa3d2,0 0 0 6px #ffe47755;animation:listenPulse 1.6s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.care-patient-reaction.visible,.care-patient.care-patient-lift:not([data-emotion="happy"]),.care-tool.care-tool-glow.hint-visible{animation:none}.care-patient-reaction.visible{opacity:1}}
+.nudge{animation:nudgeBounce .3s ease}
+@keyframes nudgeBounce{50%{transform:scale(1.07)}}
+.care-target{position:absolute;width:64px;height:64px;transform:translate(-50%,-50%);border:4px dashed #fff;border-radius:50%;background:#ffffff26;box-shadow:0 0 0 6px #ffffff22;pointer-events:none;animation:targetPulse 1.6s ease-in-out infinite}
+.care-target-wide{width:min(58%,260px);height:min(58%,260px)}
+@keyframes targetPulse{50%{transform:translate(-50%,-50%) scale(1.06);opacity:.75}}
+.care-sip-cup{position:absolute;display:grid;place-items:center;width:76px;height:76px;transform:translate(-50%,-50%);border:4px solid #fff;border-radius:50%;background:#7555cddd;color:#fff;font-size:2.3rem;box-shadow:0 0 0 8px #fff6,0 6px 17px #38245c66;transition:opacity .5s ease}
+.care-sip-cup.sipped{animation:sipBounce .4s ease}
+.care-sip-cup.fade-out{opacity:0}
+.care-medicine-cup{--dose:0;position:absolute;z-index:4;width:82px;height:78px;transform:translate(-50%,-50%);display:grid;place-items:center;border:0;border-radius:19px;background:#fff8eaca;box-shadow:0 5px 13px #37275255;pointer-events:auto;touch-action:none;cursor:grab}
+.care-medicine-cup.docked{background:#e9ffeccd;cursor:pointer}
+.care-medicine-cup .medicine-flask{display:block;width:72px;height:72px;overflow:visible;filter:drop-shadow(0 3px 3px #35254455)}
+.care-medicine-cup .medicine-liquid{opacity:calc(1 - var(--dose));transition:opacity .1s}
+.medicine-hand-hint{position:absolute;right:-4px;top:-15px;font-size:22px;animation:pressHint 1s ease-in-out infinite}
+.care-medicine-cup.feeding{transform:translate(-50%,-50%) rotate(25deg)}
+.care-medicine-cup.feeding .medicine-hand-hint,.care-medicine-cup.empty .medicine-hand-hint{display:none}
+@keyframes sipBounce{30%{transform:translate(-50%,-50%) scale(.85) rotate(-8deg)}60%{transform:translate(-50%,-50%) scale(1.12)}}
+.care-drag-token{position:absolute;z-index:4;display:grid;place-items:center;width:72px;height:72px;transform:translate(-50%,-50%);border:4px solid #fff;border-radius:50%;background:#fffbe7e8;font-size:2.1rem;box-shadow:0 8px 18px #38245c66;touch-action:none;transition:opacity .5s ease}
+.care-drag-token.fade-out{opacity:0}
+.care-drag-token.settling{transition:left .3s ease,top .3s ease}
+.care-drag-token.placed{animation:pop .4s ease-out}
+.care-drag-token-art{width:94px;height:70px;border:0;background-color:transparent;background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 5px 8px #00000045);box-shadow:none}
+.care-gesture-tool{position:absolute;z-index:4;width:92px;height:92px;transform:translate(-50%,-50%) rotate(-8deg);opacity:0;pointer-events:none;transition:opacity .15s}
 .care-gesture-tool.visible{opacity:1}
+.care-gesture-tool.raw-icon-tool,.care-gesture-tool.art-icon-tool{width:76px;height:76px;border:0;background:none;box-shadow:none}
+.care-gesture-tool.asset-icon-tool{width:100px;height:80px;border:0;background:none;box-shadow:none}
+.care-held-art{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 5px #30204655)}
+.care-gesture-tool.raw-icon-tool span{display:block;font-size:62px;line-height:76px;text-align:center;filter:drop-shadow(0 5px 4px #30204666)}
+.care-gesture-tool.art-icon-tool .clinic-tool-svg{width:76px;height:76px;filter:drop-shadow(0 5px 4px #30204666)}
+.care-gesture-tool.scanner-tool.on-horn .clinic-tool-svg{filter:drop-shadow(0 0 9px #8ff4ea) drop-shadow(0 3px 4px #30204666)}
+.care-gesture-tool.stethoscope-tool{width:94px;height:94px;transform:translate(-74%,-76%)}
+.care-gesture-tool.stethoscope-tool .clinic-tool-svg{width:94px;height:94px}
+.care-gesture-tool.thermometer-tool{transform:translate(-34%,-72%)}
+.care-tool .clinic-tool-svg{display:block;width:88px;height:80px;margin:auto;filter:drop-shadow(0 3px 3px #30204644)}
+.care-tool .stethoscope-svg{width:112px;height:82px}
+.care-gesture-tool.flashlight-tool .clinic-tool-svg{position:absolute;right:0;bottom:0;width:80px;height:80px;filter:drop-shadow(0 4px 4px #35284a66)}
+.tool-free-icon{display:block;font-size:62px;line-height:76px;text-align:center;filter:drop-shadow(0 5px 4px #30204666)}
 .care-meter{position:absolute;z-index:5;left:12%;right:12%;bottom:15px;height:18px;overflow:hidden;border:4px solid #fff;border-radius:20px;background:#604780aa;opacity:0;transition:opacity .2s}.care-meter.show{opacity:1}.care-meter i{display:block;width:0;height:100%;border-radius:12px;background:linear-gradient(90deg,#7ce2b7,#ffe06b,#ff9bd2);transition:width .12s}
 .care-gesture-hint{position:absolute;z-index:3;left:50%;top:14px;transform:translateX(-50%);width:max-content;max-width:82%;padding:8px 14px;border:3px solid #fff;border-radius:18px;background:#49336dcc;color:#fff;text-align:center;font-weight:900;box-shadow:0 5px 14px #30204655;pointer-events:none}
-@media(max-height:760px) and (orientation:landscape){.care-clinic{min-height:400px;grid-template-rows:auto minmax(220px,1fr) auto}.care-treatment{min-height:240px}.care-clinic .care-patient{min-height:220px}.care-clinic .care-tool{min-height:76px}.care-clinic .care-tool span{font-size:2rem}}
-@media(max-width:720px){.care-clinic{grid-template-columns:1fr;grid-template-rows:auto 190px minmax(280px,1fr) auto auto;min-height:760px}.care-clinic .care-progress{grid-column:1}.care-clinic .care-patient{grid-column:1;grid-row:2;min-height:190px;background-position:50% var(--row)}.care-treatment{grid-column:1;grid-row:3;min-height:280px}.care-clinic .care-prompt{grid-column:1;grid-row:4;min-height:72px;flex-direction:row}.care-clinic .care-tools{grid-column:1;grid-row:5}}
+@media(max-height:760px) and (orientation:landscape){.care-clinic .care-tool{min-height:76px}.care-clinic .care-tool span{font-size:2rem}}
+@media(max-width:720px){.care-clinic{grid-template-columns:1fr;grid-template-rows:auto auto auto auto;min-height:0;overflow:visible}.care-clinic .care-progress{grid-column:1}.care-clinic .care-patient{grid-column:1;grid-row:2;width:min(30vw,150px);height:auto;justify-self:center}.care-treatment{grid-column:1;grid-row:3;width:min(82vw,340px);height:auto;justify-self:center}.care-clinic .care-tools{grid-column:1;grid-row:4}}
 @media(max-width:760px){.wardrobe-panel .outfit-grid{grid-template-columns:repeat(2,1fr)}.outfit-card span{width:94px;height:94px}.outfit-card{min-height:164px}}
 
-.dressup-layout{display:grid;grid-template-columns:minmax(230px,330px) 1fr;gap:20px;align-items:start;margin:14px 0 24px}.dressup-preview{position:relative;width:100%;aspect-ratio:2/3;overflow:hidden;border:6px solid #fff;border-radius:32px;background:radial-gradient(circle at 50% 35%,#fff9d7,#dfcaff 65%,#a7e3da);box-shadow:0 10px 28px #3a285d45}.dressup-preview svg,.dressup-character{position:absolute;inset:0;width:100%;height:100%}.dressup-character{z-index:1;background-image:url("assets/annabeth-clothes.png");background-repeat:no-repeat;background-size:300% 200%;background-position:var(--clothes-position,0% 0%);transition:background-position .25s ease}.dressup-preview svg{z-index:2}.dressup-character[data-clothes="lavender"]{--clothes-position:0% 0%}.dressup-character[data-clothes="doctor"]{--clothes-position:50% 0%}.dressup-character[data-clothes="scrubs"]{--clothes-position:100% 0%}.dressup-character[data-clothes="princess"]{--clothes-position:0% 100%}.dressup-character[data-clothes="forest"]{--clothes-position:50% 100%}.dressup-character[data-clothes="artist"]{--clothes-position:100% 100%}.dressup-svg .shoe{stroke:#5b3f7c;stroke-width:9;stroke-linejoin:round}
+.dressup-layout{display:grid;grid-template-columns:minmax(230px,330px) 1fr;gap:20px;align-items:start;margin:14px 0 24px}.dressup-preview{position:relative;width:100%;aspect-ratio:2/3;overflow:hidden;border:6px solid #fff;border-radius:32px;background:radial-gradient(circle at 50% 35%,#fff9d7,#dfcaff 65%,#a7e3da);box-shadow:0 10px 28px #3a285d45}.dressup-preview > svg,.dressup-character{position:absolute;inset:0;width:100%;height:100%}.dressup-character{z-index:1;background-image:url("assets/annabeth-clothes.png");background-repeat:no-repeat;background-size:300% 200%;background-position:var(--clothes-position,0% 0%);transition:background-position .25s ease}.dressup-preview > svg{z-index:2}.dressup-character[data-clothes="lavender"]{--clothes-position:0% 0%}.dressup-character[data-clothes="doctor"]{--clothes-position:50% 0%}.dressup-character[data-clothes="scrubs"]{--clothes-position:100% 0%}.dressup-character[data-clothes="princess"]{--clothes-position:0% 100%}.dressup-character[data-clothes="forest"]{--clothes-position:50% 100%}.dressup-character[data-clothes="artist"]{--clothes-position:100% 100%}.dressup-svg .shoe{stroke:#5b3f7c;stroke-width:9;stroke-linejoin:round}
 .dressup-closet{min-width:0}.dressup-categories{display:flex;gap:8px;overflow-x:auto;padding:3px 3px 10px}.dressup-category{flex:0 0 auto;min-height:42px;padding:7px 12px;border:2px solid #cab7e4;border-radius:15px;background:#fff;color:#5d428a;font-size:.85rem;font-weight:900}.dressup-category.selected{border-color:#5bbd9a;background:#d9f7e9}.dressup-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.dressup-choice{min-height:105px;padding:9px;border:3px solid #d8c6ec;border-radius:19px;background:#fff;color:#50386f;font-weight:900}.dressup-choice span{display:block;font-size:1.9rem}.dressup-choice small{display:block;margin-top:6px}.dressup-choice.selected{border-color:#edbe3f;background:#fff5bd;box-shadow:0 0 0 4px #fff}.dressup-choice.locked{filter:grayscale(.8);opacity:.64}.ready-heading{margin:22px 0 10px;text-align:center;color:#664b91}
 @media(max-width:700px){.dressup-layout{grid-template-columns:1fr}.dressup-preview{width:min(300px,80vw);margin:auto}.dressup-choices{grid-template-columns:repeat(2,1fr)}}
 .dressup-choice[data-category="clothes"] span{width:72px;height:82px;margin:auto;background-image:url("assets/annabeth-clothes.png");background-repeat:no-repeat;background-size:300% 200%;background-position:var(--choice-position,0% 0%)}
 .dressup-choice[data-item="lavender"]{--choice-position:0% 0%}.dressup-choice[data-item="doctor"]{--choice-position:50% 0%}.dressup-choice[data-item="scrubs"]{--choice-position:100% 0%}.dressup-choice[data-item="princess"]{--choice-position:0% 100%}.dressup-choice[data-item="forest"]{--choice-position:50% 100%}.dressup-choice[data-item="artist"]{--choice-position:100% 100%}
 .dressup-art-layer{position:absolute;inset:0;z-index:3;background-repeat:no-repeat;pointer-events:none}.dressup-art-layer[data-item="none"]{display:none}
+.dressup-preview .dressup-art-layer{display:none}
+.dressup-preview #dressupLayers{z-index:4;pointer-events:none}
+.dressup-character{clip-path:inset(0 16% 0 0)}
+.activity-avatar{position:relative;flex:none;width:55px;height:72px;margin-left:auto;border:3px solid #fff;border-radius:13px;overflow:hidden;background:linear-gradient(#f1dbff,#c8ecea);box-shadow:0 3px 9px #49346b33}
+.activity-avatar .avatar-preview{width:100%;height:100%;margin:0;border:0;border-radius:0;box-shadow:none}
+.activity-avatar .avatar-preview[hidden]{display:none}
+.activity-avatar-custom{position:absolute;inset:0}
+.activity-avatar-custom[hidden]{display:none}
+.activity-avatar-custom>.dressup-character,.activity-avatar-custom>svg{position:absolute;inset:0;width:100%;height:100%}
+.activity-avatar-custom>svg{z-index:2}
+@media(max-width:600px){.activity-avatar{width:43px;height:60px}}
 .head-layer{z-index:5;background-image:url("assets/annabeth-headwear.png");background-size:300% 200%;background-position:var(--head-position);transform:scale(.74);transform-origin:50% 0}.head-layer[data-item="mouse"]{--head-position:0% 0%}.head-layer[data-item="tiara"]{--head-position:50% 0%}.head-layer[data-item="flowers"]{--head-position:100% 0%}.head-layer[data-item="starcrown"]{--head-position:0% 100%}.head-layer[data-item="wizardhat"]{--head-position:50% 100%}
 .shoes-layer{background-image:url("assets/annabeth-shoes.png");background-size:300% 200%;background-position:var(--shoe-position);transform:scale(.72);transform-origin:50% 100%}.shoes-layer[data-item="socks"]{--shoe-position:0% 0%}.shoes-layer[data-item="sneakers"]{--shoe-position:50% 0%}.shoes-layer[data-item="purple"]{--shoe-position:100% 0%}.shoes-layer[data-item="gold"]{--shoe-position:0% 100%}.shoes-layer[data-item="rain"]{--shoe-position:50% 100%}.shoes-layer[data-item="slippers"]{--shoe-position:100% 100%}
 .jewelry-layer,.ribbon-layer{background-image:url("assets/annabeth-accessories.png");background-size:300% 200%}.jewelry-layer{z-index:4;background-position:var(--jewel-position);transform:scale(.5);transform-origin:50% 18%}.jewelry-layer[data-item="heart"]{--jewel-position:0% 0%}.jewelry-layer[data-item="pearls"]{--jewel-position:50% 0%}.jewelry-layer[data-item="star"]{--jewel-position:100% 0%}.ribbon-layer{z-index:6;background-position:var(--ribbon-position);transform:translate(27%,-2%) scale(.48);transform-origin:50% 12%}.ribbon-layer[data-item="pink"]{--ribbon-position:0% 100%}.ribbon-layer[data-item="purple"]{--ribbon-position:50% 100%}.ribbon-layer[data-item="rainbow"]{--ribbon-position:100% 100%}
@@ -153,3 +475,25 @@
 .dressup-choice[data-category="jewelry"][data-item="heart"]{--jewel-position:0% 0%}.dressup-choice[data-category="jewelry"][data-item="pearls"]{--jewel-position:50% 0%}.dressup-choice[data-category="jewelry"][data-item="star"]{--jewel-position:100% 0%}.dressup-choice[data-category="ribbon"][data-item="pink"]{--ribbon-position:0% 100%}.dressup-choice[data-category="ribbon"][data-item="purple"]{--ribbon-position:50% 100%}.dressup-choice[data-category="ribbon"][data-item="rainbow"]{--ribbon-position:100% 100%}
 .dressup-choice[data-category="medical"][data-item="stethoscope"]{--medical-position:0% 0%}.dressup-choice[data-category="medical"][data-item="gloves"]{--medical-position:50% 0%}.dressup-choice[data-category="medical"][data-item="bag"]{--medical-position:100% 0%}
 .dressup-choice[data-item="none"] span,.dressup-choice.locked span{background-image:none!important;width:auto;height:auto}
+.dressup-choice:not([data-category="clothes"]) span{background-image:none!important;display:grid!important;place-items:center!important;width:82px!important;height:72px!important;font-size:2.4rem!important}.dressup-choice[data-category="clothes"] span{border-radius:14px;background-color:#f5ecff}.dressup-choice.selected{box-shadow:0 0 0 4px #fff,0 8px 18px #6641ad28}
+.potion-game{min-height:390px}.potion-game .mix-bowl{top:48%;width:min(300px,38vw);height:145px;border:9px solid #f8e8ff;border-radius:20px 20px 130px 130px;background:linear-gradient(#c08ee3,#7852bb);box-shadow:inset 0 12px #e5c8f4,0 10px 18px #49346b66}.potion-tray{bottom:34px;min-width:0;width:min(770px,100%);gap:6px;flex-wrap:wrap}.mix-ingredient{width:60px;height:56px;font-size:2rem}.potion-recipe{top:0;gap:14px}.potion-recipe .potion-progress{display:block;width:auto;height:auto;border:0;background:transparent;color:#493562;filter:none;opacity:1;font-size:1.3rem;font-weight:900;white-space:pre}.potion-replay{width:52px;height:46px;border:2px solid #a77bd3;border-radius:15px;background:#fff;color:#59419c;font-size:1.6rem}
+@media(max-width:900px){.potion-tray{width:100%;gap:4px}.mix-ingredient{width:50px;height:50px;border-width:3px;font-size:1.7rem}}
+
+/* Examination markers are glints on the injury, not game-board buttons. */
+.care-inspection-clue{width:30px;height:30px;border:0;background:none;box-shadow:none;color:#fff7c9;font-size:25px;text-shadow:0 0 5px #9b722f,0 0 12px #fff;opacity:.66;animation:inspectionGlimmer 1.8s ease-in-out infinite alternate}
+.care-inspection-clue.focused{background:none;color:#a8f4d5;box-shadow:none;transform:translate(-50%,-50%) scale(calc(1 + var(--discovery)*.35));opacity:1;animation:none}
+.care-inspection-clue.found{background:none;color:#82e7bb;box-shadow:none;animation:detailPop .35s ease-out}
+.care-inspection-clue.evidence-check,.care-inspection-clue.evidence-check.focused{opacity:0;animation:none}
+.care-inspection-clue.evidence-check.found{opacity:1;animation:detailPop .35s ease-out}
+@keyframes inspectionGlimmer{to{opacity:.35;transform:translate(-50%,-50%) scale(.8)}}
+/* Bramble's sprayer visibly sends droplets from the nozzle into the enlarged mouth. */
+.care-rinse-sprayer.spraying::before{left:-69px;top:7px;width:92px;height:46px;clip-path:polygon(100% 22%,100% 78%,0 0,0 100%);background:linear-gradient(90deg,#75dcf600,#8ce5f9ad 32%,#d8fbffeb)}
+.care-rinse-drop{width:9px;height:9px;box-shadow:0 0 6px #fff}
+.care-rinse-sprayer{top:61%}
+.care-rinse-drop{top:56%}
+@keyframes rinseMist{0%{opacity:0;left:68%;top:56%;transform:translateY(var(--drift)) scale(.45)}18%{opacity:1}100%{opacity:0;left:50%;top:58%;transform:translateY(var(--drift)) scale(1.15)}}
+/* Medicine is a handheld vial: no square control plate obscuring Pip's face. */
+.care-medicine-cup,.care-medicine-cup.docked{background:transparent;box-shadow:none}
+.care-medicine-cup .medicine-flask{width:82px;height:82px}
+.care-medicine-cup.feeding{transform:translate(-50%,-50%) rotate(-20deg)}
+@media(prefers-reduced-motion:reduce){.care-inspection-clue{animation:none}}

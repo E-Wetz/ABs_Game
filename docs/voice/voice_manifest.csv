@@ -1,0 +1,494 @@
+id,filename,section,record_this,exact_game_text,note
+VO001,VO001_the-magical-hospital-is-open-fern.wav,1. Welcome and story map,"The magical hospital is open! Fern, Bramble, and Nova need Doctor Annabeth's help. Tap a picture to choose an adventure.","The magical hospital is open! Fern, Bramble, and Nova need Doctor Annabeth's help. Tap a picture to choose an adventure.",
+VO002,VO002_oh-no-novas-rainbow-magic-scattered.wav,1. Welcome and story map,Oh no! Nova's rainbow magic scattered across the kingdom. Help the animals find it. Tap a picture to choose an adventure.,Oh no! Nova's rainbow magic scattered across the kingdom. Help the animals find it. Tap a picture to choose an adventure.,
+VO003,VO003_the-royal-animal-parade-starts-soon.wav,1. Welcome and story map,The royal animal parade starts soon. Help everyone get ready to celebrate. Tap a picture to choose an adventure.,The royal animal parade starts soon. Help everyone get ready to celebrate. Tap a picture to choose an adventure.,
+VO004,VO004_doctor-annabeth-is-the-kingdoms-magical.wav,1. Welcome and story map,Doctor Annabeth is the kingdom's magical healer. Choose any friend to help today! Tap a picture to choose an adventure.,Doctor Annabeth is the kingdom's magical healer. Choose any friend to help today! Tap a picture to choose an adventure.,
+VO005,VO005_hello-doctor-annabeth-your-magical-animal.wav,1. Welcome and story map,"Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure.","Hello, Doctor Annabeth! Your magical animal friends are ready for an adventure.",Grown-up view voice preview
+VO006,VO006_fern-found-prickles-on-her-paw.wav,2. Magical Vet Care - case introductions,Fern found prickles on her paw. Let's help her feel comfortable again.,Fern found prickles on her paw. Let's help her feel comfortable again.,
+VO007,VO007_fern-keeps-shaking-one-ear-lets.wav,2. Magical Vet Care - case introductions,Fern keeps shaking one ear. Let's find out why it feels itchy.,Fern keeps shaking one ear. Let's find out why it feels itchy.,
+VO008,VO008_brambles-tummy-is-making-funny-rumbles.wav,2. Magical Vet Care - case introductions,Bramble's tummy is making funny rumbles. Let's give him a careful checkup.,Bramble's tummy is making funny rumbles. Let's give him a careful checkup.,
+VO009,VO009_bramble-slipped-into-a-muddy-puddle.wav,2. Magical Vet Care - case introductions,Bramble slipped into a muddy puddle and his paw needs gentle care.,Bramble slipped into a muddy puddle and his paw needs gentle care.,
+VO010,VO010_every-time-pip-sneezes-a-tiny.wav,2. Magical Vet Care - case introductions,"Every time Pip sneezes, a tiny smoke cloud pops out. Let's cool it down.","Every time Pip sneezes, a tiny smoke cloud pops out. Let's cool it down.",
+VO011,VO011_pip-bumped-one-shiny-scale-while.wav,2. Magical Vet Care - case introductions,Pip bumped one shiny scale while practicing his flying.,Pip bumped one shiny scale while practicing his flying.,
+VO012,VO012_novas-horn-has-lost-its-rainbow.wav,2. Magical Vet Care - case introductions,Nova's horn has lost its rainbow sparkle. Let's restore the magic.,Nova's horn has lost its rainbow sparkle. Let's restore the magic.,
+VO013,VO013_nova-danced-all-morning-and-one.wav,2. Magical Vet Care - case introductions,Nova danced all morning and one hoof feels tired.,Nova danced all morning and one hoof feels tired.,
+VO014,VO014_the-wind-tangled-leaves-into-ferns.wav,2. Magical Vet Care - case introductions,The wind tangled leaves into Fern's fluffy tail.,The wind tangled leaves into Fern's fluffy tail.,
+VO015,VO015_a-sugar-bug-made-one-of.wav,2. Magical Vet Care - case introductions,A sugar bug made one of Bramble's teeth feel tickly.,A sugar bug made one of Bramble's teeth feel tickly.,
+VO016,VO016_help-the-patient-feel-better-one.wav,2. Magical Vet Care - case introductions,"Help the patient feel better, one gentle step at a time.","Help the patient feel better, one gentle step at a time.",Spoken right after the case intro when the speaker button is tapped
+VO017,VO017_magnifier-look-very-closely.wav,3. Magical Vet Care - tool prompts,Magnifier. Look very closely.,Magnifier. Look very closely.,Spoken when the correct tool is picked
+VO018,VO018_star-tweezers-lift-out-the-tiny.wav,3. Magical Vet Care - tool prompts,Star tweezers. Lift out the tiny prickles.,Star tweezers. Lift out the tiny prickles.,Spoken when the correct tool is picked
+VO019,VO019_cleaning-bubbles-clean-the-sore-spot.wav,3. Magical Vet Care - tool prompts,Cleaning bubbles. Clean the sore spot.,Cleaning bubbles. Clean the sore spot.,Spoken when the correct tool is picked
+VO020,VO020_soft-bandage-cover-it-softly.wav,3. Magical Vet Care - tool prompts,Soft bandage. Cover it softly.,Soft bandage. Cover it softly.,Spoken when the correct tool is picked
+VO021,VO021_flashlight-shine-the-little-light.wav,3. Magical Vet Care - tool prompts,Flashlight. Shine the little light.,Flashlight. Shine the little light.,Spoken when the correct tool is picked
+VO022,VO022_cotton-puff-clean-very-gently.wav,3. Magical Vet Care - tool prompts,Cotton puff. Clean very gently.,Cotton puff. Clean very gently.,Spoken when the correct tool is picked
+VO023,VO023_magic-drops-add-the-soothing-drops.wav,3. Magical Vet Care - tool prompts,Magic drops. Add the soothing drops.,Magic drops. Add the soothing drops.,Spoken when the correct tool is picked
+VO024,VO024_soft-brush-brush-slowly.wav,3. Magical Vet Care - tool prompts,Soft brush. Brush slowly.,Soft brush. Brush slowly.,Spoken when the correct tool is picked
+VO025,VO025_stethoscope-listen-gently.wav,3. Magical Vet Care - tool prompts,Stethoscope. Listen gently.,Stethoscope. Listen gently.,Spoken when the correct tool is picked
+VO026,VO026_thermometer-check-the-temperature.wav,3. Magical Vet Care - tool prompts,Thermometer. Check the temperature.,Thermometer. Check the temperature.,Spoken when the correct tool is picked
+VO027,VO027_medicine-potion-give-little-sips.wav,3. Magical Vet Care - tool prompts,Medicine potion. Give little sips.,Medicine potion. Give little sips.,Spoken when the correct tool is picked
+VO028,VO028_warm-blanket-make-the-patient-cozy.wav,3. Magical Vet Care - tool prompts,Warm blanket. Make the patient cozy.,Warm blanket. Make the patient cozy.,Spoken when the correct tool is picked
+VO029,VO029_gentle-wash-wash-away-the-dirt.wav,3. Magical Vet Care - tool prompts,Gentle wash. Wash away the dirt.,Gentle wash. Wash away the dirt.,Spoken when the correct tool is picked
+VO030,VO030_healing-cream-dab-on-the-cream.wav,3. Magical Vet Care - tool prompts,Healing cream. Dab on the cream.,Healing cream. Dab on the cream.,Spoken when the correct tool is picked
+VO031,VO031_cooling-mist-spray-the-cooling-mist.wav,3. Magical Vet Care - tool prompts,Cooling mist. Spray the cooling mist.,Cooling mist. Spray the cooling mist.,Spoken when the correct tool is picked
+VO032,VO032_magic-scanner-scan-the-magical-glow.wav,3. Magical Vet Care - tool prompts,Magic scanner. Scan the magical glow.,Magic scanner. Scan the magical glow.,Spoken when the correct tool is picked
+VO033,VO033_soft-polisher-polish-in-little-circles.wav,3. Magical Vet Care - tool prompts,Soft polisher. Polish in little circles.,Soft polisher. Polish in little circles.,Spoken when the correct tool is picked
+VO034,VO034_healing-crystal-place-the-rainbow-crystals.wav,3. Magical Vet Care - tool prompts,Healing crystal. Place the rainbow crystals.,Healing crystal. Place the rainbow crystals.,Spoken when the correct tool is picked
+VO035,VO035_comfort-ribbon-tie-the-finishing-ribbon.wav,3. Magical Vet Care - tool prompts,Comfort ribbon. Tie the finishing ribbon.,Comfort ribbon. Tie the finishing ribbon.,Spoken when the correct tool is picked
+VO036,VO036_support-wrap-wrap-the-tired-hoof.wav,3. Magical Vet Care - tool prompts,Support wrap. Wrap the tired hoof.,Support wrap. Wrap the tired hoof.,Spoken when the correct tool is picked
+VO037,VO037_detangling-spray-spritz-the-tangled-fur.wav,3. Magical Vet Care - tool prompts,Detangling spray. Spritz the tangled fur.,Detangling spray. Spritz the tangled fur.,Spoken when the correct tool is picked
+VO038,VO038_dental-mirror-check-every-little-tooth.wav,3. Magical Vet Care - tool prompts,Dental mirror. Check every little tooth.,Dental mirror. Check every little tooth.,Spoken when the correct tool is picked
+VO039,VO039_toothbrush-brush-in-gentle-circles.wav,3. Magical Vet Care - tool prompts,Toothbrush. Brush in gentle circles.,Toothbrush. Brush in gentle circles.,Spoken when the correct tool is picked
+VO040,VO040_sparkle-paste-add-tiny-dabs-of.wav,3. Magical Vet Care - tool prompts,Sparkle paste. Add tiny dabs of paste.,Sparkle paste. Add tiny dabs of paste.,Spoken when the correct tool is picked
+VO041,VO041_magic-rinse-rinse-away-the-bubbles.wav,3. Magical Vet Care - tool prompts,Magic rinse. Rinse away the bubbles.,Magic rinse. Rinse away the bubbles.,Spoken when the correct tool is picked
+VO042,VO042_lets-try-the-magnifier.wav,4. Magical Vet Care - wrong tool,Let's try the magnifier!,Let's try the magnifier!,
+VO043,VO043_lets-try-the-star-tweezers.wav,4. Magical Vet Care - wrong tool,Let's try the star tweezers!,Let's try the star tweezers!,
+VO044,VO044_lets-try-the-cleaning-bubbles.wav,4. Magical Vet Care - wrong tool,Let's try the cleaning bubbles!,Let's try the cleaning bubbles!,
+VO045,VO045_lets-try-the-soft-bandage.wav,4. Magical Vet Care - wrong tool,Let's try the soft bandage!,Let's try the soft bandage!,
+VO046,VO046_lets-try-the-flashlight.wav,4. Magical Vet Care - wrong tool,Let's try the flashlight!,Let's try the flashlight!,
+VO047,VO047_lets-try-the-cotton-puff.wav,4. Magical Vet Care - wrong tool,Let's try the cotton puff!,Let's try the cotton puff!,
+VO048,VO048_lets-try-the-magic-drops.wav,4. Magical Vet Care - wrong tool,Let's try the magic drops!,Let's try the magic drops!,
+VO049,VO049_lets-try-the-soft-brush.wav,4. Magical Vet Care - wrong tool,Let's try the soft brush!,Let's try the soft brush!,
+VO050,VO050_lets-try-the-stethoscope.wav,4. Magical Vet Care - wrong tool,Let's try the stethoscope!,Let's try the stethoscope!,
+VO051,VO051_lets-try-the-thermometer.wav,4. Magical Vet Care - wrong tool,Let's try the thermometer!,Let's try the thermometer!,
+VO052,VO052_lets-try-the-medicine-potion.wav,4. Magical Vet Care - wrong tool,Let's try the medicine potion!,Let's try the medicine potion!,
+VO053,VO053_lets-try-the-warm-blanket.wav,4. Magical Vet Care - wrong tool,Let's try the warm blanket!,Let's try the warm blanket!,
+VO054,VO054_lets-try-the-gentle-wash.wav,4. Magical Vet Care - wrong tool,Let's try the gentle wash!,Let's try the gentle wash!,
+VO055,VO055_lets-try-the-healing-cream.wav,4. Magical Vet Care - wrong tool,Let's try the healing cream!,Let's try the healing cream!,
+VO056,VO056_lets-try-the-cooling-mist.wav,4. Magical Vet Care - wrong tool,Let's try the cooling mist!,Let's try the cooling mist!,
+VO057,VO057_lets-try-the-magic-scanner.wav,4. Magical Vet Care - wrong tool,Let's try the magic scanner!,Let's try the magic scanner!,
+VO058,VO058_lets-try-the-soft-polisher.wav,4. Magical Vet Care - wrong tool,Let's try the soft polisher!,Let's try the soft polisher!,
+VO059,VO059_lets-try-the-healing-crystal.wav,4. Magical Vet Care - wrong tool,Let's try the healing crystal!,Let's try the healing crystal!,
+VO060,VO060_lets-try-the-comfort-ribbon.wav,4. Magical Vet Care - wrong tool,Let's try the comfort ribbon!,Let's try the comfort ribbon!,
+VO061,VO061_lets-try-the-support-wrap.wav,4. Magical Vet Care - wrong tool,Let's try the support wrap!,Let's try the support wrap!,
+VO062,VO062_lets-try-the-detangling-spray.wav,4. Magical Vet Care - wrong tool,Let's try the detangling spray!,Let's try the detangling spray!,
+VO063,VO063_lets-try-the-dental-mirror.wav,4. Magical Vet Care - wrong tool,Let's try the dental mirror!,Let's try the dental mirror!,
+VO064,VO064_lets-try-the-toothbrush.wav,4. Magical Vet Care - wrong tool,Let's try the toothbrush!,Let's try the toothbrush!,
+VO065,VO065_lets-try-the-sparkle-paste.wav,4. Magical Vet Care - wrong tool,Let's try the sparkle paste!,Let's try the sparkle paste!,
+VO066,VO066_lets-try-the-magic-rinse.wav,4. Magical Vet Care - wrong tool,Let's try the magic rinse!,Let's try the magic rinse!,
+VO067,VO067_step-one-lets-use-the-magnifier.wav,5. Magical Vet Care - step announcements,Step one. Let's use the magnifier.,Step 1. Let's use the magnifier.,
+VO068,VO068_step-two-lets-use-the-star.wav,5. Magical Vet Care - step announcements,Step two. Let's use the star tweezers.,Step 2. Let's use the star tweezers.,
+VO069,VO069_step-three-lets-use-the-cleaning.wav,5. Magical Vet Care - step announcements,Step three. Let's use the cleaning bubbles.,Step 3. Let's use the cleaning bubbles.,
+VO070,VO070_step-four-lets-use-the-soft.wav,5. Magical Vet Care - step announcements,Step four. Let's use the soft bandage.,Step 4. Let's use the soft bandage.,
+VO071,VO071_step-one-lets-use-the-flashlight.wav,5. Magical Vet Care - step announcements,Step one. Let's use the flashlight.,Step 1. Let's use the flashlight.,
+VO072,VO072_step-two-lets-use-the-cotton.wav,5. Magical Vet Care - step announcements,Step two. Let's use the cotton puff.,Step 2. Let's use the cotton puff.,
+VO073,VO073_step-three-lets-use-the-magic.wav,5. Magical Vet Care - step announcements,Step three. Let's use the magic drops.,Step 3. Let's use the magic drops.,
+VO074,VO074_step-four-lets-use-the-soft.wav,5. Magical Vet Care - step announcements,Step four. Let's use the soft brush.,Step 4. Let's use the soft brush.,
+VO075,VO075_step-one-lets-use-the-stethoscope.wav,5. Magical Vet Care - step announcements,Step one. Let's use the stethoscope.,Step 1. Let's use the stethoscope.,
+VO076,VO076_step-two-lets-use-the-thermometer.wav,5. Magical Vet Care - step announcements,Step two. Let's use the thermometer.,Step 2. Let's use the thermometer.,
+VO077,VO077_step-three-lets-use-the-medicine.wav,5. Magical Vet Care - step announcements,Step three. Let's use the medicine potion.,Step 3. Let's use the medicine potion.,
+VO078,VO078_step-four-lets-use-the-warm.wav,5. Magical Vet Care - step announcements,Step four. Let's use the warm blanket.,Step 4. Let's use the warm blanket.,
+VO079,VO079_step-two-lets-use-the-gentle.wav,5. Magical Vet Care - step announcements,Step two. Let's use the gentle wash.,Step 2. Let's use the gentle wash.,
+VO080,VO080_step-three-lets-use-the-healing.wav,5. Magical Vet Care - step announcements,Step three. Let's use the healing cream.,Step 3. Let's use the healing cream.,
+VO081,VO081_step-one-lets-use-the-thermometer.wav,5. Magical Vet Care - step announcements,Step one. Let's use the thermometer.,Step 1. Let's use the thermometer.,
+VO082,VO082_step-two-lets-use-the-stethoscope.wav,5. Magical Vet Care - step announcements,Step two. Let's use the stethoscope.,Step 2. Let's use the stethoscope.,
+VO083,VO083_step-three-lets-use-the-cooling.wav,5. Magical Vet Care - step announcements,Step three. Let's use the cooling mist.,Step 3. Let's use the cooling mist.,
+VO084,VO084_step-four-lets-use-the-medicine.wav,5. Magical Vet Care - step announcements,Step four. Let's use the medicine potion.,Step 4. Let's use the medicine potion.,
+VO085,VO085_step-one-lets-use-the-magic.wav,5. Magical Vet Care - step announcements,Step one. Let's use the magic scanner.,Step 1. Let's use the magic scanner.,
+VO086,VO086_step-two-lets-use-the-soft.wav,5. Magical Vet Care - step announcements,Step two. Let's use the soft polisher.,Step 2. Let's use the soft polisher.,
+VO087,VO087_step-three-lets-use-the-healing.wav,5. Magical Vet Care - step announcements,Step three. Let's use the healing crystal.,Step 3. Let's use the healing crystal.,
+VO088,VO088_step-four-lets-use-the-comfort.wav,5. Magical Vet Care - step announcements,Step four. Let's use the comfort ribbon.,Step 4. Let's use the comfort ribbon.,
+VO089,VO089_step-four-lets-use-the-support.wav,5. Magical Vet Care - step announcements,Step four. Let's use the support wrap.,Step 4. Let's use the support wrap.,
+VO090,VO090_step-two-lets-use-the-detangling.wav,5. Magical Vet Care - step announcements,Step two. Let's use the detangling spray.,Step 2. Let's use the detangling spray.,
+VO091,VO091_step-three-lets-use-the-soft.wav,5. Magical Vet Care - step announcements,Step three. Let's use the soft brush.,Step 3. Let's use the soft brush.,
+VO092,VO092_step-one-lets-use-the-dental.wav,5. Magical Vet Care - step announcements,Step one. Let's use the dental mirror.,Step 1. Let's use the dental mirror.,
+VO093,VO093_step-two-lets-use-the-toothbrush.wav,5. Magical Vet Care - step announcements,Step two. Let's use the toothbrush.,Step 2. Let's use the toothbrush.,
+VO094,VO094_step-three-lets-use-the-sparkle.wav,5. Magical Vet Care - step announcements,Step three. Let's use the sparkle paste.,Step 3. Let's use the sparkle paste.,
+VO095,VO095_step-four-lets-use-the-magic.wav,5. Magical Vet Care - step announcements,Step four. Let's use the magic rinse.,Step 4. Let's use the magic rinse.,
+VO096,VO096_that-helped-look-the-sore-spot.wav,6. Magical Vet Care - progress and finish,"That helped! Look, the sore spot is improving.","That helped! Look, the sore spot is improving.",
+VO097,VO097_fern-is-healthy-and-happy-you.wav,6. Magical Vet Care - progress and finish,Fern is healthy and happy! You used every tool so carefully.,Fern is healthy and happy! You used every tool so carefully.,
+VO098,VO098_bramble-is-healthy-and-happy-you.wav,6. Magical Vet Care - progress and finish,Bramble is healthy and happy! You used every tool so carefully.,Bramble is healthy and happy! You used every tool so carefully.,
+VO099,VO099_pip-is-healthy-and-happy-you.wav,6. Magical Vet Care - progress and finish,Pip is healthy and happy! You used every tool so carefully.,Pip is healthy and happy! You used every tool so carefully.,
+VO100,VO100_nova-is-healthy-and-happy-you.wav,6. Magical Vet Care - progress and finish,Nova is healthy and happy! You used every tool so carefully.,Nova is healthy and happy! You used every tool so carefully.,
+VO101,VO101_novas-horn-lost-its-rainbow-rings.wav,"7. Story adventures (opening line, also the replay button)",Nova's horn lost its rainbow rings. Put the colors back in rainbow order. Tap the colors in rainbow order.,Nova's horn lost its rainbow rings. Put the colors back in rainbow order. Tap the colors in rainbow order.,
+VO102,VO102_bramble-bunny-needs-a-gentle-giggle.wav,"7. Story adventures (opening line, also the replay button)",Bramble Bunny needs a gentle giggle potion before his checkup. Add three berries and two stars.,Bramble Bunny needs a gentle giggle potion before his checkup. Add 3 berries and 2 stars.,
+VO103,VO103_pip-swallowed-some-silly-treasures-find.wav,"7. Story adventures (opening line, also the replay button)","Pip swallowed some silly treasures. Find what is hiding in his tummy. Find the key, button, and tiny bell.","Pip swallowed some silly treasures. Find what is hiding in his tummy. Find the key, button, and tiny bell.",
+VO104,VO104_ollie-owl-hid-tiny-treasures-all.wav,"7. Story adventures (opening line, also the replay button)",Ollie Owl hid tiny treasures all through the forest. Look closely and find the hidden treasures.,Ollie Owl hid tiny treasures all through the forest. Look closely and find the hidden treasures.,
+VO105,VO105_maple-bears-heart-sings-a-tiny.wav,"7. Story adventures (opening line, also the replay button)","Maple Bear's heart sings a tiny rhythm. Tap it back to make her smile. Listen, then copy the four heartbeat taps.","Maple Bear's heart sings a tiny rhythm. Tap it back to make her smile. Listen, then copy the 4 heartbeat taps.",
+VO106,VO106_find-every-matching-animal-pair-while.wav,"7. Story adventures (opening line, also the replay button)",Find every matching animal pair while the patients rest. Turn over cards and find all four pairs.,Find every matching animal pair while the patients rest. Turn over cards and find all 4 pairs.,
+VO107,VO107_create-a-colorful-portrait-for-the.wav,"7. Story adventures (opening line, also the replay button)",Create a colorful portrait for the hospital gallery. Choose colors and paint the unicorn five times.,Create a colorful portrait for the hospital gallery. Choose colors and paint the unicorn 5 times.,
+VO108,VO108_one-rainbow-ring-restored.wav,8. Story adventures - feedback,One rainbow ring restored!,1 rainbow ring restored!,
+VO109,VO109_two-rainbow-rings-restored.wav,8. Story adventures - feedback,Two rainbow rings restored!,2 rainbow rings restored!,
+VO110,VO110_three-rainbow-rings-restored.wav,8. Story adventures - feedback,Three rainbow rings restored!,3 rainbow rings restored!,
+VO111,VO111_four-rainbow-rings-restored.wav,8. Story adventures - feedback,Four rainbow rings restored!,4 rainbow rings restored!,
+VO112,VO112_five-rainbow-rings-restored.wav,8. Story adventures - feedback,Five rainbow rings restored!,5 rainbow rings restored!,
+VO113,VO113_six-rainbow-rings-restored.wav,8. Story adventures - feedback,Six rainbow rings restored!,6 rainbow rings restored!,
+VO114,VO114_plop-into-the-potion.wav,8. Story adventures - feedback,Plop! Into the potion!,Plop! Into the potion!,
+VO115,VO115_you-found-the-key.wav,8. Story adventures - feedback,You found the key!,You found the key!,
+VO116,VO116_you-found-the-bell.wav,8. Story adventures - feedback,You found the bell!,You found the bell!,
+VO117,VO117_you-found-the-boat.wav,8. Story adventures - feedback,You found the boat!,You found the boat!,
+VO118,VO118_you-found-the-moon.wav,8. Story adventures - feedback,You found the moon!,You found the moon!,
+VO119,VO119_you-found-the-acorn.wav,8. Story adventures - feedback,You found the acorn!,You found the acorn!,
+VO120,VO120_you-found-the-ladybug.wav,8. Story adventures - feedback,You found the ladybug!,You found the ladybug!,
+VO121,VO121_you-found-the-button.wav,8. Story adventures - feedback,You found the button!,You found the button!,
+VO122,VO122_look-near-the-key-follow-the.wav,8. Story adventures - feedback,Look near the key. Follow the sparkle.,Look near the key. Follow the sparkle.,Hint (after 1 minute)
+VO123,VO123_look-near-the-bell-follow-the.wav,8. Story adventures - feedback,Look near the bell. Follow the sparkle.,Look near the bell. Follow the sparkle.,Hint (after 1 minute)
+VO124,VO124_look-near-the-boat-follow-the.wav,8. Story adventures - feedback,Look near the boat. Follow the sparkle.,Look near the boat. Follow the sparkle.,Hint (after 1 minute)
+VO125,VO125_look-near-the-moon-follow-the.wav,8. Story adventures - feedback,Look near the moon. Follow the sparkle.,Look near the moon. Follow the sparkle.,Hint (after 1 minute)
+VO126,VO126_look-near-the-acorn-follow-the.wav,8. Story adventures - feedback,Look near the acorn. Follow the sparkle.,Look near the acorn. Follow the sparkle.,Hint (after 1 minute)
+VO127,VO127_look-near-the-ladybug-follow-the.wav,8. Story adventures - feedback,Look near the ladybug. Follow the sparkle.,Look near the ladybug. Follow the sparkle.,Hint (after 1 minute)
+VO128,VO128_look-near-the-button-follow-the.wav,8. Story adventures - feedback,Look near the button. Follow the sparkle.,Look near the button. Follow the sparkle.,Hint (after 1 minute)
+VO129,VO129_now-tap-four-heartbeats.wav,8. Story adventures - feedback,Now tap four heartbeats!,Now tap 4 heartbeats!,
+VO130,VO130_a-matching-pair.wav,8. Story adventures - feedback,A matching pair!,A matching pair!,
+VO131,VO131_your-picture-is-beautiful-keep-coloring.wav,8. Story adventures - feedback,Your picture is beautiful! Keep coloring as long as you like.,Your picture is beautiful! Keep coloring as long as you like.,
+VO132,VO132_let-me-show-you-dog-listen.wav,9. Listening and choosing games,Let me show you. dog. Listen to the end: dog. It ends with g. Tap the dog picture.,Let me show you. dog. Listen to the end: dog. It ends with g. Tap the dog picture.,Forest Sounds - the game also repeats this line after a wrong tap
+VO133,VO133_let-me-show-you-pig-say.wav,9. Listening and choosing games,Let me show you. pig. Say it slowly: pig. The middle sound is short i. Tap the pig picture.,Let me show you. pig. Say it slowly: pig. The middle sound is short i. Tap the pig picture.,Forest Sounds - the game also repeats this line after a wrong tap
+VO134,VO134_let-me-show-you-sun-listen.wav,9. Listening and choosing games,Let me show you. sun. Listen to the end: sun. It ends with n. Tap the sun picture.,Let me show you. sun. Listen to the end: sun. It ends with n. Tap the sun picture.,Forest Sounds - the game also repeats this line after a wrong tap
+VO135,VO135_let-me-show-you-fox-say.wav,9. Listening and choosing games,Let me show you. fox. Say it slowly: fox. The middle sound is short o. Tap the fox picture.,Let me show you. fox. Say it slowly: fox. The middle sound is short o. Tap the fox picture.,Forest Sounds - the game also repeats this line after a wrong tap
+VO136,VO136_let-me-show-you-sheep-listen.wav,9. Listening and choosing games,Let me show you. sheep. Listen to the end: sheep. It ends with p. Tap the sheep picture.,Let me show you. sheep. Listen to the end: sheep. It ends with p. Tap the sheep picture.,Forest Sounds - the game also repeats this line after a wrong tap
+VO137,VO137_let-me-show-you-cat-say.wav,9. Listening and choosing games,Let me show you. cat. Say it slowly: cat. The middle sound is short a. Tap the cat picture.,Let me show you. cat. Say it slowly: cat. The middle sound is short a. Tap the cat picture.,Forest Sounds - the game also repeats this line after a wrong tap
+VO138,VO138_listen-moon-spoon-moon-spoon-they.wav,9. Listening and choosing games,"Listen: moon, spoon. moon, spoon. They rhyme. Tap spoon.","Listen: moon, spoon. moon, spoon. They rhyme. Tap spoon.",Rhyme Garden
+VO139,VO139_listen-star-car-star-car-they.wav,9. Listening and choosing games,"Listen: star, car. star, car. They rhyme. Tap car.","Listen: star, car. star, car. They rhyme. Tap car.",Rhyme Garden
+VO140,VO140_listen-bug-rug-bug-rug-they.wav,9. Listening and choosing games,"Listen: bug, rug. bug, rug. They rhyme. Tap rug.","Listen: bug, rug. bug, rug. They rhyme. Tap rug.",Rhyme Garden
+VO141,VO141_listen-fox-box-fox-box-they.wav,9. Listening and choosing games,"Listen: fox, box. fox, box. They rhyme. Tap box.","Listen: fox, box. fox, box. They rhyme. Tap box.",Rhyme Garden
+VO142,VO142_listen-log-frog-log-frog-they.wav,9. Listening and choosing games,"Listen: log, frog. log, frog. They rhyme. Tap frog.","Listen: log, frog. log, frog. They rhyme. Tap frog.",Rhyme Garden
+VO143,VO143_this-star-word-is-the-t.wav,9. Listening and choosing games,"This star word is the. t, h, e spells the. Tap the.","This star word is the. t, h, e spells the. Tap the.","Word Treats (letters are read as letter NAMES: T, H, E)"
+VO144,VO144_this-star-word-is-said-s.wav,9. Listening and choosing games,"This star word is said. s, a, i, d spells said. Tap said.","This star word is said. s, a, i, d spells said. Tap said.","Word Treats (letters are read as letter NAMES: T, H, E)"
+VO145,VO145_this-star-word-is-come-c.wav,9. Listening and choosing games,"This star word is come. c, o, m, e spells come. Tap come.","This star word is come. c, o, m, e spells come. Tap come.","Word Treats (letters are read as letter NAMES: T, H, E)"
+VO146,VO146_this-star-word-is-here-h.wav,9. Listening and choosing games,"This star word is here. h, e, r, e spells here. Tap here.","This star word is here. h, e, r, e spells here. Tap here.","Word Treats (letters are read as letter NAMES: T, H, E)"
+VO147,VO147_this-star-word-is-little-l.wav,9. Listening and choosing games,"This star word is little. l, i, t, t, l, e spells little. Tap little.","This star word is little. l, i, t, t, l, e spells little. Tap little.","Word Treats (letters are read as letter NAMES: T, H, E)"
+VO148,VO148_each-pony-needs-the-stall-with.wav,9. Listening and choosing games,Each pony needs the stall with the number called aloud. Find the number seventy-four.,Each pony needs the stall with the number called aloud. Find the number seventy four.,Number Stable
+VO149,VO149_each-pony-needs-the-stall-with.wav,9. Listening and choosing games,Each pony needs the stall with the number called aloud. Find the number forty-two.,Each pony needs the stall with the number called aloud. Find the number forty two.,Number Stable
+VO150,VO150_each-pony-needs-the-stall-with.wav,9. Listening and choosing games,Each pony needs the stall with the number called aloud. Find the number sixty-seven.,Each pony needs the stall with the number called aloud. Find the number sixty seven.,Number Stable
+VO151,VO151_each-pony-needs-the-stall-with.wav,9. Listening and choosing games,Each pony needs the stall with the number called aloud. Find the number eighty-three.,Each pony needs the stall with the number called aloud. Find the number eighty three.,Number Stable
+VO152,VO152_five-bunnies-are-playing-two-hop.wav,9. Listening and choosing games,Five bunnies are playing. Two hop home. Five bunnies are playing. Two hop home. How many stay?,Five bunnies are playing. Two hop home. Five bunnies are playing. Two hop home. How many stay?,Bunny Hop Math
+VO153,VO153_three-bunnies-are-joined-by-two.wav,9. Listening and choosing games,Three bunnies are joined by two friends. Three bunnies are joined by two friends. How many bunnies now?,Three bunnies are joined by two friends. Three bunnies are joined by two friends. How many bunnies now?,Bunny Hop Math
+VO154,VO154_six-carrots-are-ready-one-gets.wav,9. Listening and choosing games,Six carrots are ready. One gets eaten. Six carrots are ready. One gets eaten. How many remain?,Six carrots are ready. One gets eaten. Six carrots are ready. One gets eaten. How many remain?,Bunny Hop Math
+VO155,VO155_finish-the-parade-banner-before-the.wav,9. Listening and choosing games,"Finish the parade banner before the royal animals arrive. Star, moon, star, moon. What comes next?","Finish the parade banner before the royal animals arrive. Star, moon, star, moon. What comes next?",Royal Pattern Parade
+VO156,VO156_finish-the-parade-banner-before-the.wav,9. Listening and choosing games,"Finish the parade banner before the royal animals arrive. Purple, purple, yellow, purple, purple, yellow. What comes next?","Finish the parade banner before the royal animals arrive. Purple, purple, yellow, purple, purple, yellow. What comes next?",Royal Pattern Parade
+VO157,VO157_finish-the-parade-banner-before-the.wav,9. Listening and choosing games,"Finish the parade banner before the royal animals arrive. Bunny, fox, bunny, fox. What comes next?","Finish the parade banner before the royal animals arrive. Bunny, fox, bunny, fox. What comes next?",Royal Pattern Parade
+VO158,VO158_yes-dog-brilliant-listening.wav,10. Listening games - correct answers,"Yes, dog! Brilliant listening!","Yes, dog! Brilliant listening!",
+VO159,VO159_yes-pig-brilliant-listening.wav,10. Listening games - correct answers,"Yes, pig! Brilliant listening!","Yes, pig! Brilliant listening!",
+VO160,VO160_yes-sun-brilliant-listening.wav,10. Listening games - correct answers,"Yes, sun! Brilliant listening!","Yes, sun! Brilliant listening!",
+VO161,VO161_yes-fox-brilliant-listening.wav,10. Listening games - correct answers,"Yes, fox! Brilliant listening!","Yes, fox! Brilliant listening!",
+VO162,VO162_yes-sheep-brilliant-listening.wav,10. Listening games - correct answers,"Yes, sheep! Brilliant listening!","Yes, sheep! Brilliant listening!",
+VO163,VO163_yes-cat-brilliant-listening.wav,10. Listening games - correct answers,"Yes, cat! Brilliant listening!","Yes, cat! Brilliant listening!",
+VO164,VO164_yes-spoon-brilliant-listening.wav,10. Listening games - correct answers,"Yes, spoon! Brilliant listening!","Yes, spoon! Brilliant listening!",
+VO165,VO165_yes-car-brilliant-listening.wav,10. Listening games - correct answers,"Yes, car! Brilliant listening!","Yes, car! Brilliant listening!",
+VO166,VO166_yes-rug-brilliant-listening.wav,10. Listening games - correct answers,"Yes, rug! Brilliant listening!","Yes, rug! Brilliant listening!",
+VO167,VO167_yes-box-brilliant-listening.wav,10. Listening games - correct answers,"Yes, box! Brilliant listening!","Yes, box! Brilliant listening!",
+VO168,VO168_yes-frog-brilliant-listening.wav,10. Listening games - correct answers,"Yes, frog! Brilliant listening!","Yes, frog! Brilliant listening!",
+VO169,VO169_yes-the-brilliant-listening.wav,10. Listening games - correct answers,"Yes, the! Brilliant listening!","Yes, the! Brilliant listening!",
+VO170,VO170_yes-said-brilliant-listening.wav,10. Listening games - correct answers,"Yes, said! Brilliant listening!","Yes, said! Brilliant listening!",
+VO171,VO171_yes-come-brilliant-listening.wav,10. Listening games - correct answers,"Yes, come! Brilliant listening!","Yes, come! Brilliant listening!",
+VO172,VO172_yes-here-brilliant-listening.wav,10. Listening games - correct answers,"Yes, here! Brilliant listening!","Yes, here! Brilliant listening!",
+VO173,VO173_yes-little-brilliant-listening.wav,10. Listening games - correct answers,"Yes, little! Brilliant listening!","Yes, little! Brilliant listening!",
+VO174,VO174_yes-seventyfour-brilliant-listening.wav,10. Listening games - correct answers,"Yes, seventy-four! Brilliant listening!","Yes, seventy-four! Brilliant listening!",
+VO175,VO175_yes-fortytwo-brilliant-listening.wav,10. Listening games - correct answers,"Yes, forty-two! Brilliant listening!","Yes, forty-two! Brilliant listening!",
+VO176,VO176_yes-sixtyseven-brilliant-listening.wav,10. Listening games - correct answers,"Yes, sixty-seven! Brilliant listening!","Yes, sixty-seven! Brilliant listening!",
+VO177,VO177_yes-eightythree-brilliant-listening.wav,10. Listening games - correct answers,"Yes, eighty-three! Brilliant listening!","Yes, eighty-three! Brilliant listening!",
+VO178,VO178_yes-three-brilliant-listening.wav,10. Listening games - correct answers,"Yes, three! Brilliant listening!","Yes, three! Brilliant listening!",
+VO179,VO179_yes-five-brilliant-listening.wav,10. Listening games - correct answers,"Yes, five! Brilliant listening!","Yes, five! Brilliant listening!",
+VO180,VO180_yes-dog-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, dog! You listened carefully.","Yes, dog! You listened carefully.",Said after one or more wrong taps
+VO181,VO181_yes-pig-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, pig! You listened carefully.","Yes, pig! You listened carefully.",Said after one or more wrong taps
+VO182,VO182_yes-sun-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, sun! You listened carefully.","Yes, sun! You listened carefully.",Said after one or more wrong taps
+VO183,VO183_yes-fox-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, fox! You listened carefully.","Yes, fox! You listened carefully.",Said after one or more wrong taps
+VO184,VO184_yes-sheep-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, sheep! You listened carefully.","Yes, sheep! You listened carefully.",Said after one or more wrong taps
+VO185,VO185_yes-cat-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, cat! You listened carefully.","Yes, cat! You listened carefully.",Said after one or more wrong taps
+VO186,VO186_yes-spoon-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, spoon! You listened carefully.","Yes, spoon! You listened carefully.",Said after one or more wrong taps
+VO187,VO187_yes-car-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, car! You listened carefully.","Yes, car! You listened carefully.",Said after one or more wrong taps
+VO188,VO188_yes-rug-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, rug! You listened carefully.","Yes, rug! You listened carefully.",Said after one or more wrong taps
+VO189,VO189_yes-box-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, box! You listened carefully.","Yes, box! You listened carefully.",Said after one or more wrong taps
+VO190,VO190_yes-frog-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, frog! You listened carefully.","Yes, frog! You listened carefully.",Said after one or more wrong taps
+VO191,VO191_yes-the-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, the! You listened carefully.","Yes, the! You listened carefully.",Said after one or more wrong taps
+VO192,VO192_yes-said-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, said! You listened carefully.","Yes, said! You listened carefully.",Said after one or more wrong taps
+VO193,VO193_yes-come-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, come! You listened carefully.","Yes, come! You listened carefully.",Said after one or more wrong taps
+VO194,VO194_yes-here-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, here! You listened carefully.","Yes, here! You listened carefully.",Said after one or more wrong taps
+VO195,VO195_yes-little-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, little! You listened carefully.","Yes, little! You listened carefully.",Said after one or more wrong taps
+VO196,VO196_yes-seventyfour-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, seventy-four! You listened carefully.","Yes, seventy-four! You listened carefully.",Said after one or more wrong taps
+VO197,VO197_yes-fortytwo-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, forty-two! You listened carefully.","Yes, forty-two! You listened carefully.",Said after one or more wrong taps
+VO198,VO198_yes-sixtyseven-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, sixty-seven! You listened carefully.","Yes, sixty-seven! You listened carefully.",Said after one or more wrong taps
+VO199,VO199_yes-eightythree-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, eighty-three! You listened carefully.","Yes, eighty-three! You listened carefully.",Said after one or more wrong taps
+VO200,VO200_yes-three-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, three! You listened carefully.","Yes, three! You listened carefully.",Said after one or more wrong taps
+VO201,VO201_yes-five-you-listened-carefully.wav,10. Listening games - correct answers,"Yes, five! You listened carefully.","Yes, five! You listened carefully.",Said after one or more wrong taps
+VO202,VO202_yes-brilliant-listening.wav,10. Listening games - correct answers,Yes! Brilliant listening!,"Yes, ! Brilliant listening!","Pattern parade: the game builds this from the picture's name, which is empty for emoji, so it currently says 'Yes, ! ...'. Recording this clean version; code fix needed"
+VO203,VO203_yes-you-listened-carefully.wav,10. Listening games - correct answers,Yes! You listened carefully.,"Yes, ! You listened carefully.","Same fix as above, for the after-a-mistake version"
+VO204,VO204_count-the-eggs-which-nest-has.wav,"11. Counting, numbers, shapes, measuring, sorting",Count the eggs. Which nest has more eggs?,Count the eggs. Which nest has more eggs?,
+VO205,VO205_count-the-eggs-which-nest-has.wav,"11. Counting, numbers, shapes, measuring, sorting",Count the eggs. Which nest has fewer eggs?,Count the eggs. Which nest has fewer eggs?,
+VO206,VO206_yes-four-eggs.wav,"11. Counting, numbers, shapes, measuring, sorting",Yes! Four eggs.,Yes! 4 eggs.,
+VO207,VO207_yes-five-eggs.wav,"11. Counting, numbers, shapes, measuring, sorting",Yes! Five eggs.,Yes! 5 eggs.,
+VO208,VO208_yes-six-eggs.wav,"11. Counting, numbers, shapes, measuring, sorting",Yes! Six eggs.,Yes! 6 eggs.,
+VO209,VO209_yes-seven-eggs.wav,"11. Counting, numbers, shapes, measuring, sorting",Yes! Seven eggs.,Yes! 7 eggs.,
+VO210,VO210_yes-eight-eggs.wav,"11. Counting, numbers, shapes, measuring, sorting",Yes! Eight eggs.,Yes! 8 eggs.,
+VO211,VO211_yes-nine-eggs.wav,"11. Counting, numbers, shapes, measuring, sorting",Yes! Nine eggs.,Yes! 9 eggs.,
+VO212,VO212_build-eleven-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build eleven. Fill one nest with ten eggs, then add one more.","Build 11. Fill one nest with ten eggs, then add 1 more.",
+VO213,VO213_build-twelve-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build twelve. Fill one nest with ten eggs, then add two more.","Build 12. Fill one nest with ten eggs, then add 2 more.",
+VO214,VO214_build-thirteen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build thirteen. Fill one nest with ten eggs, then add three more.","Build 13. Fill one nest with ten eggs, then add 3 more.",
+VO215,VO215_build-fourteen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build fourteen. Fill one nest with ten eggs, then add four more.","Build 14. Fill one nest with ten eggs, then add 4 more.",
+VO216,VO216_build-fifteen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build fifteen. Fill one nest with ten eggs, then add five more.","Build 15. Fill one nest with ten eggs, then add 5 more.",
+VO217,VO217_build-sixteen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build sixteen. Fill one nest with ten eggs, then add six more.","Build 16. Fill one nest with ten eggs, then add 6 more.",
+VO218,VO218_build-seventeen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build seventeen. Fill one nest with ten eggs, then add seven more.","Build 17. Fill one nest with ten eggs, then add 7 more.",
+VO219,VO219_build-eighteen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build eighteen. Fill one nest with ten eggs, then add eight more.","Build 18. Fill one nest with ten eggs, then add 8 more.",
+VO220,VO220_build-nineteen-fill-one-nest-with.wav,"11. Counting, numbers, shapes, measuring, sorting","Build nineteen. Fill one nest with ten eggs, then add nine more.","Build 19. Fill one nest with ten eggs, then add 9 more.",
+VO221,VO221_one-full-ten-now-add-the.wav,"11. Counting, numbers, shapes, measuring, sorting",One full ten! Now add the extra ones.,One full ten! Now add the extra ones.,
+VO222,VO222_eleven-is-ten-and-one-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Eleven is ten and one more!,11 is ten and 1 more!,
+VO223,VO223_twelve-is-ten-and-two-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Twelve is ten and two more!,12 is ten and 2 more!,
+VO224,VO224_thirteen-is-ten-and-three-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Thirteen is ten and three more!,13 is ten and 3 more!,
+VO225,VO225_fourteen-is-ten-and-four-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Fourteen is ten and four more!,14 is ten and 4 more!,
+VO226,VO226_fifteen-is-ten-and-five-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Fifteen is ten and five more!,15 is ten and 5 more!,
+VO227,VO227_sixteen-is-ten-and-six-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Sixteen is ten and six more!,16 is ten and 6 more!,
+VO228,VO228_seventeen-is-ten-and-seven-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Seventeen is ten and seven more!,17 is ten and 7 more!,
+VO229,VO229_eighteen-is-ten-and-eight-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Eighteen is ten and eight more!,18 is ten and 8 more!,
+VO230,VO230_nineteen-is-ten-and-nine-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Nineteen is ten and nine more!,19 is ten and 9 more!,
+VO231,VO231_find-the-triangle-tap-it-to.wav,"11. Counting, numbers, shapes, measuring, sorting",Find the triangle. Tap it to repair the window.,Find the triangle. Tap it to repair the window.,
+VO232,VO232_the-triangle-fits.wav,"11. Counting, numbers, shapes, measuring, sorting",The triangle fits!,The triangle fits!,
+VO233,VO233_find-the-rectangle-tap-it-to.wav,"11. Counting, numbers, shapes, measuring, sorting",Find the rectangle. Tap it to repair the window.,Find the rectangle. Tap it to repair the window.,
+VO234,VO234_the-rectangle-fits.wav,"11. Counting, numbers, shapes, measuring, sorting",The rectangle fits!,The rectangle fits!,
+VO235,VO235_find-the-hexagon-tap-it-to.wav,"11. Counting, numbers, shapes, measuring, sorting",Find the hexagon. Tap it to repair the window.,Find the hexagon. Tap it to repair the window.,
+VO236,VO236_the-hexagon-fits.wav,"11. Counting, numbers, shapes, measuring, sorting",The hexagon fits!,The hexagon fits!,
+VO237,VO237_which-bandage-is-longer.wav,"11. Counting, numbers, shapes, measuring, sorting",Which bandage is longer?,Which bandage is longer?,
+VO238,VO238_yes-this-bandage-is-longer.wav,"11. Counting, numbers, shapes, measuring, sorting","Yes, this bandage is longer!","Yes, this bandage is longer!",
+VO239,VO239_which-ribbon-is-shorter.wav,"11. Counting, numbers, shapes, measuring, sorting",Which ribbon is shorter?,Which ribbon is shorter?,
+VO240,VO240_yes-this-ribbon-is-shorter.wav,"11. Counting, numbers, shapes, measuring, sorting","Yes, this ribbon is shorter!","Yes, this ribbon is shorter!",
+VO241,VO241_which-potion-bottle-holds-more.wav,"11. Counting, numbers, shapes, measuring, sorting",Which potion bottle holds more?,Which potion bottle holds more?,
+VO242,VO242_yes-this-potion-bottle-holds-more.wav,"11. Counting, numbers, shapes, measuring, sorting","Yes, this potion bottle holds more!","Yes, this potion bottle holds more!",
+VO243,VO243_where-does-this-belong-food-care.wav,"11. Counting, numbers, shapes, measuring, sorting","Where does this belong? Food, care tools, or play things?","Where does this belong? Food, care tools, or play things?",
+VO244,VO244_that-belongs-there.wav,"11. Counting, numbers, shapes, measuring, sorting",That belongs there!,That belongs there!,
+VO245,VO245_listen-and-blend-mmm-short-a.wav,"12. Sound games, blending and cracking words",Listen and blend. mmm ... short a ... p. What word?,Listen and blend. mmm ... short a ... p. What word?,Say each sound clearly and separately with a short pause where '...' appears
+VO246,VO246_yes-map.wav,"12. Sound games, blending and cracking words",Yes! map.,Yes! map.,
+VO247,VO247_listen-and-blend-sss-short-u.wav,"12. Sound games, blending and cracking words",Listen and blend. sss ... short u ... nnn. What word?,Listen and blend. sss ... short u ... nnn. What word?,Say each sound clearly and separately with a short pause where '...' appears
+VO248,VO248_yes-sun.wav,"12. Sound games, blending and cracking words",Yes! sun.,Yes! sun.,
+VO249,VO249_listen-and-blend-fff-short-i.wav,"12. Sound games, blending and cracking words",Listen and blend. fff ... short i ... sh. What word?,Listen and blend. fff ... short i ... sh. What word?,Say each sound clearly and separately with a short pause where '...' appears
+VO250,VO250_yes-fish.wav,"12. Sound games, blending and cracking words",Yes! fish.,Yes! fish.,
+VO251,VO251_cat-listen-c-short-a-t.wav,"12. Sound games, blending and cracking words",cat. Listen: c ... short a ... t. Now tap one egg for each sound.,cat. Listen: c ... short a ... t. Now tap one egg for each sound.,"Sounds, not letter names"
+VO252,VO252_cat-has-three-sounds.wav,"12. Sound games, blending and cracking words",cat has three sounds!,cat has 3 sounds!,
+VO253,VO253_sun-listen-s-short-u-n.wav,"12. Sound games, blending and cracking words",sun. Listen: s ... short u ... n. Now tap one egg for each sound.,sun. Listen: s ... short u ... n. Now tap one egg for each sound.,"Sounds, not letter names"
+VO254,VO254_sun-has-three-sounds.wav,"12. Sound games, blending and cracking words",sun has three sounds!,sun has 3 sounds!,
+VO255,VO255_fish-listen-f-short-i-sh.wav,"12. Sound games, blending and cracking words",fish. Listen: f ... short i ... sh. Now tap one egg for each sound.,fish. Listen: f ... short i ... sh. Now tap one egg for each sound.,"Sounds, not letter names"
+VO256,VO256_fish-has-three-sounds.wav,"12. Sound games, blending and cracking words",fish has three sounds!,fish has 3 sounds!,
+VO257,VO257_c.wav,13. Single sounds (played when each egg is tapped),c,c,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO258,VO258_short-a.wav,13. Single sounds (played when each egg is tapped),short a,short a,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO259,VO259_t.wav,13. Single sounds (played when each egg is tapped),t,t,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO260,VO260_s.wav,13. Single sounds (played when each egg is tapped),s,s,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO261,VO261_short-u.wav,13. Single sounds (played when each egg is tapped),short u,short u,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO262,VO262_n.wav,13. Single sounds (played when each egg is tapped),n,n,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO263,VO263_f.wav,13. Single sounds (played when each egg is tapped),f,f,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO264,VO264_short-i.wav,13. Single sounds (played when each egg is tapped),short i,short i,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO265,VO265_sh.wav,13. Single sounds (played when each egg is tapped),sh,sh,"Say the SOUND: c=/k/, t=/t/, s=/s/, f=/f/, n=/n/, sh=/sh/. 'short a' etc = the vowel sound, or say the words 'short a'."
+VO266,VO266_start-at-the-star-follow-the.wav,14. Tracing letters and numbers,Start at the star. Follow the dots to write M.,Start at the star. Follow the dots to write M.,
+VO267,VO267_start-at-the-star-follow-the.wav,14. Tracing letters and numbers,Start at the star. Follow the dots to write A.,Start at the star. Follow the dots to write A.,
+VO268,VO268_start-at-the-star-follow-the.wav,14. Tracing letters and numbers,Start at the star. Follow the dots to write S.,Start at the star. Follow the dots to write S.,
+VO269,VO269_start-at-the-star-follow-the.wav,14. Tracing letters and numbers,Start at the star. Follow the dots to write two.,Start at the star. Follow the dots to write 2.,
+VO270,VO270_start-at-the-star-follow-the.wav,14. Tracing letters and numbers,Start at the star. Follow the dots to write seven.,Start at the star. Follow the dots to write 7.,
+VO271,VO271_start-at-the-star-follow-the.wav,14. Tracing letters and numbers,Start at the star. Follow the dots to write nine.,Start at the star. Follow the dots to write 9.,
+VO272,VO272_m-is-glowing.wav,14. Tracing letters and numbers,M is glowing!,M is glowing!,
+VO273,VO273_a-is-glowing.wav,14. Tracing letters and numbers,A is glowing!,A is glowing!,
+VO274,VO274_s-is-glowing.wav,14. Tracing letters and numbers,S is glowing!,S is glowing!,
+VO275,VO275_two-is-glowing.wav,14. Tracing letters and numbers,two is glowing!,2 is glowing!,
+VO276,VO276_seven-is-glowing.wav,14. Tracing letters and numbers,seven is glowing!,7 is glowing!,
+VO277,VO277_nine-is-glowing.wav,14. Tracing letters and numbers,nine is glowing!,9 is glowing!,
+VO278,VO278_wonderful-work-doctor-annabeth-you-earned.wav,15. Rewards,"Wonderful work, Doctor Annabeth! You earned one star.","Wonderful work, Doctor Annabeth! You earned 1 stars.",Game text says '1 stars' - code fix needed
+VO279,VO279_wonderful-work-doctor-annabeth-you-earned.wav,15. Rewards,"Wonderful work, Doctor Annabeth! You earned four stars.","Wonderful work, Doctor Annabeth! You earned 4 stars.",
+VO280,VO280_wonderful-work-doctor-annabeth-variety-bonus.wav,15. Rewards,"Wonderful work, Doctor Annabeth! Variety bonus! You earned five stars and a magic gem.","Wonderful work, Doctor Annabeth! Variety bonus! You earned 5 stars and a magic gem.",
+VO281,VO281_wonderful-work-doctor-annabeth-variety-bonus.wav,15. Rewards,"Wonderful work, Doctor Annabeth! Variety bonus! You earned eight stars and a magic gem.","Wonderful work, Doctor Annabeth! Variety bonus! You earned 8 stars and a magic gem.",
+VO282,VO282_dr-annabeth-twinkles-teeth-feel-tickly.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,"Dr. Annabeth, Twinkle's teeth feel tickly. Tap the sparkly tooth to take a look!","Dr. Annabeth, Twinkle's teeth feel tickly. Tap the sparkly tooth to take a look!",
+VO283,VO283_tap-the-sparkly-tooth-to-check.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Tap the sparkly tooth to check Twinkle's smile!,Tap the sparkly tooth to check Twinkle's smile!,
+VO284,VO284_brush-every-sugar-bug-move-the.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Brush every sugar bug. Move the magic toothbrush over all the spots!,Brush every sugar bug. Move the magic toothbrush over all the spots!,
+VO285,VO285_brush-every-sugar-bug-until-all.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Brush every sugar bug until all the teeth sparkle!,Brush every sugar bug until all the teeth sparkle!,
+VO286,VO286_use-your-learning-magic-to-power.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Use your learning magic to power the tooth polisher!,Use your learning magic to power the tooth polisher!,
+VO287,VO287_the-polisher-is-powered-up-brush.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,The polisher is powered up! Brush the glowing teeth for a magical finish.,The polisher is powered up! Brush the glowing teeth for a magical finish.,
+VO288,VO288_polish-the-glowing-teeth-for-a.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Polish the glowing teeth for a magical finish!,Polish the glowing teeth for a magical finish!,
+VO289,VO289_hooray-twinkles-smile-sparkles-wonderful-work.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,"Hooray! Twinkle's smile sparkles. Wonderful work, Doctor Annabeth!","Hooray! Twinkle's smile sparkles. Wonderful work, Doctor Annabeth!",
+VO290,VO290_you-found-it-great-listening.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,You found it! Great listening!,You found it! Great listening!,
+VO291,VO291_brilliant-your-magic-is-strong.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Brilliant! Your magic is strong!,Brilliant! Your magic is strong!,
+VO292,VO292_almost-listen-once-more.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Almost. Listen once more.,Almost. Listen once more.,Prefix - game adds the question after it
+VO293,VO293_magic-tic-tac-toe-your-turn.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,"Magic tic tac toe! Your turn, Annabeth. Place a star.","Magic tic tac toe! Your turn, Annabeth. Place a star.",
+VO294,VO294_you-won-annabeth-three-sparkling-stars.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,"You won, Annabeth! Three sparkling stars in a row!","You won, Annabeth! Three sparkling stars in a row!",
+VO295,VO295_pip-got-three-this-time-lets.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,Pip got three this time. Let's play again!,Pip got three this time. Let's play again!,
+VO296,VO296_a-magical-tie-great-playing.wav,16. Magic Smile Checkup (dentist) and Tic-Tac-Toe,A magical tie! Great playing!,A magical tie! Great playing!,
+VO297,VO297_listen-to-the-last-sound-cat.wav,17. Magic Smile Checkup - listening questions,"Listen to the last sound. Cat, sun, fish. Which picture ends with t?","Listen to the last sound. Cat, sun, fish. Which picture ends with t?",
+VO298,VO298_listen-to-the-last-sound-dog.wav,17. Magic Smile Checkup - listening questions,"Listen to the last sound. Dog, bee, moon. Which picture ends with g?","Listen to the last sound. Dog, bee, moon. Which picture ends with g?",
+VO299,VO299_listen-to-the-middle-sound-pig.wav,17. Magic Smile Checkup - listening questions,"Listen to the middle sound. Pig, sun, cake. Which picture has short i in the middle?","Listen to the middle sound. Pig, sun, cake. Which picture has short i in the middle?",
+VO300,VO300_listen-to-the-middle-sound-fox.wav,17. Magic Smile Checkup - listening questions,"Listen to the middle sound. Fox, bee, kite. Which picture has short o in the middle?","Listen to the middle sound. Fox, bee, kite. Which picture has short o in the middle?",
+VO301,VO301_which-word-rhymes-with-star-car.wav,17. Magic Smile Checkup - listening questions,"Which word rhymes with star? Car, moon, or fish?","Which word rhymes with star? Car, moon, or fish?",
+VO302,VO302_which-word-rhymes-with-bug-rug.wav,17. Magic Smile Checkup - listening questions,"Which word rhymes with bug? Rug, cat, or bee?","Which word rhymes with bug? Rug, cat, or bee?",
+VO303,VO303_find-the-word-the.wav,17. Magic Smile Checkup - listening questions,Find the word the.,Find the word the.,
+VO304,VO304_find-the-word-said.wav,17. Magic Smile Checkup - listening questions,Find the word said.,Find the word said.,
+VO305,VO305_find-the-word-little.wav,17. Magic Smile Checkup - listening questions,Find the word little.,Find the word little.,
+VO306,VO306_tap-the-number-forty-two.wav,17. Magic Smile Checkup - listening questions,Tap the number forty two.,Tap the number forty two.,
+VO307,VO307_tap-the-number-sixty-seven.wav,17. Magic Smile Checkup - listening questions,Tap the number sixty seven.,Tap the number sixty seven.,
+VO308,VO308_which-number-is-three-tens-and.wav,17. Magic Smile Checkup - listening questions,Which number is three tens and five ones?,Which number is three tens and five ones?,
+VO309,VO309_more-stars-will-unlock.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),more stars will unlock,more stars will unlock,Piece
+VO310,VO310_try-another-adventure-first.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Try another adventure first.,Try another adventure first.,Piece
+VO311,VO311_more-magic-gems-to-unlock.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),more magic gems to unlock,more magic gems to unlock,Piece
+VO312,VO312_more-stars-to-unlock.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),more stars to unlock,more stars to unlock,Piece
+VO313,VO313_more-stars-to-unlock-this-outfit.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),more stars to unlock this outfit.,more stars to unlock this outfit.,Piece
+VO314,VO314_one.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),one,1,Number piece
+VO315,VO315_two.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),two,2,Number piece
+VO316,VO316_three.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),three,3,Number piece
+VO317,VO317_four.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),four,4,Number piece
+VO318,VO318_five.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),five,5,Number piece
+VO319,VO319_six.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),six,6,Number piece
+VO320,VO320_seven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seven,7,Number piece
+VO321,VO321_eight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eight,8,Number piece
+VO322,VO322_nine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),nine,9,Number piece
+VO323,VO323_ten.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ten,10,Number piece
+VO324,VO324_eleven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eleven,11,Number piece
+VO325,VO325_twelve.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twelve,12,Number piece
+VO326,VO326_thirteen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirteen,13,Number piece
+VO327,VO327_fourteen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fourteen,14,Number piece
+VO328,VO328_fifteen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifteen,15,Number piece
+VO329,VO329_sixteen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixteen,16,Number piece
+VO330,VO330_seventeen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventeen,17,Number piece
+VO331,VO331_eighteen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighteen,18,Number piece
+VO332,VO332_nineteen.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),nineteen,19,Number piece
+VO333,VO333_twenty.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty,20,Number piece
+VO334,VO334_twentyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-one,21,Number piece
+VO335,VO335_twentytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-two,22,Number piece
+VO336,VO336_twentythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-three,23,Number piece
+VO337,VO337_twentyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-four,24,Number piece
+VO338,VO338_twentyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-five,25,Number piece
+VO339,VO339_twentysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-six,26,Number piece
+VO340,VO340_twentyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-seven,27,Number piece
+VO341,VO341_twentyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-eight,28,Number piece
+VO342,VO342_twentynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),twenty-nine,29,Number piece
+VO343,VO343_thirty.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty,30,Number piece
+VO344,VO344_thirtyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-one,31,Number piece
+VO345,VO345_thirtytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-two,32,Number piece
+VO346,VO346_thirtythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-three,33,Number piece
+VO347,VO347_thirtyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-four,34,Number piece
+VO348,VO348_thirtyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-five,35,Number piece
+VO349,VO349_thirtysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-six,36,Number piece
+VO350,VO350_thirtyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-seven,37,Number piece
+VO351,VO351_thirtyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-eight,38,Number piece
+VO352,VO352_thirtynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),thirty-nine,39,Number piece
+VO353,VO353_forty.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty,40,Number piece
+VO354,VO354_fortyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-one,41,Number piece
+VO355,VO355_fortytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-two,42,Number piece
+VO356,VO356_fortythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-three,43,Number piece
+VO357,VO357_fortyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-four,44,Number piece
+VO358,VO358_fortyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-five,45,Number piece
+VO359,VO359_fortysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-six,46,Number piece
+VO360,VO360_fortyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-seven,47,Number piece
+VO361,VO361_fortyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-eight,48,Number piece
+VO362,VO362_fortynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),forty-nine,49,Number piece
+VO363,VO363_fifty.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty,50,Number piece
+VO364,VO364_fiftyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-one,51,Number piece
+VO365,VO365_fiftytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-two,52,Number piece
+VO366,VO366_fiftythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-three,53,Number piece
+VO367,VO367_fiftyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-four,54,Number piece
+VO368,VO368_fiftyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-five,55,Number piece
+VO369,VO369_fiftysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-six,56,Number piece
+VO370,VO370_fiftyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-seven,57,Number piece
+VO371,VO371_fiftyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-eight,58,Number piece
+VO372,VO372_fiftynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),fifty-nine,59,Number piece
+VO373,VO373_sixty.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty,60,Number piece
+VO374,VO374_sixtyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-one,61,Number piece
+VO375,VO375_sixtytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-two,62,Number piece
+VO376,VO376_sixtythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-three,63,Number piece
+VO377,VO377_sixtyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-four,64,Number piece
+VO378,VO378_sixtyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-five,65,Number piece
+VO379,VO379_sixtysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-six,66,Number piece
+VO380,VO380_sixtyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-seven,67,Number piece
+VO381,VO381_sixtyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-eight,68,Number piece
+VO382,VO382_sixtynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),sixty-nine,69,Number piece
+VO383,VO383_seventy.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy,70,Number piece
+VO384,VO384_seventyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-one,71,Number piece
+VO385,VO385_seventytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-two,72,Number piece
+VO386,VO386_seventythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-three,73,Number piece
+VO387,VO387_seventyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-four,74,Number piece
+VO388,VO388_seventyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-five,75,Number piece
+VO389,VO389_seventysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-six,76,Number piece
+VO390,VO390_seventyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-seven,77,Number piece
+VO391,VO391_seventyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-eight,78,Number piece
+VO392,VO392_seventynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),seventy-nine,79,Number piece
+VO393,VO393_eighty.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty,80,Number piece
+VO394,VO394_eightyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-one,81,Number piece
+VO395,VO395_eightytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-two,82,Number piece
+VO396,VO396_eightythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-three,83,Number piece
+VO397,VO397_eightyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-four,84,Number piece
+VO398,VO398_eightyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-five,85,Number piece
+VO399,VO399_eightysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-six,86,Number piece
+VO400,VO400_eightyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-seven,87,Number piece
+VO401,VO401_eightyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-eight,88,Number piece
+VO402,VO402_eightynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),eighty-nine,89,Number piece
+VO403,VO403_ninety.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety,90,Number piece
+VO404,VO404_ninetyone.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-one,91,Number piece
+VO405,VO405_ninetytwo.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-two,92,Number piece
+VO406,VO406_ninetythree.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-three,93,Number piece
+VO407,VO407_ninetyfour.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-four,94,Number piece
+VO408,VO408_ninetyfive.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-five,95,Number piece
+VO409,VO409_ninetysix.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-six,96,Number piece
+VO410,VO410_ninetyseven.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-seven,97,Number piece
+VO411,VO411_ninetyeight.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-eight,98,Number piece
+VO412,VO412_ninetynine.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),ninety-nine,99,Number piece
+VO413,VO413_one-hundred.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),one hundred,100,Number piece
+VO414,VO414_magic-number-nests.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Magic Number Nests,Magic Number Nests,Adventure title piece
+VO415,VO415_unicorn-horn-repair.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Unicorn Horn Repair,Unicorn Horn Repair,Adventure title piece
+VO416,VO416_xray-detective.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),X-Ray Detective,X-Ray Detective,Adventure title piece
+VO417,VO417_sound-bridge.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Sound Bridge,Sound Bridge,Adventure title piece
+VO418,VO418_heartbeat-check.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Heartbeat Check,Heartbeat Check,Adventure title piece
+VO419,VO419_animal-supply-sort.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Animal Supply Sort,Animal Supply Sort,Adventure title piece
+VO420,VO420_letter-skywriting.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Letter Skywriting,Letter Skywriting,Adventure title piece
+VO421,VO421_wordcracker-eggs.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Word-Cracker Eggs,Word-Cracker Eggs,Adventure title piece
+VO422,VO422_number-trails.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Number Trails,Number Trails,Adventure title piece
+VO423,VO423_bunny-hop-math.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Bunny Hop Math,Bunny Hop Math,Adventure title piece
+VO424,VO424_castle-shape-repair.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Castle Shape Repair,Castle Shape Repair,Adventure title piece
+VO425,VO425_magical-measuring-room.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Magical Measuring Room,Magical Measuring Room,Adventure title piece
+VO426,VO426_royal-pattern-parade.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Royal Pattern Parade,Royal Pattern Parade,Adventure title piece
+VO427,VO427_recovery-room-memory.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Recovery Room Memory,Recovery Room Memory,Adventure title piece
+VO428,VO428_mouse-ears.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Mouse ears,Mouse ears,Wardrobe item name piece
+VO429,VO429_crystal-tiara.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Crystal tiara,Crystal tiara,Wardrobe item name piece
+VO430,VO430_flower-crown.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Flower crown,Flower crown,Wardrobe item name piece
+VO431,VO431_star-crown.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Star crown,Star crown,Wardrobe item name piece
+VO432,VO432_moon-hat.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Moon hat,Moon hat,Wardrobe item name piece
+VO433,VO433_doctor-coat.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Doctor coat,Doctor coat,Wardrobe item name piece
+VO434,VO434_mint-scrubs.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Mint scrubs,Mint scrubs,Wardrobe item name piece
+VO435,VO435_royal-dress.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Royal dress,Royal dress,Wardrobe item name piece
+VO436,VO436_forest-vest.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Forest vest,Forest vest,Wardrobe item name piece
+VO437,VO437_art-smock.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Art smock,Art smock,Wardrobe item name piece
+VO438,VO438_heart-necklace.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Heart necklace,Heart necklace,Wardrobe item name piece
+VO439,VO439_pearl-necklace.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Pearl necklace,Pearl necklace,Wardrobe item name piece
+VO440,VO440_star-pendant.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Star pendant,Star pendant,Wardrobe item name piece
+VO441,VO441_star-sneakers.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Star sneakers,Star sneakers,Wardrobe item name piece
+VO442,VO442_purple-boots.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Purple boots,Purple boots,Wardrobe item name piece
+VO443,VO443_royal-boots.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Royal boots,Royal boots,Wardrobe item name piece
+VO444,VO444_coral-rain-boots.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Coral rain boots,Coral rain boots,Wardrobe item name piece
+VO445,VO445_unicorn-slippers.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Unicorn slippers,Unicorn slippers,Wardrobe item name piece
+VO446,VO446_pink-bow.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Pink bow,Pink bow,Wardrobe item name piece
+VO447,VO447_purple-bow.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Purple bow,Purple bow,Wardrobe item name piece
+VO448,VO448_rainbow-ribbon.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Rainbow ribbon,Rainbow ribbon,Wardrobe item name piece
+VO449,VO449_magic-gloves.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Magic gloves,Magic gloves,Wardrobe item name piece
+VO450,VO450_medical-bag.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Medical bag,Medical bag,Wardrobe item name piece
+VO451,VO451_sparkle-scrubs.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Sparkle Scrubs,Sparkle Scrubs,Wardrobe item name piece
+VO452,VO452_royal-healer.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Royal Healer,Royal Healer,Wardrobe item name piece
+VO453,VO453_starry-veterinarian.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Starry Veterinarian,Starry Veterinarian,Wardrobe item name piece
+VO454,VO454_rainbow-rescuer.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Rainbow Rescuer,Rainbow Rescuer,Wardrobe item name piece
+VO455,VO455_forest-veterinarian.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Forest Veterinarian,Forest Veterinarian,Wardrobe item name piece
+VO456,VO456_unicorn-stable-jacket.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Unicorn Stable Jacket,Unicorn Stable Jacket,Wardrobe item name piece
+VO457,VO457_royal-parade-healer.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Royal Parade Healer,Royal Parade Healer,Wardrobe item name piece
+VO458,VO458_cozy-unicorn-pajamas.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Cozy Unicorn Pajamas,Cozy Unicorn Pajamas,Wardrobe item name piece
+VO459,VO459_ocean-animal-doctor.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Ocean Animal Doctor,Ocean Animal Doctor,Wardrobe item name piece
+VO460,VO460_rainbow-art-smock.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Rainbow Art Smock,Rainbow Art Smock,Wardrobe item name piece
+VO461,VO461_constellation-healer.wav,18. Locked items - build-a-sentence pieces (needs a small code change to stitch),Constellation Healer,Constellation Healer,Wardrobe item name piece
+VO462,VO462_the-magical-hospital-is-open-fern.mp3,1. Welcome and story map,"The magical hospital is open! Fern, Bramble, and Nova need Doctor Annabeth's help.","The magical hospital is open! Fern, Bramble, and Nova need Doctor Annabeth's help.","Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO463,VO463_oh-no-novas-rainbow-magic-scattered.mp3,1. Welcome and story map,Oh no! Nova's rainbow magic scattered across the kingdom. Help the animals find it.,Oh no! Nova's rainbow magic scattered across the kingdom. Help the animals find it.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO464,VO464_the-royal-animal-parade-starts-soon.mp3,1. Welcome and story map,The royal animal parade starts soon. Help everyone get ready to celebrate.,The royal animal parade starts soon. Help everyone get ready to celebrate.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO465,VO465_doctor-annabeth-is-the-kingdoms-magical.mp3,1. Welcome and story map,Doctor Annabeth is the kingdom's magical healer. Choose any friend to help today!,Doctor Annabeth is the kingdom's magical healer. Choose any friend to help today!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO466,VO466_the-glowing-place-is-animal-hospital.mp3,1. Welcome and story map,The glowing place on the map is Animal Hospital. Tap any place to choose an adventure.,The glowing place on the map is Animal Hospital. Tap any place to choose an adventure.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO467,VO467_the-glowing-place-is-enchanted-forest.mp3,1. Welcome and story map,The glowing place on the map is Enchanted Forest. Tap any place to choose an adventure.,The glowing place on the map is Enchanted Forest. Tap any place to choose an adventure.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO468,VO468_the-glowing-place-is-art-studio.mp3,1. Welcome and story map,The glowing place on the map is Art Studio. Tap any place to choose an adventure.,The glowing place on the map is Art Studio. Tap any place to choose an adventure.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO469,VO469_the-glowing-place-is-dragon-cave.mp3,1. Welcome and story map,The glowing place on the map is Dragon Cave. Tap any place to choose an adventure.,The glowing place on the map is Dragon Cave. Tap any place to choose an adventure.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO470,VO470_the-glowing-place-is-unicorn-stable.mp3,1. Welcome and story map,The glowing place on the map is Unicorn Stable. Tap any place to choose an adventure.,The glowing place on the map is Unicorn Stable. Tap any place to choose an adventure.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO471,VO471_the-glowing-place-is-royal-castle.mp3,1. Welcome and story map,The glowing place on the map is Royal Castle. Tap any place to choose an adventure.,The glowing place on the map is Royal Castle. Tap any place to choose an adventure.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO472,VO472_bramble-needs-a-checkup-the-vet.mp3,2. Magical Vet Care - case introductions,Bramble needs a checkup. The vet has chosen medicine to help him feel better. Only a grown-up vet gives real shots.,Bramble needs a checkup. The vet has chosen medicine to help him feel better. Only a grown-up vet gives real shots.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO473,VO473_little-sugar-bugs-are-hiding-in.mp3,2. Magical Vet Care - case introductions,Little sugar bugs are hiding in Bramble's mouth. Let's brush them away.,Little sugar bugs are hiding in Bramble's mouth. Let's brush them away.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO474,VO474_cleaning-sponge-wipe-the-sore-spot.mp3,3. Magical Vet Care - tool prompts,Cleaning sponge. Wipe the sore spot.,Cleaning sponge. Wipe the sore spot.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO475,VO475_lets-try-the-cleaning-sponge.mp3,4. Magical Vet Care - wrong tool,Let's try the cleaning sponge!,Let's try the cleaning sponge!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO476,VO476_step-three-lets-use-the-cleaning.mp3,5. Magical Vet Care - step announcements,Step three. Let's use the cleaning sponge.,Step three. Let's use the cleaning sponge.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO477,VO477_otoscope-look-gently-inside-the-ear.mp3,19. New clinic tools (never recorded) - the actual audio gap,Otoscope. Look gently inside the ear.,Otoscope. Look gently inside the ear.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO478,VO478_lets-try-the-otoscope.mp3,19. New clinic tools (never recorded) - the actual audio gap,Let's try the otoscope!,Let's try the otoscope!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO479,VO479_step-one-lets-use-the-otoscope.mp3,19. New clinic tools (never recorded) - the actual audio gap,Step one. Let's use the otoscope.,Step one. Let's use the otoscope.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO480,VO480_stitching-tool-guide-the-thread-across.mp3,19. New clinic tools (never recorded) - the actual audio gap,Stitching tool. Guide the thread across the little cut.,Stitching tool. Guide the thread across the little cut.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO481,VO481_lets-try-the-stitching-tool.mp3,19. New clinic tools (never recorded) - the actual audio gap,Let's try the stitching tool!,Let's try the stitching tool!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO482,VO482_step-three-lets-use-the-stitching.mp3,19. New clinic tools (never recorded) - the actual audio gap,Step three. Let's use the stitching tool.,Step three. Let's use the stitching tool.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO483,VO483_hoof-brush-brush-the-dusty-hoof.mp3,19. New clinic tools (never recorded) - the actual audio gap,Hoof brush. Brush the dusty hoof.,Hoof brush. Brush the dusty hoof.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO484,VO484_lets-try-the-hoof-brush.mp3,19. New clinic tools (never recorded) - the actual audio gap,Let's try the hoof brush!,Let's try the hoof brush!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO485,VO485_step-two-lets-use-the-hoof.mp3,19. New clinic tools (never recorded) - the actual audio gap,Step two. Let's use the hoof brush.,Step two. Let's use the hoof brush.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO486,VO486_soft-cool-pack-hold-the-cool.mp3,19. New clinic tools (never recorded) - the actual audio gap,Soft cool pack. Hold the cool pack gently on the tired hoof.,Soft cool pack. Hold the cool pack gently on the tired hoof.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO487,VO487_lets-try-the-soft-cool-pack.mp3,19. New clinic tools (never recorded) - the actual audio gap,Let's try the soft cool pack!,Let's try the soft cool pack!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO488,VO488_step-three-lets-use-the-soft.mp3,19. New clinic tools (never recorded) - the actual audio gap,Step three. Let's use the soft cool pack.,Step three. Let's use the soft cool pack.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO489,VO489_vets-medicine-shot-move-the-shot.mp3,19. New clinic tools (never recorded) - the actual audio gap,Vet's medicine shot. Move the shot to the glowing spot. Then hold the pink plunger.,Vet's medicine shot. Move the shot to the glowing spot. Then hold the pink plunger.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO490,VO490_hold-the-pink-plunger-nice-and.mp3,19. New clinic tools (never recorded) - the actual audio gap,Hold the pink plunger. Nice and steady.,Hold the pink plunger. Nice and steady.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO491,VO491_lets-try-the-vets-medicine-shot.mp3,19. New clinic tools (never recorded) - the actual audio gap,Let's try the vet's medicine shot!,Let's try the vet's medicine shot!,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO492,VO492_step-four-lets-use-the-vets.mp3,19. New clinic tools (never recorded) - the actual audio gap,Step four. Let's use the vet's medicine shot.,Step four. Let's use the vet's medicine shot.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"
+VO493,VO493_step-three-lets-use-the-cotton.mp3,19. New clinic tools (never recorded) - the actual audio gap,Step three. Let's use the cotton puff.,Step three. Let's use the cotton puff.,"Added Sep 26 pass, from RECORDING_SCRIPT.md section 19 / map rewrite / case-intro & tool rewording"

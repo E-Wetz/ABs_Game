@@ -44,14 +44,12 @@ const expression=String.raw`(async()=>{
   await test("xray",()=>until(reward,async()=>clickAll(".search-hotspot")));
   await test("search",()=>until(reward,async()=>clickAll(".search-hotspot")));
   await test("heart",async()=>{await wait(80);return until(reward,async()=>document.querySelector(".rhythm-pad:not(:disabled)")?.click())});
-  for(const id of ["forest","rhyme","words","stable","math","pattern"])await test(id,choiceRunner);
+  for(const id of ["forest","words","stable","math","pattern"])await test(id,choiceRunner);
   await test("nursery",()=>until(reward,async()=>clickAll(".egg-nest")));
   await test("nests",()=>until(reward,async()=>clickAll(".ten-cell")));
   await test("shapes",()=>until(reward,async()=>clickAll(".shape-piece")));
   await test("measure",()=>until(reward,async()=>clickAll(".measure-choice")));
   await test("sort",()=>until(reward,async()=>clickAll(".sort-basket"),240));
-  await test("blend",()=>until(reward,async()=>clickAll(".choice-tile")));
-  await test("segment",()=>until(reward,async()=>document.querySelector(".sound-egg.active:not(:disabled)")?.click()));
   for(const id of ["letter","number"])await test(id,()=>until(reward,async()=>document.querySelector(".trace-dot.active:not(:disabled)")?.click(),260));
   await test("memory",()=>until(reward,async()=>{const cards=[...document.querySelectorAll(".memory-card:not(.matched)")];const groups={};for(const card of cards)(groups[card.textContent]??=[]).push(card);const pair=Object.values(groups).find(g=>g.length===2);if(pair){pair[0].click();pair[1].click()}}));
   await test("color",async()=>{document.querySelector(".done-coloring-button")?.click();await wait();return reward()});
