@@ -97,6 +97,19 @@ function attemptBgMusicPlay() {
 ["pointerdown", "keydown"].forEach(type => document.addEventListener(type, attemptBgMusicPlay, { once: true, passive: true }));
 window.addEventListener("hospital-sound-change", () => updateBgMusic($$(".screen.active")[0]?.id));
 
+// Stop all audio immediately when the app is backgrounded, the screen locks, or it's closed/switched
+// away from (swipe up, app switcher, etc.) so music or a voice line never keeps playing after the
+// child has left the game. Resume the music bed only if it was actually wanted when we come back.
+function stopAllAudio() {
+  bgMusic.pause();
+  stopVoice();
+}
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopAllAudio();
+  else if (bgMusicWanted) attemptBgMusicPlay();
+});
+window.addEventListener("pagehide", stopAllAudio);
+
 // Recorded voice (assets/voice, generated with the af_heart voice). Any spoken line is matched against the
 // clip index; if every word is covered the clips play back to back, otherwise we fall back to device speech.
 const VOICE_ONES="zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
