@@ -36,14 +36,24 @@ const outfits=[
   {id:"pajamas",icon:"🌙",name:"Cozy Unicorn Pajamas",stars:72},
   {id:"ocean",icon:"🐚",name:"Ocean Animal Doctor",stars:80},
   {id:"artist",icon:"🎨",name:"Rainbow Art Smock",stars:90},
-  {id:"constellation",icon:"✨",name:"Constellation Healer",stars:100}
+  {id:"constellation",icon:"✨",name:"Constellation Healer",stars:100},
+  {id:"moonlight",icon:"\ud83c\udf19",name:"Moonlight Wildlife Rescuer",stars:120},
+  {id:"blossom",icon:"\ud83c\udf38",name:"Blossom Garden Veterinarian",stars:140},
+  {id:"dragonflight",icon:"\ud83d\udc09",name:"Dragon Flight Medic",stars:160},
+  {id:"arctic",icon:"\u2744\ufe0f",name:"Arctic Animal Doctor",stars:180},
+  {id:"safari",icon:"\u2600\ufe0f",name:"Sunbeam Safari Veterinarian",stars:200},
+  {id:"crystalvet",icon:"\ud83d\udc8e",name:"Crystal Cavern Healer",stars:220},
+  {id:"oceanpearl",icon:"\ud83d\udc1a",name:"Ocean Pearl Veterinarian",stars:240},
+  {id:"royalrescue",icon:"\ud83d\udc51",name:"Royal Rescue Captain",stars:260},
+  {id:"fairyforest",icon:"\ud83c\udf3f",name:"Fairy Forest Veterinarian",stars:280},
+  {id:"auroravet",icon:"\ud83c\udf0c",name:"Aurora Sky Doctor",stars:300}
 ];
 // Warm the small set of complete-look images while the player explores the map,
 // so the picture choices do not appear as empty tiles on first wardrobe open.
 let wardrobeArtPreloaded=false;const wardrobeImages=[];
 function preloadWardrobeArt(){
   if(wardrobeArtPreloaded)return;wardrobeArtPreloaded=true;
-  for(const file of ["annabeth-outfits.png","annabeth-outfits-2.png","annabeth-outfits-3.png","annabeth-complete-clinic-bag-v1.png","annabeth-complete-mouse-vet-v1.png"]){const picture=new Image();picture.src=`assets/${file}`;wardrobeImages.push(picture)}
+  for(const file of ["annabeth-outfits.png","annabeth-outfits-2.png","annabeth-outfits-3.png","annabeth-complete-clinic-bag-v1.png","annabeth-complete-mouse-vet-v1.png","annabeth-complete-moonlight-v1.png","annabeth-complete-blossom-v1.png","annabeth-complete-dragonflight-v1.png","annabeth-complete-arctic-v1.png","annabeth-complete-safari-v1.png","annabeth-complete-crystal-v1.png","annabeth-complete-oceanpearl-v1.png","annabeth-complete-royalrescue-v1.png","annabeth-complete-fairyforest-v1.png","annabeth-complete-aurora-v1.png"]){const picture=new Image();picture.src=`assets/${file}`;wardrobeImages.push(picture)}
 }
 
 const dressupItems={
@@ -62,11 +72,13 @@ const mapStops=[
   {id:"studio",name:"Art Studio",icon:"🎨",x:18,y:76,games:["color","tictactoe"]},
   {id:"dragon",name:"Dragon Cave",icon:"🐉",x:89,y:60,games:["nursery","nests","xray","number"]},
   {id:"stable",name:"Unicorn Stable",icon:"🦄",x:84,y:29,games:["horn","stable","math"]},
-  {id:"castle",name:"Royal Castle",icon:"👑",x:31,y:15,games:["shapes","letter","pattern"]}
+  {id:"castle",name:"Royal Castle",icon:"👑",x:31,y:15,games:["shapes","letter","pattern"]},
+  {id:"decor",name:"Party Garden",icon:"🎉",x:68,y:63}
 ];
-const classicMapGames={dentist:{id:"dentist",icon:"🪥",title:"Magic Smile Checkup",play:()=>api().startDentist()},tictactoe:{id:"tictactoe",icon:"⭐",title:"Magic Tic-Tac-Toe",play:()=>api().startTicTacToe()}};
+const classicMapGames={dentist:{id:"dentist",icon:"🪥",title:"Magic Smile Checkup",place:"Dental Room",play:()=>api().startDentist()},tictactoe:{id:"tictactoe",icon:"⭐",title:"Magic Tic-Tac-Toe",place:"Puzzle Garden",play:()=>api().startTicTacToe()}};
 let selectedMapStop=null,mapObserver=null;
-function journeyStopIndex(){return Math.min(mapStops.length-1,Math.floor(discoveryCount()/2))}
+const storyMapStops=mapStops.filter(stop=>stop.id!=="decor");
+function journeyStopIndex(){return Math.min(storyMapStops.length-1,Math.floor(discoveryCount()/2))}
 function sizeMapScene(){
   const viewport=q("#worldMap"),scene=q("#mapScene");if(!viewport||!scene)return;
   const scale=Math.min(viewport.clientWidth/1671,viewport.clientHeight/941);
@@ -78,23 +90,29 @@ function mapGameLocked(id){const s=gameState();return s.stars<(adventureUnlocks[
 function renderMap(){
   const current=journeyStopIndex(),done=gameState().story.completedActivities,container=q("#mapStops");
   container.replaceChildren();
-  mapStops.forEach((stop,index)=>{
-    const visited=stop.games.some(id=>done.includes(id)),marker=button("","map-stop");
+  mapStops.forEach(stop=>{
+    const isDecor=stop.id==="decor",index=storyMapStops.indexOf(stop);
+    const visited=isDecor?false:stop.games.some(id=>done.includes(id)),marker=button("","map-stop");
     marker.dataset.stop=stop.id;marker.style.left=`${stop.x}%`;marker.style.top=`${stop.y}%`;
-    marker.classList.toggle("current",index===current);marker.classList.toggle("reached",index<current);marker.classList.toggle("future",index>current);marker.classList.toggle("visited",visited);
-    marker.setAttribute("aria-label",`${stop.name}${index===current?", next stop":""}${visited?", visited":""}. Tap to see games.`);
-    marker.innerHTML=`<span class="map-stop-badge" aria-hidden="true">${stop.icon}</span><span class="map-stop-name">${stop.name}</span>${visited?'<span class="map-stop-check" aria-hidden="true">✓</span>':""}${index===current?'<span class="map-stop-sparkle" aria-hidden="true">✦</span>':""}`;
+    marker.classList.toggle("current",!isDecor&&index===current);marker.classList.toggle("reached",!isDecor&&index<current);marker.classList.toggle("future",!isDecor&&index>current);marker.classList.toggle("visited",visited);
+    marker.setAttribute("aria-label",isDecor?`${stop.name}. Tap to pick party decorations.`:`${stop.name}${index===current?", next stop":""}${visited?", visited":""}. Tap to see games.`);
+    marker.innerHTML=`<span class="map-stop-badge" aria-hidden="true">${stop.icon}</span><span class="map-stop-name">${stop.name}</span>${visited?'<span class="map-stop-check" aria-hidden="true">✓</span>':""}${!isDecor&&index===current?'<span class="map-stop-sparkle" aria-hidden="true">✦</span>':""}`;
     marker.onclick=()=>openMapStop(stop.id);
     container.append(marker);
   });
   qa(".map-route-leg").forEach((leg,index)=>leg.classList.toggle("traveled",index<current));
-  q("#mapProgress").innerHTML=`<span aria-hidden="true">🗺️</span><span>Stop ${current+1} of ${mapStops.length}</span><span class="map-progress-dots" aria-hidden="true">${mapStops.map((_,index)=>`<i class="${index<current?"traveled":index===current?"current":""}"></i>`).join("")}</span>`;
+  q("#mapProgress").innerHTML=`<span aria-hidden="true">🗺️</span><span>Stop ${current+1} of ${storyMapStops.length}</span><span class="map-progress-dots" aria-hidden="true">${storyMapStops.map((_,index)=>`<i class="${index<current?"traveled":index===current?"current":""}"></i>`).join("")}</span>`;
   sizeMapScene();
   if(!mapObserver&&window.ResizeObserver){mapObserver=new ResizeObserver(sizeMapScene);mapObserver.observe(q("#worldMap"))}
   if(selectedMapStop)openMapStop(selectedMapStop,false);
 }
+function launchMapGame(id){
+  if(mapGameLocked(id)){gentleSound();api().speak(`${adventureUnlocks[id]-gameState().stars} more stars to unlock.`,{recordedOnly:true});return}
+  if(classicMapGames[id])classicMapGames[id].play();else startAdventure(id)
+}
 function openMapStop(id,announce=true){
   const stop=mapStops.find(item=>item.id===id);if(!stop)return;
+  if(lobbyArt[stop.id]){openLobby(stop.id);return}
   selectedMapStop=id;
   const panel=q("#mapStopPanel"),done=gameState().story.completedActivities;
   panel.replaceChildren();panel.hidden=false;
@@ -107,7 +125,7 @@ function openMapStop(id,announce=true){
     tile.dataset.game=id;tile.classList.toggle("locked",locked);tile.classList.toggle("completed",done.includes(id));
     tile.setAttribute("aria-label",locked?`${game.title}, unlocks at ${adventureUnlocks[id]} stars`:`Play ${game.title}${done.includes(id)?" again":""}`);
     tile.innerHTML=`<span class="map-game-icon" aria-hidden="true">${game.icon}</span><strong>${game.title}</strong><small>${locked?`🔒 ⭐ ${adventureUnlocks[id]}`:done.includes(id)?"✓ Play again":"▶ Play"}</small>`;
-    tile.onclick=()=>{if(locked){gentleSound();api().speak(`${adventureUnlocks[id]-gameState().stars} more stars will unlock ${game.title}.`,{recordedOnly:true});return}closeMapStop();if(classicMapGames[id])classicMapGames[id].play();else startAdventure(id)};
+    tile.onclick=()=>{closeMapStop();launchMapGame(id)};
     list.append(tile);
   });
   panel.append(list);
@@ -115,6 +133,188 @@ function openMapStop(id,announce=true){
   if(announce)gentleSound();
 }
 function closeMapStop(){selectedMapStop=null;q("#mapStopPanel").hidden=true;qa(".map-stop.selected").forEach(marker=>marker.classList.remove("selected"))}
+
+const lobbyArt={
+  hospital:"hospital-lobby-empty-v1.png",
+  forest:"forest-lobby.png",
+  studio:"studio-lobby.png",
+  dragon:"dragon-lobby.png",
+  stable:"stable-lobby.png",
+  castle:"castle-lobby.png",
+  decor:"party-lobby.png"
+};
+const lobbyDoorLayout={
+  hospital:[{game:"paw",x:25},{game:"dentist",x:41},{game:"sort",x:57},{game:"measure",x:73},{game:"potion",x:89}],
+  forest:[{game:"search",x:18},{game:"forest",x:40},{game:"words",x:62},{game:"memory",x:84}],
+  studio:[{game:"color",x:39},{game:"tictactoe",x:62}],
+  dragon:[{game:"nursery",x:25},{game:"nests",x:43},{game:"xray",x:61},{game:"number",x:79}],
+  stable:[{game:"horn",x:29},{game:"stable",x:50},{game:"math",x:71}],
+  castle:[{game:"shapes",x:29},{game:"letter",x:50},{game:"pattern",x:71}]
+};
+// Seasonal decorations: a single small transparent overlay per theme, drawn on
+// top of every lobby's existing background (never repainted per-building).
+// Birthday is free so it's available the moment this ships; future themes can
+// carry a gem cost the same way outfits carry a star cost.
+const seasonalThemes=[
+  {id:"none",name:"No decorations",icon:"✓",gems:0,file:null},
+  {id:"birthday",name:"Birthday Surprise",icon:"🎂",gems:0,file:"decor-birthday.png"},
+  {id:"christmas",name:"Winter Holiday",icon:"🎄",gems:15,file:"decor-christmas.png"},
+  {id:"halloween",name:"Halloween",icon:"🎃",gems:20,file:"decor-halloween.png"},
+  {id:"july4",name:"Fourth of July",icon:"🎆",gems:25,file:"decor-july4.png"},
+  {id:"spring",name:"Springtime",icon:"🌸",gems:30,file:"decor-spring.png"}
+];
+// x-positions of each theme's alcove in party-lobby.png, left to right,
+// reusing the exact same door/lock visual language as every other lobby.
+const decorStationLayout=[
+  {theme:"birthday",x:17},{theme:"christmas",x:35},{theme:"halloween",x:50},{theme:"july4",x:65},{theme:"spring",x:82}
+];
+function themeUnlocked(theme){return theme.gems===0||gameState().gems>=theme.gems}
+function activeSeasonalTheme(){const id=gameState().story.seasonalTheme;return seasonalThemes.find(t=>t.id===id)||seasonalThemes[0]}
+// Hidden, undecorated taps on things already drawn into the scene (the same
+// pattern as the secret heart on the title screen) - no visible button, no
+// caption to read, just a soft glow and a sound confirming something happened.
+const hospitalLobbyDelights=[
+  {id:"pet",x:18,y:41,width:16,height:15,label:"Say hello to Fern and Bramble",idleSticker:"lobby-pet-idle.png",sticker:"lobby-pet-happy.png",stickerBox:{x:17.5,y:45,width:20,height:26},feedback:"Fern and Bramble are so happy!"},
+  {id:"bell",x:14.5,y:60,width:6,height:9,label:"Ring the front-desk bell",idleSticker:"lobby-bell-idle.png",sticker:"lobby-bell-rung.png",stickerBox:{x:13.5,y:59,width:9,height:11},feedback:"The bell rings brightly!"}
+];
+let lobbyStickersPreloaded=false;
+function preloadLobbyStickers(){
+  if(lobbyStickersPreloaded)return;lobbyStickersPreloaded=true;
+  for(const entry of hospitalLobbyDelights){
+    const idle=new Image();idle.src=`assets/${entry.idleSticker}`;
+    const reaction=new Image();reaction.src=`assets/${entry.sticker}`;
+  }
+}
+// Full-body cutouts with a real transparent background (no baked-in scene or
+// vignette) only exist for these two complete looks today; every other
+// outfit's art is an opaque sprite sheet, so it falls back to the small
+// framed preview until matching transparent art exists.
+const lobbyAvatarCutouts={
+  doctor:"annabeth-complete-doctor-v1.png",clinicbag:"annabeth-complete-clinic-bag-v1.png",scrubs:"annabeth-complete-scrubs-v1.png",
+  mousevet:"annabeth-complete-mouse-vet-v1.png",princess:"annabeth-complete-princess-v1.png",wizard:"annabeth-complete-wizard-v1.png",
+  rainbow:"annabeth-complete-rainbow-v1.png",forestvet:"annabeth-complete-forestvet-v1.png",stable:"annabeth-complete-stable-v1.png",
+  parade:"annabeth-complete-parade-v1.png",pajamas:"annabeth-complete-pajamas-v1.png",ocean:"annabeth-complete-ocean-v1.png",
+  artist:"annabeth-complete-artist-v1.png",constellation:"annabeth-complete-constellation-v1.png",moonlight:"annabeth-complete-moonlight-v1.png",
+  blossom:"annabeth-complete-blossom-v1.png",dragonflight:"annabeth-complete-dragonflight-v1.png",arctic:"annabeth-complete-arctic-v1.png",
+  safari:"annabeth-complete-safari-v1.png",crystalvet:"annabeth-complete-crystal-v1.png",oceanpearl:"annabeth-complete-oceanpearl-v1.png",
+  royalrescue:"annabeth-complete-royalrescue-v1.png",fairyforest:"annabeth-complete-fairyforest-v1.png",auroravet:"annabeth-complete-aurora-v1.png"
+};
+// Gem-unlocked companions, separate from the star-unlocked outfits above.
+// Gems are a rarer, slower-trickling currency (only from the variety-run
+// bonus), so a companion is meant to feel like a special, longer-term goal.
+const companions=[
+  {id:"unicornfoal",name:"Star",gems:10,file:"unicorn-foal-companion.png"}
+];
+function companionUnlocked(companion){return gameState().gems>=companion.gems}
+function openLobby(stopId){
+  closeMapStop();ensureStory();
+  const stop=mapStops.find(item=>item.id===stopId);
+  q("#lobbyStopName").textContent=stop.name;
+  q("#lobbyScreen").setAttribute("aria-label",`Inside the ${stop.name}`);
+  q("#lobbyHeaderAvatar").dataset.outfit=selectedCompleteOutfit();
+  q("#lobbyStars").textContent=gameState().stars;
+  q("#lobbyFeedback").textContent="";
+  api().showScreen("lobbyScreen");
+  renderLobby(stopId);
+  celebrateNewCompanions();
+  if(stopId==="hospital")preloadLobbyStickers();
+}
+// Fires once, the first time she opens any lobby after crossing a companion's gem
+// threshold, so a new companion feels like a discovered surprise rather than a
+// silent addition. Visual + sound only (no matching recorded voice line exists).
+function celebrateNewCompanions(){
+  const s=gameState();
+  const fresh=companions.filter(c=>companionUnlocked(c)&&!s.story.companionsSeen.includes(c.id));
+  if(!fresh.length)return;
+  fresh.forEach(c=>s.story.companionsSeen.push(c.id));
+  api().save();
+  q("#lobbyFeedback").textContent=`✨ ${fresh.map(c=>c.name).join(" and ")} came to join Doctor Annabeth! ✨`;
+  sparkleSound();
+  api().confetti("#lobbyConfetti");
+}
+function renderLobby(stopId){
+  const stop=mapStops.find(item=>item.id===stopId);
+  const mount=q("#lobbyStageMount");mount.replaceChildren();
+  const file=lobbyArt[stopId];
+  const scene=document.createElement("div");scene.className="lobby-scene art-loading";scene.setAttribute("aria-label",`Inside the ${stop.name}`);
+  const art=new Image();
+  art.onload=()=>{if(!scene.isConnected)return;scene.style.backgroundImage=`url("assets/${file}")`;scene.classList.remove("art-loading")};
+  art.onerror=()=>{if(scene.isConnected)scene.classList.add("art-fallback")};
+  art.src=`assets/${file}`;
+  const theme=activeSeasonalTheme();
+  if(theme.file){
+    const decor=document.createElement("div");decor.className="lobby-decor";decor.setAttribute("aria-hidden","true");
+    const decorPic=new Image();
+    decorPic.onload=()=>{if(!scene.isConnected)return;decor.style.backgroundImage=`url("assets/${theme.file}")`;scene.insertBefore(decor,scene.firstChild)};
+    decorPic.src=`assets/${theme.file}`;
+  }
+  const outfit=selectedCompleteOutfit(),cutout=lobbyAvatarCutouts[outfit];
+  const avatar=document.createElement("div");avatar.setAttribute("aria-label","Doctor Annabeth waiting to help");
+  if(cutout){avatar.className="lobby-avatar cutout";avatar.style.backgroundImage=`url("assets/${cutout}")`}
+  else{avatar.className="lobby-avatar boxed";const avatarSprite=document.createElement("div");avatarSprite.className="avatar-preview";avatarSprite.dataset.outfit=outfit;avatar.append(avatarSprite)}
+  companions.filter(companionUnlocked).forEach(companion=>{
+    const pic=new Image();
+    pic.onload=()=>{if(!scene.isConnected)return;pet.style.backgroundImage=`url("assets/${companion.file}")`;scene.append(wrap)};
+    pic.src=`assets/${companion.file}`;
+    const wrap=document.createElement("div");wrap.className=`lobby-companion-bob lobby-companion-${companion.id}`;wrap.setAttribute("aria-label",`${companion.name} waiting beside her`);
+    const pet=document.createElement("div");pet.className="lobby-companion";wrap.append(pet);
+  });
+  if(stopId==="decor")decorStationLayout.forEach(entry=>{
+    const seasonTheme=seasonalThemes.find(t=>t.id===entry.theme),locked=!themeUnlocked(seasonTheme),active=activeSeasonalTheme().id===seasonTheme.id;
+    const column=button("","lobby-door-column");column.classList.toggle("locked",locked);column.classList.toggle("selected",active);column.style.left=`${entry.x}%`;
+    column.setAttribute("aria-label",locked?`${seasonTheme.name}, unlocks at ${seasonTheme.gems} gems`:active?`${seasonTheme.name}, showing now`:`Show ${seasonTheme.name} decorations`);
+    if(locked){const lock=document.createElement("span");lock.className="lobby-door-lock";lock.setAttribute("aria-hidden","true");lock.textContent="🔒";column.append(lock)}
+    column.onclick=()=>{
+      if(locked){column.classList.remove("tapped");void column.offsetWidth;column.classList.add("tapped");api().speak(`${seasonTheme.gems-gameState().gems} more magic gems to unlock.`,{recordedOnly:true});return}
+      if(active)return;
+      gameState().story.seasonalTheme=seasonTheme.id;api().save();sparkleSound();
+      if(seasonTheme.speech)api().speak(seasonTheme.speech,{recordedOnly:true});
+      renderLobby(stopId);
+    };
+    scene.append(column);
+  });
+  if(stopId==="decor"){
+    const none=seasonalThemes.find(t=>t.id==="none"),isNone=activeSeasonalTheme().id==="none";
+    const clearButton=button("↺","lobby-decor-clear");clearButton.style.left="9%";clearButton.style.top="88%";
+    clearButton.classList.toggle("selected",isNone);
+    clearButton.setAttribute("aria-label",isNone?"No decorations, showing now":"Remove all party decorations");
+    clearButton.onclick=()=>{
+      if(isNone)return;
+      gameState().story.seasonalTheme=none.id;api().save();sparkleSound();renderLobby(stopId);
+    };
+    scene.append(clearButton);
+  }
+  else (lobbyDoorLayout[stopId]||[]).forEach(entry=>{
+    const game=mapGame(entry.game),locked=mapGameLocked(entry.game);
+    const column=button("","lobby-door-column");column.classList.toggle("locked",locked);column.style.left=`${entry.x}%`;
+    column.setAttribute("aria-label",locked?`${game.title}, unlocks at ${adventureUnlocks[entry.game]} stars`:`Go into ${game.title}`);
+    if(locked){const lock=document.createElement("span");lock.className="lobby-door-lock";lock.setAttribute("aria-hidden","true");lock.textContent="🔒";column.append(lock)}
+    column.onclick=()=>{if(locked){column.classList.remove("tapped");void column.offsetWidth;column.classList.add("tapped")}launchMapGame(entry.game)};
+    scene.append(column);
+  });
+  if(stopId==="hospital")hospitalLobbyDelights.forEach(entry=>{
+    const idle=document.createElement("div");idle.className="lobby-sticker lobby-sticker-idle";idle.setAttribute("aria-hidden","true");
+    idle.style.left=`${entry.stickerBox.x}%`;idle.style.top=`${entry.stickerBox.y}%`;idle.style.width=`${entry.stickerBox.width}%`;idle.style.height=`${entry.stickerBox.height}%`;
+    idle.style.backgroundImage=`url("assets/${entry.idleSticker}")`;
+    const reaction=document.createElement("div");reaction.className="lobby-sticker";reaction.setAttribute("aria-hidden","true");
+    reaction.style.left=`${entry.stickerBox.x}%`;reaction.style.top=`${entry.stickerBox.y}%`;reaction.style.width=`${entry.stickerBox.width}%`;reaction.style.height=`${entry.stickerBox.height}%`;
+    reaction.style.backgroundImage=`url("assets/${entry.sticker}")`;
+    let hideTimer=null;
+    const prop=button("","lobby-delight");
+    prop.style.left=`${entry.x}%`;prop.style.top=`${entry.y}%`;prop.style.width=`${entry.width}%`;prop.style.height=`${entry.height}%`;
+    prop.setAttribute("aria-label",entry.label);
+    prop.onclick=()=>{
+      prop.classList.remove("tapped");void prop.offsetWidth;prop.classList.add("tapped");
+      entry.id==="bell"?bellSound():sparkleSound();
+      clearTimeout(hideTimer);reaction.classList.add("shown");
+      q("#lobbyFeedback").textContent=entry.feedback;
+      hideTimer=setTimeout(()=>reaction.classList.remove("shown"),900);
+    };
+    scene.append(idle);scene.append(reaction);scene.append(prop);
+  });
+  scene.append(avatar);
+  mount.append(scene);
+}
 
 const challengeVariants={
   forest:[
@@ -194,22 +394,21 @@ const chapterNarration=[
   "The royal animal parade starts soon. Help everyone get ready to celebrate.",
   "Doctor Annabeth is the kingdom's magical healer. Choose any friend to help today!"
 ];
-const chapterPictures=[["💫","🏥"],["🌈","🦄"],["👑","🎺"],["💖","🏰"]];
 
-function ensureStory(){const s=gameState();if(!s.story)s.story={completedActivities:[],currentOutfit:"doctor",chapter:1};if(!Array.isArray(s.story.completedActivities))s.story.completedActivities=[];}
+function ensureStory(){const s=gameState();if(!s.story)s.story={completedActivities:[],currentOutfit:"doctor",chapter:1};if(!Array.isArray(s.story.completedActivities))s.story.completedActivities=[];if(!Array.isArray(s.story.companionsSeen))s.story.companionsSeen=[];}
 function discoveryCount(){return gameState().story.completedActivities.filter(id=>adventures.some(a=>a.id===id)||id==="dentist"||id==="tictactoe").length}
 let lastNarratedChapter=0;
-function openWorld(){ensureStory();closeMapStop();api().showScreen("worldScreen");renderWorld();updateStoryPictures();appendClassicGames();renderMap();preloadWardrobeArt();q("#collectionCount").textContent=`${discoveryCount()} of ${adventures.length+2} discovered`;if(currentChapter()!==lastNarratedChapter){lastNarratedChapter=currentChapter();speakChapter()}}
+function openWorld(){ensureStory();closeMapStop();api().showScreen("worldScreen");renderWorld();updateActivityCards();renderMap();preloadWardrobeArt();q("#collectionCount").textContent=`${discoveryCount()} of ${adventures.length+2} discovered`;if(currentChapter()!==lastNarratedChapter){lastNarratedChapter=currentChapter();speakChapter()}}
 function currentChapter(){return Math.min(4,1+Math.floor(discoveryCount()/4))}
 function speakChapter(){api().speak(chapterNarration[currentChapter()-1],{recordedOnly:true});api().speak(`The glowing place on the map is ${mapStops[journeyStopIndex()].name}. Tap any place to choose an adventure.`,{recordedOnly:true})}
-function updateStoryPictures(){const chapter=currentChapter(),s=gameState(),done=s.story.completedActivities,cards=qa(".activity-card[data-game]");q("#storyProblem").textContent=chapterPictures[chapter-1][0];q("#storyGoal").textContent=chapterPictures[chapter-1][1];q("#storyText").textContent=["Help three friends!","Find the rainbow!","Get ready to celebrate!","Choose a friend to help!"][chapter-1];cards.forEach(card=>{const adventure=adventures.find(item=>item.id===card.dataset.game);if(!adventure)return;const needed=adventureUnlocks[adventure.id]||0,locked=s.stars<needed&&!done.includes(adventure.id);card.classList.toggle("locked",locked);card.setAttribute("aria-label",locked?`${adventure.title}, unlocks at ${needed} stars`:`${adventure.title}, ${adventure.place}`);if(locked){const lock=document.createElement("span");lock.className="activity-lock";lock.textContent="🔒";card.append(lock);card.onclick=()=>{gentleSound();api().speak(`${needed-s.stars} more stars will unlock ${adventure.title}. Try another adventure first.`,{recordedOnly:true})}}});const recommended=cards.find(card=>!card.classList.contains("locked")&&!done.includes(card.dataset.game))||cards.find(card=>!card.classList.contains("locked"));if(recommended){recommended.classList.add("recommended");recommended.setAttribute("aria-label",`Suggested next: ${recommended.getAttribute("aria-label")}`)}}
-function appendClassicGames(){const carousel=q("#activityCarousel"),done=gameState().story.completedActivities;[{id:"dentist",icon:"🪥",title:"Magic Smile Checkup",place:"Dental Room",play:()=>api().startDentist()},{id:"tictactoe",icon:"⭐",title:"Magic Tic-Tac-Toe",place:"Puzzle Garden",play:()=>api().startTicTacToe()}].forEach(game=>{const card=button("","activity-card classic-card");card.dataset.game=game.id;card.classList.toggle("completed",done.includes(game.id));card.setAttribute("aria-label",`${game.title}, ${game.place}`);card.innerHTML=`<span class="game-icon">${game.icon}</span><strong>${game.title}</strong><small>${game.place}</small>`;card.onclick=game.play;carousel.append(card)})}
-function renderWorld(){ensureStory();const s=gameState(),done=s.story.completedActivities; q("#worldStars").textContent=s.stars;q("#collectionCount").textContent=`${discoveryCount()} of ${adventures.length+2} discovered`;const chapter=currentChapter();q("#chapterNumber").textContent=chapter;q("#chapterTitle").textContent=["The Hospital Opens","The Missing Rainbow","The Royal Animal Parade","Guardian of the Kingdom"][chapter-1];q("#storyPatient").textContent=mapStops[journeyStopIndex()].icon;q("#storyText").textContent=["The hospital is opening! Help three magical patients get ready for the royal parade.","Nova's rainbow magic has scattered across the kingdom. Every patient holds a clue!","The royal parade begins soon. Help the animals prepare their songs, patterns, and costumes.","The whole kingdom trusts Dr. Annabeth. Explore freely and help old friends whenever you like!"][chapter-1];const c=q("#activityCarousel");c.replaceChildren();
-  const ordered=[...adventures].sort((x,y)=>{
+function updateActivityCards(){const s=gameState(),done=s.story.completedActivities,cards=qa(".activity-card[data-game]");cards.forEach(card=>{const adventure=adventures.find(item=>item.id===card.dataset.game);if(!adventure)return;const needed=adventureUnlocks[adventure.id]||0,locked=s.stars<needed&&!done.includes(adventure.id);card.classList.toggle("locked",locked);card.setAttribute("aria-label",locked?`${adventure.title}, unlocks at ${needed} stars`:`${adventure.title}, ${adventure.place}`);if(locked){const lock=document.createElement("span");lock.className="activity-lock";lock.textContent="🔒";card.append(lock);card.onclick=()=>{gentleSound();api().speak(`${needed-s.stars} more stars to unlock.`,{recordedOnly:true})}}});const recommended=cards.find(card=>!card.classList.contains("locked")&&!done.includes(card.dataset.game))||cards.find(card=>!card.classList.contains("locked"));if(recommended){recommended.classList.add("recommended");recommended.setAttribute("aria-label",`Suggested next: ${recommended.getAttribute("aria-label")}`)}}
+function renderWorld(){ensureStory();const s=gameState(),done=s.story.completedActivities; q("#worldStars").textContent=s.stars;q("#collectionCount").textContent=`${discoveryCount()} of ${adventures.length+2} discovered`;const chapter=currentChapter();q("#chapterNumber").textContent=chapter;q("#chapterTitle").textContent=["The Hospital Opens","The Missing Rainbow","The Royal Animal Parade","Guardian of the Kingdom"][chapter-1];const c=q("#activityCarousel");c.replaceChildren();
+  const all=[...adventures,...Object.values(classicMapGames)];
+  const ordered=[...all].sort((x,y)=>{
     const rank=item=>{const locked=s.stars<(adventureUnlocks[item.id]||0)&&!done.includes(item.id);return locked?3:done.includes(item.id)?2:mapStops[journeyStopIndex()].games.includes(item.id)?0:1};
     return rank(x)-rank(y);
   });
-  ordered.forEach(a=>{const b=document.createElement("button");b.className=`activity-card ${done.includes(a.id)?"completed":""}`;b.dataset.game=a.id;b.innerHTML=`<span class="game-icon">${a.icon}</span><strong>${a.title}</strong><small>${a.place}</small>`;b.onclick=()=>startAdventure(a.id);c.append(b)});}
+  ordered.forEach(a=>{const classic=Boolean(classicMapGames[a.id]);const b=document.createElement("button");b.className=`activity-card ${classic?"classic-card":""} ${done.includes(a.id)?"completed":""}`;b.dataset.game=a.id;b.innerHTML=`<span class="game-icon">${a.icon}</span><strong>${a.title}</strong><small>${a.place}</small>`;b.onclick=classic?classicMapGames[a.id].play:()=>startAdventure(a.id);c.append(b)});}
 
 function startAdventure(id,options={}){const base=adventures.find(a=>a.id===id),variants=challengeVariants[id],variant=variants&&variants[Math.floor(Math.random()*variants.length)];activeAdventure={...base,...variant};if(id==="paw")activeAdventure.careCase=options.careCase||nextCareCase();activityRound=0;actionCount=0;sequenceIndex=0;mixCounts=[0,0];rhythmInput=[];tracePoints=0;paintCount=0;memoryOpen=[];memoryMatched=0;activityNarration="";api().showScreen("activityScreen");q("#activityScreen").classList.toggle("coloring-mode",id==="color");q("#activityScreen").classList.toggle("care-mode",id==="paw");q("#activityTitle").textContent=activeAdventure.careCase?`${activeAdventure.careCase.name}'s ${activeAdventure.careCase.ailment}`:activeAdventure.title;q("#activityLocation").textContent=activeAdventure.place;q("#activityPatient").textContent=activeAdventure.patient;q("#activityAction").textContent=activeAdventure.icon;q("#activityStory").textContent=activeAdventure.careCase?.intro||activeAdventure.story;q("#activityInstruction").textContent=activeAdventure.instruction;q("#activityFeedback").textContent="";q("#activityStars").textContent=gameState().stars;renderActivityAvatar();q("#activitySpeakButton").classList.toggle("needs-listening",activeAdventure.type==="choice"||activeAdventure.type==="mix");renderActivity();if(!["countCompare","tenFrame","shapes","measure","sort","guidedTrace"].includes(activeAdventure.type))setTimeout(()=>activeAdventure.careCase?api().speak(activeAdventure.careCase.spokenIntro||activeAdventure.careCase.intro,{recordedOnly:true}):speakActivity(),250)}
 function nextCareCase(){
@@ -251,6 +450,7 @@ let soundContext=null;
 function tone(frequency,duration=.12,type="sine",delay=0){if(!gameState()?.sound)return;try{soundContext=soundContext||new AudioContext();const oscillator=soundContext.createOscillator(),gain=soundContext.createGain(),start=soundContext.currentTime+delay;oscillator.type=type;oscillator.frequency.setValueAtTime(frequency,start);gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(.12,start+.015);gain.gain.exponentialRampToValueAtTime(.0001,start+duration);oscillator.connect(gain).connect(soundContext.destination);oscillator.start(start);oscillator.stop(start+duration+.02)}catch{}}
 window.addEventListener("hospital-sound-change",()=>{if(!gameState()?.sound&&soundContext){soundContext.close().catch(()=>{});soundContext=null}});
 function sparkleSound(){tone(523,.12);tone(659,.12,"sine",.09);tone(784,.18,"sine",.18)}
+function bellSound(){tone(880,.55,"triangle");tone(1318,.4,"triangle",.02);tone(1760,.22,"sine",.05)}
 function gentleSound(){tone(330,.11,"sine");tone(294,.16,"sine",.1)}
 function good(message="Wonderful work!"){q("#activityFeedback").textContent=message;sparkleSound();api().speak(message,{recordedOnly:true})}
 function tryAgain(el){el.classList.remove("nudge");void el.offsetWidth;el.classList.add("nudge");gentleSound()}
@@ -840,25 +1040,38 @@ function renderSequence(box,a){
 }
 function renderMix(box,a){
   const updateRounds=roundTracker(box),game=document.createElement("div");game.className="potion-game";box.append(game);
-  const spoken="Bramble Bunny needs a gentle giggle potion before his checkup. Add three berries and two stars.";
-  let round=0;
+  const classicSpoken="Bramble Bunny needs a gentle giggle potion before his checkup. Add three berries and two stars.";
+  const numberWord=["","one","two","three","four"];
+  // Only the classic 3-berry/2-star recipe has a full recorded sentence. Other
+  // recipes speak just the two counts from the existing standalone number
+  // clips (real recordings, no synthesized voice) and rely on the on-screen
+  // goal icons for the rest, so the recipe can vary without new recordings.
+  const recipes=[{berries:3,stars:2},{berries:2,stars:3},{berries:1,stars:3},{berries:3,stars:1},{berries:2,stars:1},{berries:1,stars:2}];
+  let round=0,lastRecipe=null;
+  const pickRecipe=()=>{let r;do{r=recipes[Math.floor(Math.random()*recipes.length)]}while(recipes.length>1&&lastRecipe&&r.berries===lastRecipe.berries&&r.stars===lastRecipe.stars);lastRecipe=r;return r};
   const play=()=>{
+    const goal=pickRecipe();
+    const isClassic=goal.berries===3&&goal.stars===2;
+    const spoken=isClassic?classicSpoken:`${numberWord[goal.berries]} ${numberWord[goal.stars]}`;
     game.replaceChildren();game.classList.remove("ready-to-stir","potion-complete");updateRounds(round);
     const recipe=document.createElement("div");recipe.className="potion-recipe";recipe.setAttribute("aria-label","Potion progress");
     const replay=button("🔊","potion-replay");replay.setAttribute("aria-label","Hear the potion recipe again");replay.onclick=()=>api().speak(spoken,{interrupt:true,recordedOnly:true});
-    const progress=document.createElement("span");progress.className="potion-progress";progress.textContent="🍓 0   ⭐ 0";recipe.append(replay,progress);
+    const goalLine=document.createElement("span");goalLine.className="potion-goal";goalLine.textContent=`🍓×${goal.berries}   ⭐×${goal.stars}`;goalLine.setAttribute("aria-label",`Needed: ${goal.berries} berries and ${goal.stars} stars`);
+    const progress=document.createElement("span");progress.className="potion-progress";progress.textContent="🍓 0   ⭐ 0";recipe.append(replay,goalLine,progress);
     const bowl=document.createElement("div");bowl.className="mix-bowl";bowl.innerHTML='<span class="potion-liquid"></span><span class="potion-spoon">🥄</span><span class="potion-stir-arrow">↻</span>';bowl.setAttribute("aria-label","Potion bowl");
     const tray=document.createElement("div");tray.className="potion-tray";
-    // More of each recipe ingredient than the spoken count: listening matters.
+    // Always more of each ingredient than any recipe needs (recipes never
+    // need more than 3), plus other fruit, so a distracted tap doesn't
+    // accidentally finish the recipe.
     const ingredients=["🍓","🍓","🍓","🍓","⭐","⭐","⭐","⭐","🍃","🫐","🍯"].sort(()=>Math.random()-.5);
     const count={"🍓":0,"⭐":0};let ready=false,finished=false,stirring=false,lastAngle=null,turn=0;
     const splash=icon=>{const drop=document.createElement("span");drop.className="potion-splash";drop.textContent=icon;drop.style.left=`${35+Math.random()*30}%`;bowl.append(drop);setTimeout(()=>drop.remove(),650)};
     const add=(tile,icon)=>{
       if(tile.classList.contains("added")||finished||ready)return;
-      if(!(icon in count)||count[icon]>=(icon==="🍓"?3:2)){tile.classList.add("wiggle");setTimeout(()=>tile.classList.remove("wiggle"),450);q("#activityFeedback").textContent="🔊 🎧";return}
+      if(!(icon in count)||count[icon]>=(icon==="🍓"?goal.berries:goal.stars)){tile.classList.add("wiggle");setTimeout(()=>tile.classList.remove("wiggle"),450);q("#activityFeedback").textContent="🔊 🎧";return}
       tile.classList.add("added");count[icon]++;progress.textContent=`🍓 ${count["🍓"]}   ⭐ ${count["⭐"]}`;splash(icon);sparkleSound();
       bowl.style.setProperty("--ingredients",String((count["🍓"]+count["⭐"])/5));
-      if(count["🍓"]===3&&count["⭐"]===2){ready=true;game.classList.add("ready-to-stir");q("#activityInstruction").textContent="Stir the potion in a circle!";q("#activityFeedback").textContent="🥄 ↻"}
+      if(count["🍓"]===goal.berries&&count["⭐"]===goal.stars){ready=true;game.classList.add("ready-to-stir");q("#activityInstruction").textContent="Stir the potion in a circle!";q("#activityFeedback").textContent="🥄 ↻"}
     };
     ingredients.forEach(icon=>{
       const tile=button(icon,"mix-ingredient");tile.setAttribute("aria-label",`Drag ${icon} into the potion bowl`);
@@ -871,9 +1084,10 @@ function renderMix(box,a){
     });
     const angleAt=event=>{const r=bowl.getBoundingClientRect();return Math.atan2(event.clientY-r.top-r.height/2,event.clientX-r.left-r.width/2)};
     bowl.addEventListener("pointerdown",event=>{if(!ready||finished)return;stirring=true;lastAngle=angleAt(event);try{bowl.setPointerCapture?.(event.pointerId)}catch{}});
-    bowl.addEventListener("pointermove",event=>{if(!stirring||finished)return;const next=angleAt(event);let delta=next-lastAngle;if(delta>Math.PI)delta-=2*Math.PI;if(delta<-Math.PI)delta+=2*Math.PI;lastAngle=next;if(Math.abs(delta)>.04&&Math.abs(delta)<1.4){turn+=delta;bowl.style.setProperty("--turn",`${turn}rad`);if(Math.abs(turn)>=Math.PI*1.8){finished=true;stirring=false;game.classList.add("potion-complete");sparkleSound();round++;updateRounds(round);if(round===3)setTimeout(completeAdventure,850);else setTimeout(()=>{play();api().speak(spoken,{interrupt:true,recordedOnly:true})},850)}}});
+    bowl.addEventListener("pointermove",event=>{if(!stirring||finished)return;const next=angleAt(event);let delta=next-lastAngle;if(delta>Math.PI)delta-=2*Math.PI;if(delta<-Math.PI)delta+=2*Math.PI;lastAngle=next;if(Math.abs(delta)>.04&&Math.abs(delta)<1.4){turn+=delta;bowl.style.setProperty("--turn",`${turn}rad`);if(Math.abs(turn)>=Math.PI*1.8){finished=true;stirring=false;game.classList.add("potion-complete");sparkleSound();round++;updateRounds(round);if(round===3)setTimeout(completeAdventure,850);else setTimeout(play,850)}}});
     bowl.addEventListener("pointerup",()=>{stirring=false;lastAngle=null});bowl.addEventListener("pointercancel",()=>{stirring=false;lastAngle=null});
     game.append(recipe,bowl,tray);q("#activityInstruction").textContent="Listen, then mix the potion.";
+    if(round>0)api().speak(spoken,{interrupt:true,recordedOnly:true});
   };
   play();
 }
@@ -1087,8 +1301,11 @@ function renderGuidedTrace(box,a){
 function renderTrace(box,a){const board=document.createElement("div");board.className="trace-board";board.innerHTML=`<div class="trace-glyph">${a.glyph}</div><canvas class="trace-canvas"></canvas>`;box.append(board);const canvas=board.querySelector("canvas"),ctx=canvas.getContext("2d");let drawing=false,last=null;const resize=()=>{canvas.width=board.clientWidth*devicePixelRatio;canvas.height=board.clientHeight*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);ctx.strokeStyle="#8a62dc";ctx.lineWidth=18;ctx.lineCap="round"};resize();const move=e=>{if(!drawing)return;e.preventDefault();const r=canvas.getBoundingClientRect(),p=[(e.clientX-r.left)*canvas.width/r.width/devicePixelRatio,(e.clientY-r.top)*canvas.height/r.height/devicePixelRatio];if(last){ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();tracePoints++}last=p;if(tracePoints>28){drawing=false;good("Your trail is glowing!");setTimeout(completeAdventure,600)}};canvas.onpointerdown=e=>{drawing=true;last=null;canvas.setPointerCapture(e.pointerId);move(e)};canvas.onpointermove=move;canvas.onpointerup=()=>{drawing=false;last=null}}
 function renderMemory(box){const symbols=["🐶","🐱","🦊","🐰","🐶","🐱","🦊","🐰"].sort(()=>Math.random()-.5),grid=document.createElement("div");grid.className="memory-grid";symbols.forEach((s,i)=>{const b=button(s,"memory-card");b.onclick=()=>{if(memoryOpen.length===2||b.classList.contains("open")||b.classList.contains("matched"))return;b.classList.add("open");memoryOpen.push({b,s});if(memoryOpen.length===2)setTimeout(()=>{const[x,y]=memoryOpen;if(x.s===y.s){x.b.classList.add("matched");y.b.classList.add("matched");memoryMatched++;good("A matching pair!");if(memoryMatched===4)setTimeout(completeAdventure,500)}else{x.b.classList.remove("open");y.b.classList.remove("open")}memoryOpen=[]},650)};grid.append(b)});box.append(grid)}
 function renderColor(box){
-  const templates=[{id:"unicorn",icon:"🦄",file:"coloring-unicorn-v2.png"},{id:"butterfly",icon:"🦋",file:"coloring-butterfly-v2.png"},{id:"castle",icon:"🏰",file:"coloring-castle-v2.png"},{id:"fox",icon:"🦊",file:"coloring-fox-v2.png"},{id:"dragon",icon:"🐉",file:"coloring-dragon.png"},{id:"bunny",icon:"🐰",file:"coloring-bunny.png"},{id:"puppy",icon:"🐶",file:"coloring-puppy-v1.png"},{id:"kitten",icon:"🐱",file:"coloring-kitten-v1.png"},{id:"owl",icon:"🦉",file:"coloring-owl-v1.png"},{id:"panda",icon:"🐼",file:"coloring-panda-v1.png"},{id:"pony",icon:"🐴",file:"coloring-pony-v1.png"},{id:"bear",icon:"🐻",file:"coloring-bear-v1.png"}];
-  let templateIndex=0,color="#ff5fa2",size=22,drawing=false,last=null,rewarded=false,panMode=false,panning=false,panX=0,panStart=0,panOrigin=0,canvasVersion=0,paintReady=true,paintTouched=false;
+  const templates=[{id:"unicorn",icon:"🦄",file:"coloring-unicorn-v2.png"},{id:"butterfly",icon:"🦋",file:"coloring-butterfly-v2.png"},{id:"castle",icon:"🏰",file:"coloring-castle-v2.png"},{id:"fox",icon:"🦊",file:"coloring-fox-v2.png"},{id:"dragon",icon:"🐉",file:"coloring-dragon.png"},{id:"bunny",icon:"🐰",file:"coloring-bunny.png"},{id:"puppy",icon:"🐶",file:"coloring-puppy-v1.png"},{id:"kitten",icon:"🐱",file:"coloring-kitten-v1.png"},{id:"owl",icon:"🦉",file:"coloring-owl-v1.png"},{id:"panda",icon:"🐼",file:"coloring-panda-v1.png"},{id:"pony",icon:"🐴",file:"coloring-pony-v1.png"},{id:"bear",icon:"🐻",file:"coloring-bear-v1.png"},
+    ...[["mouse","🐭"],["hedgehog","🦔"],["fawn","🦌"],["lamb","🐑"],["duckling","🦆"],["seal","🦭"],["penguin","🐧"],["koala","🐨"],["raccoon","🦝"],["squirrel","🐿️"],["elephant","🐘"],["giraffe","🦒"],["whale","🐳"],["dolphin","🐬"],["turtle","🐢"],["frog","🐸"],["ladybug","🐞"],["hamster","🐹"],["otter","🦦"],["peacock","🦚"]].map(([id,icon],i)=>({id,icon,file:`coloring-${id}-v1.png`,stars:(i+1)*4})),
+    {id:"annabeth-unicorn",icon:"👩🏼‍⚕️🦄",label:"Annabeth and Nova",file:"coloring-annabeth-unicorn-v1.png",gems:3},{id:"annabeth-bunny",icon:"👩🏼‍⚕️🐰",label:"Annabeth and Bramble",file:"coloring-annabeth-bunny-v1.png",gems:4},{id:"annabeth-fox",icon:"👩🏼‍⚕️🦊",label:"Annabeth and Fern",file:"coloring-annabeth-fox-v1.png",gems:5}];
+  const templateUnlocked=t=>{const s=gameState();return(!t.stars||s.stars>=t.stars)&&(!t.gems||s.gems>=t.gems)};
+  let templateIndex=0,color="#ff5fa2",size=22,drawing=false,last=null,rewarded=false,panMode=false,panning=false,panX=0,panStart=0,panOrigin=0,canvasVersion=0,paintReady=true,paintTouched=false,coloringStartTime=null;
   const studio=document.createElement("div");studio.className="coloring-studio";
   const tabs=document.createElement("div");tabs.className="coloring-tabs";
   const canvasWrap=document.createElement("div");canvasWrap.className="coloring-canvas-wrap";
@@ -1124,12 +1341,29 @@ function renderColor(box){
     art.src=`assets/${templates[templateIndex].file}`;
     const saved=gameState().story?.coloringPages?.[id];paintReady=!saved;if(saved){const img=new Image();img.onload=()=>{if(version!==canvasVersion)return;if(!paintTouched)paint.getContext("2d").drawImage(img,0,0,w,h);paintReady=true};img.onerror=()=>{if(version===canvasVersion)paintReady=true};img.src=saved}
   };
-  templates.forEach((t,i)=>{const b=button(t.icon,"template-button");b.setAttribute("aria-label",`${t.id} coloring page`);b.onclick=()=>{saveColoring();templateIndex=i;panX=0;placePan();qa(".template-button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");setupCanvas()};tabs.append(b)});tabs.firstChild.classList.add("selected");
+  templates.forEach((t,i)=>{
+    const locked=!templateUnlocked(t),b=button(t.icon,"template-button");
+    b.classList.toggle("story-page",Boolean(t.label));b.classList.toggle("locked",locked);
+    const costLabel=[t.stars?`${t.stars} stars`:"",t.gems?`${t.gems} gems`:""].filter(Boolean).join(" and ");
+    b.setAttribute("aria-label",locked?`${t.label||t.id} coloring page, unlock at ${costLabel}`:`${t.label||t.id} coloring page`);
+    if(locked){const lock=document.createElement("span");lock.className="template-lock";lock.setAttribute("aria-hidden","true");lock.textContent="🔒";b.append(lock)}
+    b.onclick=()=>{
+      if(locked){
+        tryAgain(b);const s=gameState();
+        const message=t.stars&&s.stars<t.stars?`${t.stars-s.stars} more stars to unlock.`:`${t.gems-s.gems} more magic gems to unlock.`;
+        api().speak(message,{recordedOnly:true});
+        return;
+      }
+      if(i===templateIndex)return;
+      saveColoring();templateIndex=i;panX=0;placePan();qa(".template-button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");coloringStartTime=null;rewarded=false;setupCanvas()
+    };
+    tabs.append(b);
+  });tabs.firstChild.classList.add("selected");
   const morePages=button("▼","coloring-more-pages");morePages.setAttribute("aria-label","Show more coloring pages");morePages.onclick=()=>{const atEnd=tabs.scrollTop+tabs.clientHeight>=tabs.scrollHeight-8;tabs.scrollTo({top:atEnd?0:Math.min(tabs.scrollTop+tabs.clientHeight*.7,tabs.scrollHeight),behavior:"smooth"})};
   tabs.addEventListener("scroll",()=>{const atEnd=tabs.scrollTop+tabs.clientHeight>=tabs.scrollHeight-8;morePages.textContent=atEnd?"▲":"▼";morePages.setAttribute("aria-label",atEnd?"Show first coloring pages":"Show more coloring pages")});
   const point=e=>{const r=paint.getBoundingClientRect();return[(e.clientX-r.left)*paint.width/r.width,(e.clientY-r.top)*paint.height/r.height]};
-  const move=e=>{if(!drawing)return;e.preventDefault();const p=point(e),ctx=paint.getContext("2d");ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=size;if(color==="erase"){ctx.globalCompositeOperation="destination-out";ctx.strokeStyle="#000"}else{ctx.globalCompositeOperation="source-over";ctx.strokeStyle=color}if(last){ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();paintCount++;if(paintCount>35&&!rewarded){rewarded=true;good("Your picture is beautiful! Keep coloring as long as you like.")}}last=p};
-  paint.onpointerdown=e=>{e.preventDefault();drawing=true;paintTouched=true;paintReady=true;last=point(e);paint.setPointerCapture(e.pointerId);const ctx=paint.getContext("2d");ctx.globalCompositeOperation=color==="erase"?"destination-out":"source-over";ctx.fillStyle=color==="erase"?"#000":color;ctx.beginPath();ctx.arc(last[0],last[1],size/2,0,Math.PI*2);ctx.fill();paintCount++};paint.onpointermove=move;paint.onpointerup=()=>{drawing=false;last=null;saveColoring()};paint.onpointercancel=()=>{drawing=false;last=null};
+  const move=e=>{if(!drawing)return;e.preventDefault();const p=point(e),ctx=paint.getContext("2d");ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=size;if(color==="erase"){ctx.globalCompositeOperation="destination-out";ctx.strokeStyle="#000"}else{ctx.globalCompositeOperation="source-over";ctx.strokeStyle=color}if(last){ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();paintCount++;if(!rewarded&&coloringStartTime&&Date.now()-coloringStartTime>=120000){rewarded=true;good("Your picture is beautiful! Keep coloring as long as you like.")}}last=p};
+  paint.onpointerdown=e=>{e.preventDefault();drawing=true;paintTouched=true;paintReady=true;if(!coloringStartTime)coloringStartTime=Date.now();last=point(e);paint.setPointerCapture(e.pointerId);const ctx=paint.getContext("2d");ctx.globalCompositeOperation=color==="erase"?"destination-out":"source-over";ctx.fillStyle=color==="erase"?"#000":color;ctx.beginPath();ctx.arc(last[0],last[1],size/2,0,Math.PI*2);ctx.fill();paintCount++};paint.onpointermove=move;paint.onpointerup=()=>{drawing=false;last=null;saveColoring()};paint.onpointercancel=()=>{drawing=false;last=null};
   function saveColoring(){if(!paintReady)return;ensureStory();const s=gameState();s.story.coloringPages=s.story.coloringPages||{};try{s.story.coloringPages[templates[templateIndex].id]=paint.toDataURL("image/webp",.72);api().save()}catch{}}
   studio.append(tabs,canvasWrap,toolbar,morePages);box.append(studio);setupCanvas();q("#activityInstruction").textContent="Choose a picture. Color with your finger or stylus."
 }
@@ -1149,7 +1383,7 @@ function completeAdventure(){
   s.story.completedCareCases=s.story.completedCareCases||[];
   const newCareCase=Boolean(careCase&&!s.story.completedCareCases.includes(careCase.ailment));if(newCareCase)s.story.completedCareCases.push(careCase.ailment);
   s.story.varietyRun=s.story.varietyRun||[];if(!s.story.varietyRun.includes(activeAdventure.id))s.story.varietyRun.push(activeAdventure.id);
-  let earned=first||newCareCase?4:1,gem=0,bonus=false;if(s.story.varietyRun.length>=3){earned+=4;gem=1;bonus=true;s.story.varietyRun=[];s.gems+=1}
+  let earned=first||newCareCase?4:3,gem=0,bonus=false;if(s.story.varietyRun.length>=3){earned+=4;gem=1;bonus=true;s.story.varietyRun=[];s.gems+=1}
   s.stars+=earned;s.missions+=1;api().save();
   const rewardPatient=q("#rewardPatient");
   rewardPatient.classList.toggle("care-reward-photo",Boolean(careCase));
@@ -1267,4 +1501,4 @@ function renderWardrobe(){
   const preview=q("#avatarPreview");preview.dataset.outfit=selected;preview.setAttribute("aria-label",`Annabeth wearing ${outfits.find(o=>o.id===selected)?.name||"Magic Doctor"}`);
 }
 
-q("#worldButton").onclick=openWorld;q("#worldHomeButton").onclick=()=>api().showScreen("homeScreen");q("#storySpeakButton").onclick=speakChapter;q("#activitySpeakButton").onclick=speakActivity;q("#activityBackButton").onclick=openWorld;q("#nextAdventureButton").onclick=openWorld;q("#replayActivityButton").onclick=()=>startAdventure(activeAdventure.id);q("#samePatientButton").onclick=()=>{if(activeAdventure?.careCase)startAdventure("paw",{careCase:activeAdventure.careCase})};q("#wardrobeButton").onclick=()=>{renderWardrobe();q("#wardrobeDialog").showModal()};
+q("#worldButton").onclick=openWorld;q("#worldHomeButton").onclick=()=>api().showScreen("homeScreen");q("#activitySpeakButton").onclick=speakActivity;q("#activityBackButton").onclick=openWorld;q("#lobbyBackButton").onclick=openWorld;q("#nextAdventureButton").onclick=openWorld;q("#replayActivityButton").onclick=()=>startAdventure(activeAdventure.id);q("#samePatientButton").onclick=()=>{if(activeAdventure?.careCase)startAdventure("paw",{careCase:activeAdventure.careCase})};q("#wardrobeButton").onclick=()=>{renderWardrobe();q("#wardrobeDialog").showModal()};

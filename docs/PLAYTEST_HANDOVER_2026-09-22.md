@@ -222,3 +222,19 @@ The provided screenshot shows the flower crown drawn across Annabeth's **eyes**,
 6. Execute all remaining items requiring adjustment.
 
 Do not overwrite the parent's save for QA: the existing `tests/care-clinic.mjs` uses a disposable, muted Chrome profile. The prior automated pass covered ten cases and seven side games but did **not** catch the parent's current visual and usability issues. Automated completion alone is not proof of a fun or comprehensible child experience.
+
+## 2026-09-27 wardrobe reward expansion
+
+- Added ten new polished, complete-character wardrobe looks in the established Annabeth storybook style: Moonlight Wildlife Rescuer, Blossom Garden Veterinarian, Dragon Flight Medic, Arctic Animal Doctor, Sunbeam Safari Veterinarian, Crystal Cavern Healer, Ocean Pearl Veterinarian, Royal Rescue Captain, Fairy Forest Veterinarian, and Aurora Sky Doctor.
+- New looks unlock every 20 stars from 120 through 300. This extends the reward runway without changing or removing any earned outfit or saved progress.
+- Each selection swaps one finished transparent character illustration; these new rewards do not reintroduce the misaligned floating-layer wardrobe.
+- Added all ten images to wardrobe preloading and the offline service-worker cache. Cache version is now `annabeth-hospital-v88`.
+- Added focused muted/disposable-browser coverage in `tests/wardrobe-expanded.mjs` for 24 cards, exact unlock boundaries, loading all finished images, save/reload persistence, and display during play. The full clinic harness also expects 24 looks and checks the new boundary tiers.
+- Generation details and reproducible prompts are recorded in `docs/WARDROBE_COMPLETE_LOOK_PROMPTS.md`.
+
+## 2026-09-27 coloring book expansion
+
+- Added the 20 animal pages specified in `docs/COLORING_ART_PROMPTS_2026-09-27.md`, plus three scenes with Annabeth and Nova, Bramble, and Fern. The book now offers 35 pages.
+- Kept the original 12 IDs and order so saved coloring remains attached to the same pictures. New pages save independently through the existing coloring system.
+- Added the 23 new images to the offline cache and bumped its version to 89.
+- Inspected all new drawings together. The focused muted browser test confirmed image loading, offline cache installation, and paint/save/restore on a 1024 × 768 tablet viewport. A hands-on iPad check is still worthwhile for finger comfort and scroll behavior.

@@ -47,7 +47,7 @@
       </header>
       <div class="world-map" id="worldMap">
         <div class="map-scene" id="mapScene">
-          <img src="assets/magical-kingdom-map.png" alt="The hospital, forest, art studio, dragon cave, unicorn stable, and castle">
+          <img src="assets/magical-kingdom-map-v2.png" alt="The hospital, forest, art studio, dragon cave, unicorn stable, castle, and party garden">
           <svg class="map-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <path class="map-route-base" d="M 51 47 C 42 53, 32 50, 20 35 C 13 46, 10 59, 18 76 C 36 86, 52 66, 67 69 S 82 71, 89 60 C 83 54, 77 42, 84 29 C 71 18, 53 19, 31 15"/>
             <path class="map-route-leg" data-leg="0" d="M 51 47 C 42 53, 32 50, 20 35"/>
@@ -59,12 +59,6 @@
           <div id="mapStops" class="map-stops" aria-label="Places to visit"></div>
         </div>
         <div class="map-progress" id="mapProgress" aria-live="polite"></div>
-        <div class="story-scroll">
-          <span id="storyPatient" aria-hidden="true">🦊</span>
-          <div class="story-picture" aria-hidden="true"><span id="storyProblem">💫</span><b>→</b><span id="storyGoal">🏥</span><b>→</b><span>🎉</span></div>
-          <div class="story-caption"><small>Today's adventure</small><strong id="storyText">Help three friends!</strong></div>
-          <button id="storySpeakButton" class="round-button" type="button" aria-label="Hear the story">🔊</button>
-        </div>
         <section id="mapStopPanel" class="map-stop-panel" aria-label="Games at this place" hidden></section>
       </div>
       <div class="activity-drawer">
@@ -92,6 +86,22 @@
         <p id="activityInstruction" class="activity-instruction"></p>
         <div id="activityFeedback" class="activity-feedback" aria-live="assertive"></div>
       </div>
+    </section>
+
+    <section id="lobbyScreen" class="screen lobby-screen" aria-label="Inside the Animal Hospital">
+      <header class="game-header">
+        <button id="lobbyBackButton" class="round-button" type="button" aria-label="Back to map">‹</button>
+        <div class="mission-title"><small id="lobbyStopName">Animal Hospital</small><strong>Step Inside</strong></div>
+        <div class="activity-avatar" role="img" aria-label="Doctor Annabeth in her saved outfit">
+          <div id="lobbyHeaderAvatar" class="avatar-preview" data-outfit="doctor"></div>
+        </div>
+        <div class="reward-pill">⭐ <span id="lobbyStars">0</span></div>
+      </header>
+      <div class="lobby-stage">
+        <div id="lobbyStageMount"></div>
+        <p id="lobbyFeedback" class="activity-feedback" aria-live="polite"></p>
+      </div>
+      <div id="lobbyConfetti" class="confetti" aria-hidden="true"></div>
     </section>
 
     <section id="activityRewardScreen" class="screen activity-reward-screen" aria-label="Adventure complete">

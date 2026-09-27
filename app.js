@@ -85,7 +85,7 @@ bgMusic.loop = true; bgMusic.volume = 0.35; bgMusic.preload = "none";
 let bgMusicWanted = false, bgMusicAvailable = MUSIC_PACKAGED;
 if (MUSIC_PACKAGED) bgMusic.src = MUSIC_SRC;
 function updateBgMusic(screenId) {
-  bgMusicWanted = state.sound && (screenId === "homeScreen" || screenId === "worldScreen");
+  bgMusicWanted = state.sound && (screenId === "homeScreen" || screenId === "worldScreen" || screenId === "lobbyScreen");
   if (bgMusicWanted) attemptBgMusicPlay(); else bgMusic.pause();
 }
 function attemptBgMusicPlay() {
