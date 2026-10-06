@@ -558,4 +558,15 @@ window.MagicalHospital={
   startTicTacToe,
   discover:id=>{state.story=state.story||{completedActivities:[]};state.story.completedActivities=state.story.completedActivities||[];const first=!state.story.completedActivities.includes(id);if(first)state.story.completedActivities.push(id);saveState();return first}
 };
-if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("./sw.js");
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  navigator.serviceWorker.register("./sw.js").then(reg => reg.update().catch(() => {}));
+  // The new worker activates immediately (sw.js calls skipWaiting/clients.claim) rather than
+  // waiting for every open tab/instance to close, so reload once it actually takes control —
+  // this is what makes a fresh update show up without any manual close-the-app ritual.
+  let refreshingForUpdate = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (refreshingForUpdate) return;
+    refreshingForUpdate = true;
+    location.reload();
+  });
+}
