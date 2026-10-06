@@ -1,4 +1,4 @@
-const CACHE = "annabeth-hospital-v124";
+const CACHE = "annabeth-hospital-v125";
 const ASSETS = ["./", "./index.html", "./styles.css", "./adventure.css", "./app.js", "./adventure.js", "./manifest.webmanifest", "./assets/icon.svg", "./assets/icon-512.png", "./assets/title-screen-poster.png", "./assets/twinkle-dental-clinic.png", "./assets/magical-kingdom-map-v2.png", "./assets/fern-treatment-room.png", "./assets/bramble-potion-lab.png", "./assets/enchanted-forest-garden.png", "./assets/nova-castle-meadow.png", "./assets/art-recovery-studio.png", "./assets/pip-xray-room.png", "./assets/annabeth-outfits.png", "./assets/annabeth-outfits-2.png", "./assets/annabeth-outfits-3.png", "./assets/annabeth-dressup-base.png", "./assets/patient-emotions.png", "./assets/care-treatments-1.png", "./assets/care-treatments-2.png", "./assets/care-treatments-3.png"];
 ASSETS.push("./assets/annabeth-clothes.png");
 ASSETS.push("./assets/annabeth-complete-clinic-bag-v1.png", "./assets/annabeth-complete-mouse-vet-v1.png");
@@ -30,7 +30,13 @@ ASSETS.push("./assets/voice/VO462_the-magical-hospital-is-open-fern.mp3", "./ass
 // Update immediately instead of waiting for every open tab/instance to fully close first — on an
 // iPad home-screen app, a suspended-but-not-truly-closed instance can otherwise block an update
 // indefinitely. app.js reloads the page once this new worker takes control.
-self.addEventListener("install", event => { event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))); self.skipWaiting(); });
+// cache.addAll() fetches each asset through the browser's normal HTTP cache, which can silently
+// hand back a stale copy of a file like adventure.js even during a brand-new install — {cache:
+// "reload"} forces every precached file to be a genuine network fetch instead.
+self.addEventListener("install", event => {
+  event.waitUntil(caches.open(CACHE).then(cache => Promise.all(ASSETS.map(url => fetch(url, { cache: "reload" }).then(response => cache.put(url, response))))));
+  self.skipWaiting();
+});
 self.addEventListener("activate", event => event.waitUntil(Promise.all([caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))), self.clients.claim()])));
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
