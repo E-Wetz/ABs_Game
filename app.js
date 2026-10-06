@@ -559,7 +559,13 @@ window.MagicalHospital={
   discover:id=>{state.story=state.story||{completedActivities:[]};state.story.completedActivities=state.story.completedActivities||[];const first=!state.story.completedActivities.includes(id);if(first)state.story.completedActivities.push(id);saveState();return first}
 };
 if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  const checkForUpdate = () => navigator.serviceWorker.getRegistration().then(reg => reg && reg.update().catch(() => {}));
   navigator.serviceWorker.register("./sw.js").then(reg => reg.update().catch(() => {}));
+  // Reopening a home-screen app on iOS often resumes a frozen page instead of truly reloading
+  // it, so the one-time check above never runs again. Re-check whenever the app comes back to
+  // the foreground too, so an update is found no matter how it was reopened.
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) checkForUpdate(); });
+  window.addEventListener("pageshow", checkForUpdate);
   // The new worker activates immediately (sw.js calls skipWaiting/clients.claim) rather than
   // waiting for every open tab/instance to close, so reload once it actually takes control —
   // this is what makes a fresh update show up without any manual close-the-app ritual.
