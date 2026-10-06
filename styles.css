@@ -15,7 +15,10 @@
 html, body, #app { width: 100%; min-height: 100%; margin: 0; }
 body { background: #d8ccff; color: var(--ink); overflow-x: hidden; }
 button, label { font: inherit; }
-button { cursor: pointer; touch-action: manipulation; }
+/* Without this, iOS Safari renders its own native button chrome (picking up the device's
+   Safari accent-color tint) instead of our CSS background/color — most visible on cards like
+   the memory game that swap colors to hide/reveal content. */
+button { cursor: pointer; touch-action: manipulation; -webkit-appearance: none; appearance: none; background-color: transparent; }
 
 .screen { display: none; min-height: 100dvh; }
 .screen.active { display: flex; }
